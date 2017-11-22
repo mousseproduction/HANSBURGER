@@ -22,13 +22,23 @@ include_once('initialisation.php');
 // afficherTableau($burger['main']);
 //
 $joueurActif['caracteristiques']['cagnotte'] = 20;
-afficherTableau($joueurActif['main']);
-$saisie = readline('choisir la carte a invoquer');
-if ( ($saisie >= 0) && ($saisie <= count($joueurActif['main']))) {
-    invoquer($saisie);
-    afficherTableau($joueurActif['attente']);
-} else {
-    echo 'Saisie incorrecte';
-}
-echo $joueurActif['caracteristiques']['cagnotte'];
-var_dump($joueurActif['main']);
+// afficherTableau($joueurActif['main']);
+// $saisie = readline('choisir la carte a invoquer');
+// if ( ($saisie >= 0) && ($saisie <= count($joueurActif['main']))) {
+//     invoquer($saisie);
+//     afficherTableau($joueurActif['attente']);
+// } else {
+//     echo 'Saisie incorrecte';
+// }
+// echo $joueurActif['caracteristiques']['cagnotte'];
+// afficherTableau($joueurActif['main']);
+$joueurActif['combat'][] = $joueurActif['deck'][0];
+$joueurInactif['combat'][] = $joueurInactif['deck'][4];
+$indexAttaquant = choisirAttaquant($joueurActif);
+$indexCible = cibler($joueurInactif);
+
+echo 'index attaquant :' . $indexAttaquant;
+echo 'index cible :' . $indexCible;
+
+
+

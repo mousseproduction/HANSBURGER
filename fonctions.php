@@ -25,17 +25,58 @@ function invoquer( $indexCarte ) {//Numéro de carte choisie par le joeur actif
 }
 
 //A FINIR
-function attaquer(&$joueurInactif, $indexcible) {
-    $indexCible = readline('Quelle carte souhaitez-vous attaquer?');
+// function attaquer(&$joueurInactif, $indexcible) {
+//     $indexCible = readline('Quelle carte souhaitez-vous attaquer?');
+// }
+// DEFINIT LA CARTE ATTAQUANTE ET RETOURNE SON INDEX
+function choisirAttaquant(&$joueurActif) {
+    afficherTableau($joueurActif['combat']);
+    $indexAttaquant = readline('Avec quelle carte souhaitez-vous attaquer?');
+    return $indexAttaquant;
 }
 
+//DEFINIT LA CARTE CIBLEE ET RETOURNE SON INDEX
+        function cibler (&$joueurInactif) {
+            //Affichage du plateau du joueur adverse
+            echo 'Le joueur adverse a:' . $joueurInactif['caracteristiques']['pv'] .'pv';
+            afficherTableau($joueurInactif['combat']);
+
+            //Scan à la recherche de boucliers
+            $listeBouclier = [];
+            foreach($joueurInactif['combat'] as $key => $carte) {
+                if($carte['type'] == 'bouclier') {
+                    $listeBouclier[]= $key;
+                }
+            }
+            var_dump($listeBouclier);
+
+            //Si pas de bouclier, choix entre attaquer joueur ou créature adverse
+            if($listeBouclier === []) {
+                $choix = readline('Pour attaquer le joueur, faite le 1. Pour attaquer une de ses créatures, faites le 2. Sinon taper la reponse D(imaginer une voix sensuelle)');
+                switch ($choix) {
+                    case 1 : $indexCible = 'joueur';
+                        break;
+                    case 2 :
+                        $indexCible = readline('Quelle carte souhaitez-vous attaquer?');
+                }
+
+            //Si présence de bouclier, propose d'attaquer le(s) bouclier(s)
+            } else {
+                foreach ($listeBouclier as $value) {
+                    affichercarte($joueurInactif['combat'][$value]);
+                }
+                $indexCible = readline('Saisissez le bouclier que vous souhaitez attaquer');
+            }
+            return $indexCible;
+        }
+
 function attenteToCombat(&$joueur) {
-    foreach($joueur['attente'] as $key => $value) {
-        $value['statut'] = 'combat';
-        $joueur['combat'][] = $value;
+    foreach($joueur['attente'] as $key => $carte) {
+        $carte['statut'] = 'combat';
+        $joueur['combat'][] = $carte;
         unset( $joueur['attente'][$key] );
     }
-} 
+}
 
 //FUNCTION AFFICHAGE_________________________________________________________________________________________________________________________________________
 function afficherCarte($carte) {
