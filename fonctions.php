@@ -26,7 +26,6 @@ function invoquer( $indexCarte ) {//Numéro de carte choisie par le joeur actif
 
 // DEFINIT LA CARTE ATTAQUANTE ET RETOURNE SON INDEX
 function choisirAttaquant(&$joueurActif) {
-    afficherTableau($joueurActif['combat']);
     $indexAttaquant = readline('Avec quelle carte souhaitez-vous attaquer?');
     return $indexAttaquant;
 }
@@ -106,20 +105,19 @@ function attenteToCombat(&$joueur) {
 //FUNCTION AFFICHAGE_________________________________________________________________________________________________________________________________________
 function afficherCarte($carte) {
     if($carte['type'] == 'sort') {
-        $affichage = "-------------------------\n".
-                     "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."|\n".
-                     "|type : ".$carte['type']."            |\n".
-                     "| prix : ".$carte['prix']."              |\n".
+        $affichage = "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."|".
+                     "|type : ".$carte['type']."            |".
+                     "| prix : ".$carte['prix']."              |".
                      "| degats : ".$carte['degats']."            |\n".
-                     "-------------------------\n";
+                     "**************************************************************\n";
     } else {
         $affichage = "-------------------------\n".
-                     "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."|\n".
-                     "| type : ".$carte['type']."       |\n".
-                     "| prix : ".$carte['prix']."              |\n".
-                     "| pv : ".$carte['pv']."                |\n".
+                     "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."|".
+                     "| type : ".$carte['type']."       |".
+                     "| prix : ".$carte['prix']."              |".
+                     "| pv : ".$carte['pv']."                |".
                      "| degats : ".$carte['degats']."            |\n".
-                     "-------------------------\n";
+                     "-----------------------------------------------------------------\n";
     }
     echo $affichage;
 }
