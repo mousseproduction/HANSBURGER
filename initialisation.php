@@ -384,5 +384,5 @@ $burger =
         $joueurInactif = $zimmer;
     }
 
-    piocher($joueurActif, 3);
-    piocher($joueurInactif,3);
+    // piocher($joueurActif, 3);
+    // piocher($joueurInactif,3);

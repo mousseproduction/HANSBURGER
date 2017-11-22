@@ -32,13 +32,14 @@ $joueurActif['caracteristiques']['cagnotte'] = 20;
 // }
 // echo $joueurActif['caracteristiques']['cagnotte'];
 // afficherTableau($joueurActif['main']);
-$joueurActif['combat'][] = $joueurActif['deck'][0];
-$joueurInactif['combat'][] = $joueurInactif['deck'][4];
+$joueurActif['combat'][] = $joueurActif['deck'][8];
+$joueurInactif['combat'][] = $joueurInactif['deck'][6];
 $indexAttaquant = choisirAttaquant($joueurActif);
 $indexCible = cibler($joueurInactif);
 
 echo 'index attaquant :' . $indexAttaquant;
 echo 'index cible :' . $indexCible;
+subir($indexCible, $indexAttaquant);
 
 
 

@@ -24,10 +24,6 @@ function invoquer( $indexCarte ) {//Numéro de carte choisie par le joeur actif
     }
 }
 
-//A FINIR
-// function attaquer(&$joueurInactif, $indexcible) {
-//     $indexCible = readline('Quelle carte souhaitez-vous attaquer?');
-// }
 // DEFINIT LA CARTE ATTAQUANTE ET RETOURNE SON INDEX
 function choisirAttaquant(&$joueurActif) {
     afficherTableau($joueurActif['combat']);
@@ -38,7 +34,7 @@ function choisirAttaquant(&$joueurActif) {
 //DEFINIT LA CARTE CIBLEE ET RETOURNE SON INDEX
         function cibler (&$joueurInactif) {
             //Affichage du plateau du joueur adverse
-            echo 'Le joueur adverse a:' . $joueurInactif['caracteristiques']['pv'] .'pv';
+            echo 'Le joueur adverse a:' . $joueurInactif['caracteristiques']['pv'] ."pv\n";
             afficherTableau($joueurInactif['combat']);
 
             //Scan à la recherche de boucliers
@@ -48,7 +44,6 @@ function choisirAttaquant(&$joueurActif) {
                     $listeBouclier[]= $key;
                 }
             }
-            var_dump($listeBouclier);
 
             //Si pas de bouclier, choix entre attaquer joueur ou créature adverse
             if($listeBouclier === []) {
@@ -69,6 +64,36 @@ function choisirAttaquant(&$joueurActif) {
             }
             return $indexCible;
         }
+
+// CALCULE LES DEGATS
+function subir($indexCible, $indexAttaquant) {
+global $joueurActif;
+global $joueurInactif;
+
+    if ($indexCible == 'joueur'){
+        $joueurInactif['caracteristiques']['pv'] -= $joueurActif['combat'][$indexAttaquant]['degats'];
+        if ($joueurInactif['caracteristiques']['pv'] <= 0 ) {
+                //FIN DE PARTIE
+                echo "Peuchère t'as perdu cong";
+        }
+    } else {
+        $joueurInactif['combat'][$indexCible]['pv'] -= $joueurActif['combat'][$indexAttaquant]['degats'];
+        $joueurActif['combat'][$indexAttaquant]['pv'] -= $joueurInactif['combat'][$indexCible]['degats'];
+        testDeLaMortCarte($joueurInactif, $indexCible);
+        testDeLaMortCarte($joueurActif, $indexAttaquant);
+
+        }
+    }
+
+function testDeLaMortCarte (&$joueur , $index) {
+    if ($joueur['combat'][$index]['pv'] <= 0 ) {
+        $joueur['combat'][$index]['statut'] = 'cimetiere';
+        $joueur['cimetiere'][] = $joueur['combat'][$index];
+        echo 'La carte ' . $joueur['combat'][$index]['nom'] . ' est morte';
+        unset($joueur['combat'][$index]);
+    }
+
+}
 
 function attenteToCombat(&$joueur) {
     foreach($joueur['attente'] as $key => $carte) {
