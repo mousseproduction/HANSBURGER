@@ -5,10 +5,16 @@
 
 function piocher (&$joueur, $nbpioche=1){//Nombre de carte à piocher ( 1 par défault)
     $selection=array_rand($joueur['deck'],$nbpioche);//Choisis au hasard une ou plusieurs cartes dans le deck identifiée avec leur index
-    foreach ($selection as $value) {//Pour chaque carte selectionnée (index)
-        $joueur['deck'][$value]['statut']='main';//on modifie le statut de la carte (de deck => main)
-        $joueur['main'][]=$joueur['deck'][$value];//On ajoute la carte dans la main
-        unset($joueur['deck'][$value]);//On supprime la carte du deck
+    if( is_array( $selection ) ) {
+        foreach ($selection as $value) {//Pour chaque carte selectionnée (index)
+            $joueur['deck'][$value]['statut']='main';//on modifie le statut de la carte (de deck => main)
+            $joueur['main'][]=$joueur['deck'][$value];//On ajoute la carte dans la main
+            unset($joueur['deck'][$value]);//On supprime la carte du deck
+            }
+    } else {
+            $joueur['deck'][$selection]['statut']='main';//on modifie le statut de la carte (de deck => main)
+            $joueur['main'][]=$joueur['deck'][$selection];//On ajoute la carte dans la main
+            unset($joueur['deck'][$selection]);//On supprime la carte du deck
     }
 }
 
@@ -66,11 +72,13 @@ function choisirAttaquant(&$joueurActif) {
 
 // CALCULE LES DEGATS
 function subir($indexCible, $indexAttaquant) {
-global $joueurActif;
-global $joueurInactif;
+    global $joueurActif;
+    global $joueurInactif;
 
     if ($indexCible == 'joueur'){
         $joueurInactif['caracteristiques']['pv'] -= $joueurActif['combat'][$indexAttaquant]['degats'];
+        $joueurActif['attente'][] = $joueurActif['combat'][$indexAttaquant];
+        unset($joueurActif['combat'][$indexAttaquant]);
         if ($joueurInactif['caracteristiques']['pv'] <= 0 ) {
                 //FIN DE PARTIE
                 echo "Peuchère t'as perdu cong";
@@ -80,6 +88,10 @@ global $joueurInactif;
         $joueurActif['combat'][$indexAttaquant]['pv'] -= $joueurInactif['combat'][$indexCible]['degats'];
         testDeLaMortCarte($joueurInactif, $indexCible);
         testDeLaMortCarte($joueurActif, $indexAttaquant);
+        if( isset($joueurActif['combat'][$indexAttaquant])) {
+            $joueurActif['attente'][] = $joueurActif['combat'][$indexAttaquant];
+            unset($joueurActif['combat'][$indexAttaquant]);
+        }
 
         }
     }

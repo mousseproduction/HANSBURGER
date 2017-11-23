@@ -13,12 +13,12 @@ include_once('initialisation.php');
         }
 
         piocher( $joueurActif );
-        echo "C'est le tour de" $joueurActif['caracteristiques']['nom'] . "qui a" . $joueurActif['caracteristiques']['pv'] . "pv\n";
+        echo "C'est le tour de " . strtoupper($joueurActif['caracteristiques']['nom'])."\n";
 
         $passeTonTour = false;
         while( $passeTonTour === false) {
-            echo  'tu as ' . $joueurActif['caracteristiques']['pv']"\n";
-            echo  $joueurInactif['caracteristiques']['nom'] . 'a ' . $joueurInactif['caracteristiques']['pv']"\n";
+            echo  'tu as ' . $joueurActif['caracteristiques']['pv'] . "pv\n";
+            echo  strtoupper($joueurInactif['caracteristiques']['nom']) . ' a ' . $joueurInactif['caracteristiques']['pv'] . "pv\n";
 
             echo "TU AS DANS TA MAIN LES CARTES SUIVANTES----------------------------------------------------\n";
             afficherTableau( $joueurActif['main']);
