@@ -13,23 +13,24 @@ include_once('initialisation.php');
         }
 
         piocher( $joueurActif );
-        echo "C'est le tour de " . strtoupper($joueurActif['caracteristiques']['nom'])."\n";
-
+        echo "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}}\n C'est le tour de " . strtoupper($joueurActif['caracteristiques']['nom']) . "\n{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}}\n\n";
+    
         $passeTonTour = false;
         while( $passeTonTour === false) {
-            echo  'tu as ' . $joueurActif['caracteristiques']['pv'] . "pv\n";
+            echo  'tu as ' . $joueurActif['caracteristiques']['pv'] . " pv et " . $joueurActif['caracteristiques']['cagnotte'] . " mana\n";
             echo  strtoupper($joueurInactif['caracteristiques']['nom']) . ' a ' . $joueurInactif['caracteristiques']['pv'] . "pv\n";
 
-            echo "TU AS DANS TA MAIN LES CARTES SUIVANTES----------------------------------------------------\n";
+            echo "\n\nTU AS DANS TA MAIN LES CARTES SUIVANTES\n---------------------------------------------------------------------------------\n\n";
             afficherTableau( $joueurActif['main']);
 
-            echo "TU AS DANS TA ZONE DE COMBAT LES CARTES SUIVANTES----------------------------------------------------\n";
+            echo "\n\nTA ZONE DE COMBAT\n---------------------------------------------------------------------------------\n\n";
             afficherTableau( $joueurActif['combat']);
 
-            echo "L'ADVERSAIRE A LES CARTES SUIVANTES----------------------------------------------------\n";
+            echo "\n\nZONE DE COMBAT DE L'ADVERSAIRE\n-------------------------------------------------------------------------------\n\n";
             afficherTableau( $joueurInactif['combat']);
 
-            $choixAction = readline("Pour invoquer, saisir 1\nPour attaquer, saisir 2\nPour passer ton tour, saisir 3");
+            echo "Que souhaites tu faire?\n";
+            $choixAction = readline("Pour invoquer, saisir 1   ||  Pour attaquer, saisir 2   ||    Pour passer ton tour, saisir 3");
 
             switch ( $choixAction ) {
                 case '1':

@@ -117,19 +117,20 @@ function attenteToCombat(&$joueur) {
 //FUNCTION AFFICHAGE_________________________________________________________________________________________________________________________________________
 function afficherCarte($carte) {
     if($carte['type'] == 'sort') {
-        $affichage = "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."|".
-                     "|type : ".$carte['type']."            |".
-                     "| prix : ".$carte['prix']."              |".
-                     "| degats : ".$carte['degats']."            |\n".
-                     "**************************************************************\n";
+        $affichage = "*********************************************************************************************\n". 
+                     "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."||".
+                     "|type : ".$carte['type']."            ||".
+                     "| prix : ".$carte['prix']."       ||".
+                     "| degats : ".$carte['degats']."       ||\n".
+                     "*********************************************************************************************\n";
     } else {
-        $affichage = "-------------------------\n".
-                     "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."|".
-                     "| type : ".$carte['type']."       |".
-                     "| prix : ".$carte['prix']."              |".
-                     "| pv : ".$carte['pv']."                |".
-                     "| degats : ".$carte['degats']."            |\n".
-                     "-----------------------------------------------------------------\n";
+        $affichage = "----------------------------------------------------------------------------------------------\n".
+                     "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."||".
+                     "| type : ".$carte['type']."       ||".
+                     "| prix : ".$carte['prix']."       ||".
+                     "| pv : ".$carte['pv']."        ||".
+                     "| degats : ".$carte['degats']."|\n".
+                     "-----------------------------------------------------------------------------------------------\n";
     }
     echo $affichage;
 }
