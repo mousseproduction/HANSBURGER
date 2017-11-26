@@ -39,8 +39,6 @@ function choisirAttaquant(&$joueurActif) {
 //DEFINIT LA CARTE CIBLEE ET RETOURNE SON INDEX
         function cibler (&$joueurInactif) {
             //Affichage du plateau du joueur adverse
-            echo 'Le joueur adverse a:' . $joueurInactif['caracteristiques']['pv'] ."pv\n";
-            afficherTableau($joueurInactif['combat']);
 
             //Scan à la recherche de boucliers
             $listeBouclier = [];
@@ -124,13 +122,13 @@ function afficherCarte($carte) {
                      "| degats : ".$carte['degats']."       ||\n".
                      "*********************************************************************************************\n";
     } else {
-        $affichage = "----------------------------------------------------------------------------------------------\n".
+        $affichage = "------------------------------------------------------------------------------------------------------\n".
                      "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."||".
                      "| type : ".$carte['type']."       ||".
                      "| prix : ".$carte['prix']."       ||".
                      "| pv : ".$carte['pv']."        ||".
                      "| degats : ".$carte['degats']."|\n".
-                     "-----------------------------------------------------------------------------------------------\n";
+                     "------------------------------------------------------------------------------------------------------\n";
     }
     echo $affichage;
 }
