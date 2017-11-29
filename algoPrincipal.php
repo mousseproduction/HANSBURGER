@@ -2,7 +2,7 @@
 include_once('fonctions.php');
 include_once('initialisation.php');
 
-    while ( ($joueurActif['caracteristiques']['pv'] >= 0) || (count($joueurActif['cimetiere'])) !=20 ) {
+    while ( ($joueurActif['caracteristiques']['pv'] > 0) && ((count($joueurActif['cimetiere'])) != 20)) {
 
         // gestion du mana
         $compteurTour ++;
@@ -13,10 +13,10 @@ include_once('initialisation.php');
         }
 
         piocher( $joueurActif );
-        echo    "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}}\n" . 
+        echo    "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}}\n" .
                 str_pad("C'EST LE TOUR DE " . strtoupper($joueurActif['caracteristiques']['nom']), 60, " ", STR_PAD_BOTH) .
                 "\n{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}}\n\n";
-    
+
         $passeTonTour = false;
         while( $passeTonTour === false) {
             echo  'tu as ' . $joueurActif['caracteristiques']['pv'] . " pv et " . $joueurActif['caracteristiques']['cagnotte'] . " mana\n";
@@ -28,6 +28,9 @@ include_once('initialisation.php');
             echo "\n\nTA ZONE DE COMBAT\n----------------------------------------------------------------------------------------\n\n";
             afficherTableau( $joueurActif['combat']);
 
+            echo "\n\nTA ZONE D'ATTENTE\n----------------------------------------------------------------------------------------\n\n";
+            afficherTableau( $joueurActif['attente']);
+
             echo "\n\nZONE DE COMBAT DE L'ADVERSAIRE\n--------------------------------------------------------------------------------------\n\n";
             afficherTableau( $joueurInactif['combat']);
 
@@ -37,7 +40,11 @@ include_once('initialisation.php');
             switch ( $choixAction ) {
                 case '1':
                         $index = readline('Quelle carte souhaites-tu invoquer?');
+                        if( $joueurActif['main'][$index]['type'] == 'sort') {
+                            jouerSort( $index );
+                        } else {
                         invoquer($index);
+                        }
                     break;
                 case '2':
                     $indexAttaquant = choisirAttaquant($joueurActif);
@@ -54,6 +61,6 @@ include_once('initialisation.php');
         $joueurActif = $joueurInactif;
         $joueurInactif = $tmp;
     }
-    echo $joueurInactif['caracteristiques']['nom'] . 'a gagné!!!!!!!!';
+    echo $joueurInactif['caracteristiques']['nom'] . ' a gagné!!!!!!!!';
 
 ?>

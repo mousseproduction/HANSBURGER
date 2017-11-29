@@ -36,6 +36,40 @@ function choisirAttaquant(&$joueurActif) {
     return $indexAttaquant;
 }
 
+//FONCTION SORT
+function jouerSort ($indexCarte){
+   global $joueurActif;
+   global $joueurInactif;
+    if ( $joueurActif['main'][$indexCarte]['prix'] <= $joueurActif['caracteristiques']['cagnotte']) {//Si le prix de la carte choisie est inférieur ou égal à la cagnotte
+        $joueurActif['caracteristiques']['cagnotte'] -= $joueurActif['main'][$indexCarte]['prix'];//Alors on soustrait le prix de la carte du montant de la cagnotte
+        $joueurActif['main'][$indexCarte]['statut']='combat';//Alors on passe la carte sort en statut "combat"
+        $joueurActif['combat'][]=$joueurActif['main'][$indexCarte];//On la stocke dans la zone "combat" du joueur actif
+        unset($joueurActif['main'][$indexCarte]);// On la supprime de la main du joeur actif
+        $choix = readline('Pour attaquer le joueur, faite le 1. Pour attaquer une de ses créatures, faites le 2. Sinon taper la reponse D(imaginer une voix sensuelle)');
+        switch ($choix) {
+            case 1 : $indexCible = 'joueur';
+                break;
+            case 2 :
+                $indexCible = readline('Quelle carte souhaitez-vous attaquer?');
+        }
+        $indexCombat = (count($joueurActif['combat']))-1;
+        if ($indexCible == 'joueur'){
+                $joueurInactif['caracteristiques']['pv'] -= $joueurActif['combat'][$indexCombat]['degats'];
+        } else {
+                $joueurInactif['combat'][$indexCible]['pv'] -= $joueurActif['combat'][$indexCombat]['degats'];
+
+                testDeLaMortCarte( $joueurInactif, $indexCible);
+        }
+        $joueur['combat'][$indexCombat]['statut'] = 'cimetiere';
+        $joueur['cimetiere'][] = $joueur['combat'][$indexCombat];
+        echo 'Dans ta gueule la boule de feu brrrra';
+        unset($joueur['combat'][$indexCombat]);
+    } else {
+            echo "Vous n'avez pas assez de monnaie pour acheter cette créature";// Sinon message erreur
+    }
+}
+
+
 //DEFINIT LA CARTE CIBLEE ET RETOURNE SON INDEX
         function cibler (&$joueurInactif) {
             //Affichage du plateau du joueur adverse
@@ -60,9 +94,6 @@ function choisirAttaquant(&$joueurActif) {
 
             //Si présence de bouclier, propose d'attaquer le(s) bouclier(s)
             } else {
-                foreach ($listeBouclier as $value) {
-                    affichercarte($joueurInactif['combat'][$value]);
-                }
                 $indexCible = readline('Saisissez le bouclier que vous souhaitez attaquer');
             }
             return $indexCible;
@@ -77,10 +108,10 @@ function subir($indexCible, $indexAttaquant) {
         $joueurInactif['caracteristiques']['pv'] -= $joueurActif['combat'][$indexAttaquant]['degats'];
         $joueurActif['attente'][] = $joueurActif['combat'][$indexAttaquant];
         unset($joueurActif['combat'][$indexAttaquant]);
-        if ($joueurInactif['caracteristiques']['pv'] <= 0 ) {
-                //FIN DE PARTIE
-                echo "Peuchère t'as perdu cong";
-        }
+        // if ($joueurInactif['caracteristiques']['pv'] < 0 ) {
+        //         //FIN DE PARTIE
+        //         echo "Peuchère t'as perdu cong";
+        //}
     } else {
         $joueurInactif['combat'][$indexCible]['pv'] -= $joueurActif['combat'][$indexAttaquant]['degats'];
         $joueurActif['combat'][$indexAttaquant]['pv'] -= $joueurInactif['combat'][$indexCible]['degats'];
@@ -98,7 +129,7 @@ function testDeLaMortCarte (&$joueur , $index) {
     if ($joueur['combat'][$index]['pv'] <= 0 ) {
         $joueur['combat'][$index]['statut'] = 'cimetiere';
         $joueur['cimetiere'][] = $joueur['combat'][$index];
-        echo 'La carte ' . $joueur['combat'][$index]['nom'] . ' est morte';
+        echo 'La carte ' . $joueur['combat'][$index]['nom'] . " est morte \n";
         unset($joueur['combat'][$index]);
     }
 
@@ -115,7 +146,7 @@ function attenteToCombat(&$joueur) {
 //FUNCTION AFFICHAGE_________________________________________________________________________________________________________________________________________
 function afficherCarte($carte) {
     if($carte['type'] == 'sort') {
-        $affichage = "*********************************************************************************************\n". 
+        $affichage = "*********************************************************************************************\n".
                      "|".str_pad( strtoupper($carte['nom']), 23, " ", STR_PAD_BOTH )."||".
                      "|type : ".$carte['type']."            ||".
                      "| prix : ".$carte['prix']."       ||".
@@ -134,7 +165,8 @@ function afficherCarte($carte) {
 }
 
 function afficherTableau($element){
-        foreach ($element as $value) {
+        foreach ($element as $key => $value) {
+            echo $key;
             afficherCarte ($value);
         }
 }
