@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 29 Décembre 2017 à 16:27
+-- Généré le :  Mar 02 Janvier 2018 à 12:29
 -- Version du serveur :  5.7.20-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.22-0ubuntu0.16.04.1
 
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- Contenu de la table `action`
 --
 
-INSERT INTO `action` (`id`, `libelle`, `illustration_id`) VALUES
+INSERT INTO `action` VALUES
 (1, 'Piocher', 1),
 (2, 'Invoquer', 1),
 (3, 'Attaquer', 1),
@@ -34,7 +34,7 @@ INSERT INTO `action` (`id`, `libelle`, `illustration_id`) VALUES
 -- Contenu de la table `carte_modele`
 --
 
-INSERT INTO `carte_modele` (`id`, `nom`, `pv`, `degat`, `prix`, `hero_modele_id`, `type_id`, `illustration_id`) VALUES
+INSERT INTO `carte_modele` VALUES
 (1, 'Supermad', 9, 9, 9, 1, 1, 1),
 (2, 'Voisin relou', 0, 1, 1, 1, 3, 1),
 (3, 'Séquence émotions', 0, 4, 3, 1, 3, 1),
@@ -64,7 +64,7 @@ INSERT INTO `carte_modele` (`id`, `nom`, `pv`, `degat`, `prix`, `hero_modele_id`
 -- Contenu de la table `carte_partie`
 --
 
-INSERT INTO `carte_partie` (`id`, `pv`, `degat`, `prix`, `carte_modele_id`, `hero_partie_id`, `statut_id`, `type_id`) VALUES
+INSERT INTO `carte_partie` VALUES
 (1, 9, 9, 9, 1, 1, 2, 1),
 (2, 0, 1, 1, 2, 1, 1, 3),
 (3, 0, 4, 3, 3, 1, 1, 3),
@@ -111,7 +111,7 @@ INSERT INTO `carte_partie` (`id`, `pv`, `degat`, `prix`, `carte_modele_id`, `her
 -- Contenu de la table `heros_modele`
 --
 
-INSERT INTO `heros_modele` (`id`, `nom`, `statut`, `pv`, `cagnotte`, `illustration_id`) VALUES
+INSERT INTO `heros_modele` VALUES
 (1, 'Hans Zimmer', '', 20, 0, 1),
 (2, 'Fast Food', '', 20, 0, 1);
 
@@ -119,7 +119,7 @@ INSERT INTO `heros_modele` (`id`, `nom`, `statut`, `pv`, `cagnotte`, `illustrati
 -- Contenu de la table `heros_partie`
 --
 
-INSERT INTO `heros_partie` (`id`, `statut`, `pv`, `cagnotte`, `joueur_id`, `hero_modele_id`) VALUES
+INSERT INTO `heros_partie` VALUES
 (1, '', 20, 0, 1, 1),
 (2, '', 20, 0, 2, 2);
 
@@ -127,14 +127,14 @@ INSERT INTO `heros_partie` (`id`, `statut`, `pv`, `cagnotte`, `joueur_id`, `hero
 -- Contenu de la table `illustration`
 --
 
-INSERT INTO `illustration` (`id`, `path`) VALUES
+INSERT INTO `illustration` VALUES
 (1, 'url');
 
 --
 -- Contenu de la table `joueur`
 --
 
-INSERT INTO `joueur` (`id`, `pseudo`, `prenom`, `nom`, `naissance`, `email`, `mot_de_passe`, `ratio_vd`, `adresse`, `code_postal`, `ville`, `telephone`, `en_ligne`) VALUES
+INSERT INTO `joueur` VALUES
 (1, 'pilou', 'pilou', 'pilou', '2017-12-04', '', 'pilou', 1, NULL, NULL, NULL, NULL, NULL),
 (2, 'poilu', 'poilu', 'poilu', '2017-12-12', 'poilu', 'poilu', 1, NULL, NULL, NULL, NULL, NULL);
 
@@ -142,14 +142,14 @@ INSERT INTO `joueur` (`id`, `pseudo`, `prenom`, `nom`, `naissance`, `email`, `mo
 -- Contenu de la table `plateau`
 --
 
-INSERT INTO `plateau` (`id`, `illustration_id`, `hero_modele1_id`, `hero_modele2_id`) VALUES
+INSERT INTO `plateau` VALUES
 (1, 1, 2, 1);
 
 --
 -- Contenu de la table `statut`
 --
 
-INSERT INTO `statut` (`id`, `libelle`) VALUES
+INSERT INTO `statut` VALUES
 (1, 'Deck'),
 (2, 'Main'),
 (3, 'Attente'),
@@ -160,7 +160,7 @@ INSERT INTO `statut` (`id`, `libelle`) VALUES
 -- Contenu de la table `type`
 --
 
-INSERT INTO `type` (`id`, `libelle`) VALUES
+INSERT INTO `type` VALUES
 (1, 'Créature'),
 (2, 'Bouclier'),
 (3, 'Sort');
