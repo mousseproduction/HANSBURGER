@@ -14,7 +14,9 @@ DECOMPOSITION DE L'APPLICATION HANSBURGER EN DIFFERENTS ORGANES
         Interface utilisateur
             -Inscription
             -Gestion données utilisateur
+            -Accès aux statistiques?
             -Espace membre?
+            -Lancer ou reprendre une partie
 
 
     JEUX
@@ -24,9 +26,11 @@ DECOMPOSITION DE L'APPLICATION HANSBURGER EN DIFFERENTS ORGANES
             -Choix du Héros
             -Mise en relation des joueurs en ligne
             -interface de création de deck?
+            -création partie à partir de modele
+            -récupération partie en cours?
 
         Affichage
-            -Interrogation base de données (coté serveur)
+            -Interrogation base de données pour récupérer les données nécessaire (coté serveur)
             -Génération page à afficher (coté serveur)
             -Rechargement partiel des pages (AJAX coté client)
             -synchronistation des joueurs
@@ -35,4 +39,4 @@ DECOMPOSITION DE L'APPLICATION HANSBURGER EN DIFFERENTS ORGANES
             -Gestion des actions des joueurs
             -Gestion de l'historique des parties (évenements)
             -synchronistation des joueurs
-        
+  
