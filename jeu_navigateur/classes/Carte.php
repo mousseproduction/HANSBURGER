@@ -1,5 +1,5 @@
 <?php
-class Carte {
+abstract class Carte {
 
     //----------------------------------------------
     //attributs
