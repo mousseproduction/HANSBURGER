@@ -32,7 +32,7 @@ DECOMPOSITION DE L'APPLICATION HANSBURGER EN DIFFERENTS ORGANES
         Affichage
             -Interrogation base de données pour récupérer les données nécessaire (coté serveur)
             -Génération page à afficher (coté serveur)
-            -Rechargement partiel des pages (AJAX coté client)
+            -Rechargement partiel des pages (AJAX)
             -synchronistation des joueurs
             
         Mécanique de jeux

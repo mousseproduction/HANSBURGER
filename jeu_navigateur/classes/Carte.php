@@ -14,12 +14,17 @@ abstract class Carte {
     private $statut;
     private $type;
 
-    public function attaquer( $cible ) {
-    
+    private function hydrate( array $data ) {
+        foreach( $data as $key => $value ) {
+            $methode = 'set' . ucfirst( $key ); 
+            if( method_exists( $this, $methode ) {
+                $this->$methode( $value );
+            }
+        } 
     }
 
-    public function subirDegat( $attaquant ) {
-    
+    function __construct( array $data ) {
+        $this->hydrate( $data ); 
     }
 
     //----------------------------------------------
@@ -38,7 +43,7 @@ abstract class Carte {
      * @param id the value to set.
      */
     public function setId($id) {
-        if( is_int( $id ) && $id > 0 ) {
+        if( is_int( $id ) && $id >= 0 ) {
             $this->id = $id;
         }
     }
