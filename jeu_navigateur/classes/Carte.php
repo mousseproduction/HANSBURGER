@@ -16,15 +16,16 @@ abstract class Carte {
 
     private function hydrate( array $data ) {
         foreach( $data as $key => $value ) {
-            $methode = 'set' . ucfirst( $key ); 
+            $methode = 'set' . ucfirst( $key );
             if( method_exists( $this, $methode ) {
                 $this->$methode( $value );
             }
-        } 
+        }
     }
 
     function __construct( array $data ) {
-        $this->hydrate( $data ); 
+        $this->hydrate( $data )
+
     }
 
     //----------------------------------------------
@@ -36,7 +37,7 @@ abstract class Carte {
      * @return id.
      */
     public function getId() { return $this->id; }
-    
+
     /**
      * Set id.
      *
@@ -47,14 +48,14 @@ abstract class Carte {
             $this->id = $id;
         }
     }
-    
+
     /**
      * Get nom.
      *
      * @return nom.
      */
     public function getNom() { return $this->nom; }
-    
+
     /**
      * Set nom.
      *
@@ -65,14 +66,14 @@ abstract class Carte {
             $this->nom = $nom;
         }
     }
-    
+
     /**
      * Get pv.
      *
      * @return pv.
      */
     public function getPv() { return $this->pv; }
-    
+
     /**
      * Set pv.
      *
@@ -83,14 +84,14 @@ abstract class Carte {
             $this->pv = $pv;
         }
     }
-    
+
     /**
      * Get degat.
      *
      * @return degat.
      */
     public function getDegat() { return $this->degat; }
-    
+
     /**
      * Set degat.
      *
@@ -101,14 +102,14 @@ abstract class Carte {
             $this->degat = $degat;
         }
     }
-    
+
     /**
      * Get prix.
      *
      * @return prix.
      */
     public function getPrix() { return $this->prix; }
-    
+
     /**
      * Set prix.
      *
@@ -119,14 +120,14 @@ abstract class Carte {
             $this->prix = $prix;
         }
     }
-    
+
     /**
      * Get heros.
      *
      * @return heros.
      */
     public function getHeros() { return $this->heros; }
-    
+
     /**
      * Set heros.
      *
@@ -137,14 +138,14 @@ abstract class Carte {
             $this->heros = $heros;
         }
     }
-    
+
     /**
      * Get statut.
      *
      * @return statut.
      */
     public function getStatut() { return $this->statut; }
-    
+
     /**
      * Set statut.
      *
@@ -155,14 +156,14 @@ abstract class Carte {
             $this->statut = $statut;
         }
     }
-    
+
     /**
      * Get modele.
      *
      * @return modele.
      */
     public function getModele() { return $this->modele; }
-    
+
     /**
      * Set modele.
      *
@@ -173,14 +174,14 @@ abstract class Carte {
             $this->modele = $modele;
         }
     }
-    
+
     /**
      * Get type.
      *
      * @return type.
      */
     public function getType() { return $this->type; }
-    
+
     /**
      * Set type.
      *
@@ -192,3 +193,6 @@ abstract class Carte {
         }
     }
 }
+
+
+bite couilles chatte
