@@ -1,5 +1,5 @@
 <?php
-abstract class Carte {
+class Carte {
 
     //----------------------------------------------
     //attributs
@@ -17,16 +17,35 @@ abstract class Carte {
     private function hydrate( array $data ) {
         foreach( $data as $key => $value ) {
             $methode = 'set' . ucfirst( $key );
-            if( method_exists( $this, $methode ) {
+            if( method_exists( $this, $methode ) ) {
                 $this->$methode( $value );
             }
         }
     }
 
-    function __construct( array $data ) {
-        $this->hydrate( $data )
+    public function __construct( array $data ) {
+        $this->hydrate( $data );
 
     }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     */
+    public function haveAttributeTable() {
+        $carteData = array(  'id'           =>  $carte->getId(),
+                             'nom'          =>  $carte->getNom(),
+                             'pv'           =>  $carte->getPv(),
+                             'degat'        =>  $carte->getDegat(),
+                             'prix'         =>  $carte->getPrix(),
+                             'modele'       =>  $carte->getModele()['id'],
+                             'heros'        =>  $carte->getHeros()['id'],
+                             'statut'       =>  $carte->getStatut()['id'],
+                             'type'         =>  $carte->getType()['id'],
+                             'illustration' =>  $carte->getIllustration()['id'] );
+    }
+                
 
     //----------------------------------------------
     //getters et setters
@@ -134,8 +153,10 @@ abstract class Carte {
      * @param heros the value to set.
      */
     public function setHeros($heros) {
-        if( is_array( $heros ) && isset( $heros['id'] ) && is_int( $heros['id'] ) && isset( $heros['nom'] ) ) {
-            $this->heros = $heros;
+        if( is_array( $heros ) && isset( $heros['id'] ) && isset( $heros['nom'] ) ) {
+            if( is_int( $heros['id'] ) && $heros['id'] >= 0 ) {
+                $this->heros = $heros;
+            }
         }
     }
 
@@ -152,7 +173,10 @@ abstract class Carte {
      * @param statut the value to set.
      */
     public function setStatut($statut) {
-        if( is_array( $statut ) && isset( $statut['id'] ) && is_int( $statut['id'] ) && isset( $statut['nom'] ) ) {
+        if( is_array( $statut ) && isset( $statut['id'] ) && isset( $statut['nom'] ) ) {
+            if( is_int( $statut['id'] ) && $statut['id'] >= 0 ) {
+                $this->statut = $statut;
+            }
             $this->statut = $statut;
         }
     }
@@ -170,7 +194,10 @@ abstract class Carte {
      * @param modele the value to set.
      */
     public function setModele($modele) {
-        if( is_array( $modele ) && isset( $modele['id'] ) && is_int( $modele['id'] ) && isset( $modele['nom'] ) ) {
+        if( is_array( $modele ) && isset( $modele['id'] ) && isset( $modele['nom'] ) ) {
+            if( is_int( $modele['id'] ) && $modele['id'] >= 0 ) {
+                $this->modele = $modele;
+            }
             $this->modele = $modele;
         }
     }
@@ -188,11 +215,14 @@ abstract class Carte {
      * @param type the value to set.
      */
     public function setType($type) {
-        if( is_array( $type ) && isset( $type['id'] ) && is_int( $type['id'] ) && isset( $type['nom'] ) ) {
+        if( is_array( $type ) && isset( $type['id'] ) && isset( $type['nom'] ) ) {
+            if( is_int( $type['id'] ) && $type['id'] >= 0 ) {
+                $this->type = $type;
+            }
             $this->type = $type;
         }
     }
 }
 
 
-bite couilles chatte
+

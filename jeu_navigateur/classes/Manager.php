@@ -2,29 +2,65 @@
 
 abstract class Manager {
     
-   private $db;
+    //-----------------------------------------------------
+    //	ATTRIBUTES
+    //-----------------------------------------------------
+    private static $db = NULL;
    
-    //TODO ajouter un moyen de centraliser la connection à la BDD pour tous les 
-    // managers
-   //private function setDb(){} 
+   //-----------------------------------------------------
+   //	METHODES
+   //-----------------------------------------------------
+   public function __construct() {
+       if( self::$db === NULL ) {
+           $this->setDb();
+       } 
+   }
 
-    protected function executeQuery( $requete, $fetchMode, array $userInput ) {
-        $ressource = self::db;
-        $reponse = $ressource->prepare( $requete );
-        $reponse->execute( $userInput );
-        
-        if( strtolower( substr( $requete, 0, 6) ) == 'select' ){
-            if( $fetchMode == 'ASSOC') {
-                $data = $reponse->fetchAll( PDO::FETCH_ASSOC );
+   protected function executeQuery( string $requete, array $userInput = [] ) {
+        if( $ressource = $this->getDb() !== false ) {
+            if( $reponse = $ressource->prepare( $requete ) !== false ) {
+                if( $reponse->execute( $userInput ) !== false ) {
+                    if( strtolower( substr( $requete, 0, 6) ) == 'select' ){
+                            $data = $reponse->fetchAll( PDO::FETCH_ASSOC );
+                            $reponse->closeCursor(); 
+                            return $data;
+                        }
+                    $resultat = $reponse->rowCount();
+                    $reponse->closeCursor(); 
+                    return $resultat;    
+                }
             }
-            if( $fetchMode == 'NUM') {
-                $data = $reponse->fetchAll( PDO::FETCH_NUM );
-            }
-            $reponse->closeCursor(); // Termine le traitement de la requête
-            return $data;
         }
-        $resultat = $reponse->rowCount();
-        $reponse->closeCursor(); // Termine le traitement de la requête
-        return $resultat;    
+    }
+
+    //-----------------------------------------------------
+    //	GUETTERS AND SETTERS
+    //-----------------------------------------------------
+
+    /**
+     * Get db.
+     *
+     * @return db.
+     */
+    public function getDb() { return self::$db; }
+    
+    /**
+     * Set db.
+     *
+     * @param db the value to set.
+     */
+    public function setDb() {
+           try { 
+                $_str_host = 'localhost';
+                $_str_dbname = 'street_fighter';
+                $_str_login = 'root';
+                $_str_pwd = '';
+                self::$db =  new PDO(   'mysql:host=' . $_str_host . 
+                                        ';dbname=' . $_str_dbname . 
+                                        ';charset=utf8', 
+                                        $_str_login, $_str_pwd, array( PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION ) ); 
+            } catch( PDOException $e ) { 
+                die( $e->getMessage() );
+            }
     }
 }
