@@ -1,7 +1,5 @@
 <?php 
-require_once( 'classes/Manager.php' );
-require_once( 'classes/Carte.php' );
-require_once( 'classes/CarteModeleManager.php' );
+require( 'ini.php');
 
 //SESSION INIT
 if( !isset( $_SESSION[ 'type' ]) ) {
@@ -28,55 +26,27 @@ if( isset( $_GET[ 'type' ]) ) {
     }
 }
 
+//carte traitement
 if( $_SESSION[ 'type' ] == 'carte' ) {
     $carteManager = new CarteModeleManager;
     $objects = $carteManager->selectWhere();
 
-    if( isset( $_POST[ 'action' ]) && $_POST[ 'action' ] === 'insert' ) {
-        unset( $_POST[ 'action' ]);
+    if( isset( $_POST[ 'insert' ]) ) {
         $carte = new Carte( $_POST[] );
         $carteManager->add( $carte );
     }
-    if( isset( $_POST[ 'action' ]) && $_POST[ 'action' ] === 'update' ) {
-        unset( $_POST[ 'action' ]);
+    if( isset( $_POST[ 'update' ]) ) {
         $carte = new Carte( $_POST[] );
         $carteManager->update( $carte );
     }
-    if( isset( $_POST[ 'action' ]) && $_POST[ 'action' ] === 'delete' ) {
-        unset( $_POST[ 'action' ]);
-        $carteManager->delete( $carte );
+    if( isset( $_POST[ 'delete' ]) ) {
+        $carteManager->delete(  );
     }
 
 }
 
 
 
-require_once( 'view/interfaceCSVView.php' );
+require_once( 'view/gestionBdd.php')
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" href="assets/stylesheet.css">
-    </head>
-    <body>
-        <h1>Interface de gestion de la base de données</h1>
-        <h2>Wé wé wé que souhaites tu faire ma caille?</h2>
-        <div>
-            <form action="" method="get">
-                <button type="submit" name="type" value="0">Gérer les cartes</button>
-            </form>
-            <form action="" method="get">
-                <button type="submit" name="type" value="1">Gérer les illustrations</button>
-            </form>
-            <form action="" method="get">
-                <button type="submit" name="type" value="2">Generer un CSV</button>
-            </form>
-        </div>
-        <?php
-            require( 'view/'. $_SESSION[ 'type' ] .'FormView.php')
-        ?>
-    </body>
-</html>
 

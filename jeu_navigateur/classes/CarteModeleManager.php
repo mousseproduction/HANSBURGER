@@ -3,16 +3,16 @@
 class CarteModeleManager extends Manager {
     
     public function add( Carte $carte ) {
-        $carteDatas = $carte->haveAttributeTable();
+        $carteDatas = $carte->getAttributeTable();
         $query =    "INSERT INTO `carte_modele` (`id`, `nom`, `pv`, `degat`, `prix`, `heros_modele_id`, `type_id`, `illustration_id`)". 
                     "VALUES (NULL, ':nom', ':pv', ':degat', ':prix', ':herosModeleId', ':type', ':illustrationId');";
         return $this->executeQuery( $query, $carteDatas );
     }
     
     public function update( Carte $carte ) {
-        $carteDatas = $carte->haveAttributeTable();
+        $carteDatas = $carte->getAttributeTable();
         $query =    "UPDATE `carte_modele`".
-                    "SET `nom` = ':nom', `pv` = ':pv', `degat` = ':degat', `prix` = ':prix', `id_heros_modele` = ':herosModeleId' `id_type` = ':type' WHERE `carte_modele`.`id_carte_modele` = :id;";  
+                    "SET `nom` = ':nom', `pv` = ':pv', `degat` = ':degat', `prix` = ':prix', `heros_modele_id` = ':herosModeleId', `type_id` = ':type', `illustration_id` = ':illustrationId'  WHERE `carte_modele`.`id_carte_modele` = :id;";  
         return $this->executeQuery( $query, $carteDatas );
     }
     
@@ -32,12 +32,11 @@ class CarteModeleManager extends Manager {
                     INNER JOIN `heros_modele` ON `carte_modele`.`heros_modele_id` = `heros_modele`.`id`
                     ' . $condition . ';';
 
-        $Datas = $this->executeQuery( $query );
+        $datas = $this->executeQuery( $query );
         $objects = [];
-        foreach( $Datas as $key => $Data ) {
-            $objects[ $Data['id'] ] = new Carte( $Data );
+        foreach( $Datas as $key => $data ) {
+            $objects[ $data['id'] ] = new Carte( $data );
         }
-
         return $objects;
     }
     

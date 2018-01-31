@@ -37,7 +37,7 @@ class Carte {
      * @return void
      */
     public function getAttributeTable() {
-        $attributeList = [ 'id'=>'', 'nom'=>'', 'pv'=>'', 'degat'=>'', 'prix'=>'', 'modele'=>'', 'heros'=>'', 'statut'=>'', 'type'=>'', 'illustration'=>'' ];
+        $attributeList = [ 'id'=>'', 'nom'=>'', 'pv'=>'', 'degat'=>'', 'prix'=>'', 'herosModeleId'=>'', 'herosModeleNom'=>'', 'statut'=>'', 'type'=>'', 'illustrationId'=>'' 'illustrationNom'=>''];
         foreach( $attributeList as $key => $value ) {
             $methode = 'get' . ucfirst( $key );
             if( method_exists( $this, $methode ) ) {
