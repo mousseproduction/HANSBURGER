@@ -4,29 +4,62 @@ abstract class Heros {
     //----------------------------------------------
     //attributs
     //----------------------------------------------
+    /**
+     * id = id du heros
+     *
+     * @var [int]
+     */
     private $id;
+
+    /**
+     * nom = nom du heros model
+     *
+     * @var [char]
+     */
     private $nom;
+
+    /**
+     * statut = actif ou inactif
+     *
+     * @var [char]
+     */
     private $statut;
+
+    /**
+     * pv = point de vie du héros
+     *
+     * @var [int]
+     */
     private $pv;
+
+    /**
+     * cagnotte disponible à chaque tour
+     *
+     * @var [type]
+     */
     private $cagnotte;
+
     /**
      * joueur = tableau composé de plusieurs clés : id,nom
      *
      * @var [array]
      */
     private $joueur;
+
     /**
      * heros_modele = tableau composé de plusieurs clés : id,nom
      *
      * @var [array]
      */
     private $heros_modele;
+
     /**
      * illustration = tableau composé de plusieurs clés : id,path
      *
      * @var [array]
      */
     private $illustration;
+
     /**
      * cartes = tableau composé de plusieurs clés (deck,main,attente,combat, cimetière) stockant des objets "cartes"
      *
@@ -34,20 +67,13 @@ abstract class Heros {
      */
     private $cartes;
 
+     /**
+     * héros Adverse = objet Héros adverse pour la partie
+     *
+     * @var [objet]
+     */
+    private $heros_adverse;
 
-    private function hydrate( array $data ) {
-        foreach( $data as $key => $value ) {
-            $methode = 'set' . ucfirst( $key );
-            if( method_exists( $this, $methode ) {
-                $this->$methode( $value );
-            }
-        }
-    }
-
-    function __construct( array $data ) {
-        $this->hydrate( $data )
-
-    }
 
     //----------------------------------------------
     //getters et setters
@@ -178,6 +204,8 @@ abstract class Heros {
             $this->heros_modele = $heros_modele;
         }
     }
+
+    /**
      * Get heros_modele.
      *
      * @return heros_modele.
@@ -212,11 +240,88 @@ abstract class Heros {
             $this->illustration = $illustration;
         }
     }
+    
+    /**
+     * Get the value of cartes
+     */ 
+    public function getCartes()
+    {
+        return $this->cartes;
+    }
+
+    /**
+     * Set the value of cartes
+     *
+     * @return  self
+     */ 
+    public function setCartes($cartes)
+    {
+        $this->cartes = $cartes;
+
+        return $this;
+    }
+
+    
+    /**
+     * Get héros Adverse = objet Héros adverse pour la partie
+     *
+     * @return  [objet]  $heros_adverse
+     */ 
+    public function getHeros_adverse()
+    {
+        return $this->heros_adverse;
+    }
+
+    /**
+     * Set héros Adverse = objet Héros adverse pour la partie
+     *
+     * @param  [objet]  $heros_adverse
+     *
+     * @return  self
+     */ 
+    public function setHeros_adverse()
+    {
+        $this->heros_adverse = $heros_adverse;
+
+        return $this;
+    }
+
+    private function hydrate( array $data ) {
+        foreach( $data as $key => $value ) {
+            $methode = 'set' . ucfirst( $key );
+            if( method_exists( $this, $methode ) {
+                $this->$methode( $value );
+            }
+        }
+    }
+
+    function __construct( array $data ) {
+        $this->hydrate( $data )
+    }
+    //----------------------------------------------
+    //méthodes
+    //----------------------------------------------
+    
+    /**
+     * undocumented function
+     *
+     * @return void
+     */
+    public function getAttributeTable() {
+        $attributeList = [ 'id'=>'', 'nom'=>'', 'statut'=>'', 'pv'=>'', 'cagnotte'=>'', 'illustration'=>'' ];
+        foreach( $attributeList as $key => $value ) {
+            $methode = 'get' . ucfirst( $key );
+            if( method_exists( $this, $methode ) ) {
+                $value = $this->$methode;
+            }
+        }
+    }
+
 
     /**
      * Le héros sélectionne au hasard une(ou plussieurs) carte(s) dans le deck
      *
-     * @param integer $nbpioche
+     * @param [int] $nbpioche
      * @return void
      */
     public function piocher ($nbpioche=1){//Nombre de carte à piocher ( 1 par défault)
@@ -237,11 +342,11 @@ abstract class Heros {
     /**
      * Le héros choisit quelle carte il veut invoquer
      *
-     * @param [type] $indexCarte
+     * @param [int] $indexCarte
      * @return void
      */
     public function invoquer( $indexCarte ) {//Numéro de carte choisie par le heros
-     // vérifier si la carte choisie est bien dans la main ???
+    // vérifier si la carte choisie est bien dans la main dans l'algo principal (si GET indique ?main=  ???)
         if ($this->cartes['main'][$indexCarte]->getPrix <= $this->cagnotte) {//Si le prix de la carte choisie est inférieur ou égal à la cagnotte
             $this->cagnotte -= $this->cartes['main'][$indexCarte]->getPrix;//Alors on soustrait le prix de la carte du montant de la cagnotte
             $this->cartes['main'][$indexCarte]->setStatut('Attente');//Alors on passe la carte en statut "attente"
@@ -275,47 +380,52 @@ abstract class Heros {
     /**
      *Le héros choisit quelle carte il va utiliser pour combattre
      *
-     * @param [type] $indexAttaquant
+     * @param [int] $indexAttaquant
      * @return void
      */
     public function choisirAttaquant($indexAttaquant) {//Numéro de carte choisie par le heros
-    // vérifier si la carte choisie est bien dans la zone d'attente ???
-        $this->cartes['attente'][$indexCarte]->setStatut('Combat');//On passe la carte sort en statut "combat"
+    // vérifier si la carte choisie est bien dans la zone d'attente dans l'algo principal (si GET indique ?attente=  ???)
+        $this->cartes['attente'][$indexCarte]->setStatut('Combat');//On passe la carte en statut "combat"
         $this->cartes['combat'][]=$this->cartes['main'][$indexCarte];//On la stocke dans la zone "combat" du héros
         unset($this->cartes['attente'][$indexCarte]);// On la supprime de la zone d'attente du du héros
      }
 
-
-     
-    /** A FINIR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     *Le héros attaqué encaisse les dégats !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    /**
+     *Si une carte sort est tirée, elle passe directement en zone de combat, fait des dégats, puis finit au cimetière
      *
-     * @param [type] $indexCible
+     * @param [int] $indexAttaquant
      * @return void
      */
-    public function vérifierCible($indexCible) {//Héros adversaire ou Numéro de carte choisie par le heros
-        switch ($indexCible) {
-            case 1 : $indexCible = 'joueur';
-                break;
-            case 2 :
-                $indexCible = readline('Quelle carte souhaitez-vous attaquer?');
-        }
-        $indexCombat = (count($joueurActif['combat']))-1;
-        if ($indexCible == 'joueur'){
-                $joueurInactif['caracteristiques']['pv'] -= $joueurActif['combat'][$indexCombat]['degats'];
+    public function jouerSort ($indexCible){
+        if ($this->cartes['main'][$indexCible]->getPrix <= $this->cagnotte) {//Si le prix de la carte choisie est inférieur ou égal à la cagnotte
+            $this->cagnotte -= $this->cartes['main'][$indexCible]->getPrix();//Alors on soustrait le prix de la carte du montant de la cagnotte
+            $this->cartes['main'][$indexCible]['statut']='combat';//Alors on passe la carte sort en statut "combat"
+            $this->cartes['combat'][]=$this->cartes['main'][$indexCarte];//On la stocke dans la zone "combat" du joueur actif
+            unset($this->cartes['main'][$indexCarte]);// On la supprime de la main du joueur actif
+            $indexAttaquant = (count($this->cartes['combat']))-1;// l'index de la carte sort est le dernier des cartes en zone de combat
+                if (substr( $indexCible, 0, 5) ) == 'heros' && substr($indexCible,5,1) == $this->id)){//Si l'index transmis commence par heros et si le chiffre correspond à l'id du heros
+            $this->setPv( $this->getPv() - $this->getHeros_adverse()->cartes['combat'][$indexAttaquant]->getDegat());//on met à jour les points de vie du heros ciblé en enlevant les degats de la carte attaquante
+            // test de la fin de vie du heros
+            // if ($this->getPv() < 0 ) {
+            //FIN DE PARTIE
+            //}
+                } elseif(substr( $indexCible, 0, 5) ) == 'carte')) {//Si l'index transmis commence par carte, on récupère le num de la carte
+                    $this->getHeros_adverse->getCartes['combat'][$indexCible]->setPv($this->getHeros_adverse->getCartes['combat'][$indexCible]->getPv()) - $this->cartes['combat'][$indexCombat]->getDegat();//on met à jour les points de vie de la carte ciblée en enlevant les degats de la carte attaquante
+
+                    $this->getHeros_adverse()->testDeLaMortCarte($indexCible);// on teste si la carte ciblee est morte
+                }
+                $this->cartes['combat'][$indexAttaquant]['statut'] = 'cimetiere';// on passe la carte sort au cimetière
+                $this->cartes['cimetiere'][] = $this->cartes['combat'][$indexAttaquant];// on enlève la carte sort de la zone de combat
+                unset($this->cartes['combat'][$indexAttaquantt]);
         } else {
-                $joueurInactif['combat'][$indexCible]['pv'] -= $joueurActif['combat'][$indexCombat]['degats'];
-
-                testDeLaMortCarte( $joueurInactif, $indexCible);
+                $message= "Vous n'avez pas assez de monnaie pour acheter cette créature";// Sinon message erreur
         }
-        $joueur['combat'][$indexCombat]['statut'] = 'cimetiere';
-        $joueur['cimetiere'][] = $joueur['combat'][$indexCombat];
-        echo 'Dans ta gueule la boule de feu brrrra';
-        unset($joueur['combat'][$indexCombat]);
-    } else {
-            echo "Vous n'avez pas assez de monnaie pour acheter cette créature";// Sinon message erreur
+        return $message;
     }
+     
 
-     $this->cartes['main'][$indexCarte]->setStatut('Combat');//Alors on passe la carte en statut "attente"
-}
+ 
+
+
+    
 }
