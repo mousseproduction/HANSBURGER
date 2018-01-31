@@ -1,0 +1,2249 @@
+<!DOCTYPE HTML><html lang='fr' dir='ltr'><head><meta charset="utf-8" /><meta name="referrer" content="no-referrer" /><meta name="robots" content="noindex,nofollow" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><style id="cfs-style">html{display: none;}</style><link rel="icon" href="favicon.ico" type="image/x-icon" /><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /><link rel="stylesheet" type="text/css" href="./themes/pmahomme/jquery/jquery-ui.css" /><link rel="stylesheet" type="text/css" href="js/codemirror/lib/codemirror.css?v=4.7.0" /><link rel="stylesheet" type="text/css" href="js/codemirror/addon/hint/show-hint.css?v=4.7.0" /><link rel="stylesheet" type="text/css" href="js/codemirror/addon/lint/lint.css?v=4.7.0" /><link rel="stylesheet" type="text/css" href="phpmyadmin.css.php?nocache=5929913879ltr" /><link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/printview.css?v=4.7.0" media="print" id="printcss"/><title>localhost / 127.0.0.1 / hansburger | phpMyAdmin 4.7.0</title><script data-cfasync="false" type="text/javascript" src="js/get_scripts.js.php?scripts%5B%5D=jquery/jquery.min.js&amp;scripts%5B%5D=jquery/jquery-migrate-3.0.0.js&amp;scripts%5B%5D=sprintf.js&amp;scripts%5B%5D=ajax.js&amp;scripts%5B%5D=keyhandler.js&amp;scripts%5B%5D=jquery/jquery-ui.min.js&amp;scripts%5B%5D=jquery/jquery.cookie.js&amp;scripts%5B%5D=jquery/jquery.mousewheel.js&amp;scripts%5B%5D=jquery/jquery.event.drag-2.2.js&amp;scripts%5B%5D=jquery/jquery-ui-timepicker-addon.js&amp;v=4.7.0"></script><script data-cfasync="false" type="text/javascript" src="js/get_scripts.js.php?scripts%5B%5D=jquery/jquery.ba-hashchange-1.3.js&amp;scripts%5B%5D=jquery/jquery.debounce-1.0.5.js&amp;scripts%5B%5D=menu-resizer.js&amp;scripts%5B%5D=cross_framing_protection.js&amp;scripts%5B%5D=rte.js&amp;scripts%5B%5D=tracekit/tracekit.js&amp;scripts%5B%5D=error_report.js&amp;scripts%5B%5D=config.js&amp;scripts%5B%5D=doclinks.js&amp;scripts%5B%5D=functions.js&amp;v=4.7.0"></script><script data-cfasync="false" type="text/javascript" src="js/get_scripts.js.php?scripts%5B%5D=navigation.js&amp;scripts%5B%5D=indexes.js&amp;scripts%5B%5D=common.js&amp;scripts%5B%5D=page_settings.js&amp;scripts%5B%5D=shortcuts_handler.js&amp;scripts%5B%5D=jquery/jquery.fullscreen.js&amp;scripts%5B%5D=pmd/designer_db.js&amp;scripts%5B%5D=pmd/designer_objects.js&amp;scripts%5B%5D=pmd/designer_page.js&amp;scripts%5B%5D=pmd/history.js&amp;v=4.7.0"></script><script data-cfasync="false" type="text/javascript" src="js/get_scripts.js.php?scripts%5B%5D=pmd/move.js&amp;scripts%5B%5D=pmd/init.js&amp;scripts%5B%5D=codemirror/lib/codemirror.js&amp;scripts%5B%5D=codemirror/mode/sql/sql.js&amp;scripts%5B%5D=codemirror/addon/runmode/runmode.js&amp;scripts%5B%5D=codemirror/addon/hint/show-hint.js&amp;scripts%5B%5D=codemirror/addon/hint/sql-hint.js&amp;scripts%5B%5D=codemirror/addon/lint/lint.js&amp;scripts%5B%5D=codemirror/addon/lint/sql-lint.js&amp;scripts%5B%5D=console.js&amp;v=4.7.0"></script><script data-cfasync='false' type='text/javascript' src='js/whitelist.php?lang=fr&amp;db=hansburger&v=4.7.0'></script><script data-cfasync='false' type='text/javascript' src='js/messages.php?lang=fr&amp;db=hansburger&v=4.7.0'></script><script data-cfasync='false' type='text/javascript' src='js/get_image.js.php?theme=pmahomme&v=4.7.0'></script><script data-cfasync="false" type="text/javascript">// <![CDATA[
+PMA_commonParams.setAll({common_query:"",opendb_url:"db_structure.php",collation_connection:"utf8mb4_unicode_ci",lang:"fr",server:"1",table:"",db:"hansburger",token:"9be8b6669888ba220be59de72554fa9f",text_dir:"ltr",show_databases_navigation_as_tree:"1",pma_text_default_tab:"Parcourir",pma_text_left_default_tab:"Structure",pma_text_left_default_tab2:"",LimitChars:"50",pftext:"P",confirm:"1",LoginCookieValidity:"1440",session_gc_maxlifetime:"1440",logged_in:"1",PMA_VERSION:"4.7.0",auth_type:"config",user:"root"});
+ConsoleEnterExecutes=false
+AJAX.scriptHandler.add("jquery/jquery.min.js",0).add("jquery/jquery-migrate-3.0.0.js",0).add("whitelist.php?lang=fr&amp;db=hansburger",1).add("sprintf.js",1).add("ajax.js",0).add("keyhandler.js",1).add("jquery/jquery-ui.min.js",0).add("jquery/jquery.cookie.js",0).add("jquery/jquery.mousewheel.js",0).add("jquery/jquery.event.drag-2.2.js",0).add("jquery/jquery-ui-timepicker-addon.js",0).add("jquery/jquery.ba-hashchange-1.3.js",0).add("jquery/jquery.debounce-1.0.5.js",0).add("menu-resizer.js",1).add("cross_framing_protection.js",0).add("rte.js",1).add("tracekit/tracekit.js",1).add("error_report.js",1).add("messages.php?lang=fr&amp;db=hansburger",0).add("get_image.js.php?theme=pmahomme",0).add("config.js",1).add("doclinks.js",1).add("functions.js",1).add("navigation.js",1).add("indexes.js",1).add("common.js",1).add("page_settings.js",1).add("shortcuts_handler.js",1).add("jquery/jquery.fullscreen.js",0).add("pmd/designer_db.js",1).add("pmd/designer_objects.js",1).add("pmd/designer_page.js",1).add("pmd/history.js",1).add("pmd/move.js",1).add("pmd/init.js",1).add("codemirror/lib/codemirror.js",0).add("codemirror/mode/sql/sql.js",0).add("codemirror/addon/runmode/runmode.js",0).add("codemirror/addon/hint/show-hint.js",0).add("codemirror/addon/hint/sql-hint.js",0).add("codemirror/addon/lint/lint.js",0).add("codemirror/addon/lint/sql-lint.js",0).add("console.js",1);
+$(function() {AJAX.fireOnload("whitelist.php?lang=fr&amp;db=hansburger");AJAX.fireOnload("sprintf.js");AJAX.fireOnload("keyhandler.js");AJAX.fireOnload("menu-resizer.js");AJAX.fireOnload("rte.js");AJAX.fireOnload("tracekit/tracekit.js");AJAX.fireOnload("error_report.js");AJAX.fireOnload("config.js");AJAX.fireOnload("doclinks.js");AJAX.fireOnload("functions.js");AJAX.fireOnload("navigation.js");AJAX.fireOnload("indexes.js");AJAX.fireOnload("common.js");AJAX.fireOnload("page_settings.js");AJAX.fireOnload("shortcuts_handler.js");AJAX.fireOnload("pmd/designer_db.js");AJAX.fireOnload("pmd/designer_objects.js");AJAX.fireOnload("pmd/designer_page.js");AJAX.fireOnload("pmd/history.js");AJAX.fireOnload("pmd/move.js");AJAX.fireOnload("pmd/init.js");AJAX.fireOnload("console.js");});
+// ]]></script><noscript><style>html{display:block}</style></noscript></head><body id='pmd_body'><div id="pma_navigation"><div id="pma_navigation_resizer"></div><div id="pma_navigation_collapser"></div><div id="pma_navigation_content"><div id="pma_navigation_header"><a class="hide navigation_url" href="navigation.php?ajax_request=1"></a><!-- LOGO START -->
+<div id="pmalogo">
+            <a href="index.php">
+        <img src="./themes/pmahomme/img/logo_left.png" alt="phpMyAdmin" id="imgpmalogo" />            </a>
+    </div>
+<!-- LOGO END --><!-- LINKS START --><div id="navipanellinks"><a href="index.php" title="Accueil"><img src="themes/dot.gif" title="Accueil" alt="Accueil" class="icon ic_b_home" /></a><a href="logout.php?db=hansburger" class="logout disableAjax" title="Données de session vides"><img src="themes/dot.gif" title="Données de session vides" alt="Données de session vides" class="icon ic_s_loggoff" /></a><a href="./doc/html/index.html" target="documentation" title="Documentation de phpMyAdmin"><img src="themes/dot.gif" title="Documentation de phpMyAdmin" alt="Documentation de phpMyAdmin" class="icon ic_b_docs" /></a><a href="./url.php?url=https%3A%2F%2Fdev.mysql.com%2Fdoc%2Frefman%2F5.7%2Fen%2Findex.html" target="mysql_doc" title="Documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_sqlhelp" /></a><a href="#" id="pma_navigation_settings_icon" title="Paramètres du panneau de navigation"><img src="themes/dot.gif" title="Paramètres du panneau de navigation" alt="Paramètres du panneau de navigation" class="icon ic_s_cog" /></a><a href="#" id="pma_navigation_reload" title="Rechercher le panneau de navigation"><img src="themes/dot.gif" title="Rechercher le panneau de navigation" alt="Rechercher le panneau de navigation" class="icon ic_s_reload" /></a></div><!-- LINKS ENDS --><img src="./themes/pmahomme/img/ajax_clock_small.gif" title="Chargement en cours…" alt="Chargement en cours…" style="visibility: hidden; display:none" class="throbber" /></div><div id="pma_navigation_tree" class="list_container synced highlight"><div class="pma_quick_warp"><div class="drop_list"><span title="Tables récentes" class="drop_button">Récentes</span><ul id="pma_recent_list"><li class="warp_link"><a href="tbl_recent_favorite.php?db=hansburger&amp;table=partie">`hansburger`.`partie`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=hansburger&amp;table=carte_modele">`hansburger`.`carte_modele`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=hansburger&amp;table=statut">`hansburger`.`statut`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=forum&amp;table=conversation">`forum`.`conversation`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=forum&amp;table=message">`forum`.`message`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=forum&amp;table=user">`forum`.`user`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=forum&amp;table=rang">`forum`.`rang`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=street_fighter&amp;table=persos">`street_fighter`.`persos`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=exotunnel&amp;table=groupe">`exotunnel`.`groupe`</a></li><li class="warp_link"><a href="tbl_recent_favorite.php?db=street_fighter&amp;table=perso">`street_fighter`.`perso`</a></li></ul></div><div class="drop_list"><span title="Tables préférées" class="drop_button">Préférées</span><ul id="pma_favorite_list"><li class="warp_link">Pas de tables préférées.</li></ul></div><div class="clearfloat"></div></div><div class="clearfloat"></div><ul><!-- CONTROLS START --><li id="navigation_controls_outer"><div id="navigation_controls"><a href="#" id="pma_navigation_collapse" title="Tout réduire"><img src="./themes/pmahomme/img/s_collapseall.png" title="Tout réduire" alt="Tout réduire" /></a><a href="#" id="pma_navigation_sync" title="Supprimer la liaison au panneau principal"><img src="themes/dot.gif" title="Supprimer la liaison au panneau principal" alt="Supprimer la liaison au panneau principal" class="icon ic_s_link" /></a></div></li><!-- CONTROLS ENDS --></ul><div id='pma_navigation_tree_content'><ul><li class="first new_database italics"><div class='block'><i class='first'></i></div><div class='block '><a href='server_databases.php?server=1'><img src="themes/dot.gif" title="" alt="" class="icon ic_b_newdb" /></a></div><a class='hover_show_full' href='server_databases.php?server=1' title=''>Nouvelle base de données</a><div class="clearfloat"></div></li><li class="database"><div class='block'><i></i><b></b><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.ZXhvdHVubmVs</span><span class='hide vPath'>cm9vdA==.ZXhvdHVubmVs</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=exotunnel&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=exotunnel' title='Structure'>exotunnel</a><div class="clearfloat"></div></li><li class="database"><div class='block'><i></i><b></b><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.Zm9ydW0=</span><span class='hide vPath'>cm9vdA==.Zm9ydW0=</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=forum&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=forum' title='Structure'>forum</a><div class="clearfloat"></div></li><li class="database"><div class='block'><i></i><b></b><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.aGFuc2J1cmdlcg==</span><span class='hide vPath'>cm9vdA==.aGFuc2J1cmdlcg==</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=hansburger&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=hansburger' title='Structure'>hansburger</a><div class="clearfloat"></div></li><li class="database"><div class='block'><i></i><b></b><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.aW5mb3JtYXRpb25fc2NoZW1h</span><span class='hide vPath'>cm9vdA==.aW5mb3JtYXRpb25fc2NoZW1h</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=information_schema&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=information_schema' title='Structure'>information_schema</a><div class="clearfloat"></div></li><li class="database"><div class='block'><i></i><b></b><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.bXlzcWw=</span><span class='hide vPath'>cm9vdA==.bXlzcWw=</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=mysql&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=mysql' title='Structure'>mysql</a><div class="clearfloat"></div></li><li class="database"><div class='block'><i></i><b></b><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.cGVyZm9ybWFuY2Vfc2NoZW1h</span><span class='hide vPath'>cm9vdA==.cGVyZm9ybWFuY2Vfc2NoZW1h</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=performance_schema&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=performance_schema' title='Structure'>performance_schema</a><div class="clearfloat"></div></li><li class="database"><div class='block'><i></i><b></b><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.cGhwbXlhZG1pbg==</span><span class='hide vPath'>cm9vdA==.cGhwbXlhZG1pbg==</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=phpmyadmin&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=phpmyadmin' title='Structure'>phpmyadmin</a><div class="clearfloat"></div></li><li class="database"><div class='block'><i></i><b></b><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.c3RyZWV0X2ZpZ2h0ZXI=</span><span class='hide vPath'>cm9vdA==.c3RyZWV0X2ZpZ2h0ZXI=</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=street_fighter&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=street_fighter' title='Structure'>street_fighter</a><div class="clearfloat"></div></li><li class="last database"><div class='block'><i></i><a class="expander" href='#'><span class='hide aPath'>cm9vdA==.dGVzdA==</span><span class='hide vPath'>cm9vdA==.dGVzdA==</span><span class='hide pos'>0</span><img src="themes/dot.gif" title="Développer/Réduire" alt="Développer/Réduire" class="icon ic_b_plus" /></a></div><div class='block '><a href='db_operations.php?server=1&amp;db=test&amp;'><img src="themes/dot.gif" title="Opérations sur base de données" alt="Opérations sur base de données" class="icon ic_s_db" /></a></div><a class='hover_show_full' href='db_structure.php?server=1&amp;db=test' title='Structure'>test</a><div class="clearfloat"></div></li></ul></div></div><div id="pma_navi_settings_container"><div id="pma_navigation_settings"><div class="page_settings"><form method="post" action="db_designer.php?db=hansburger&amp;table=&amp;server=1&amp;target=" class="config-form disableAjax"><input type="hidden" name="tab_hash" value="" /><input type="hidden" name="check_page_refresh"  id="check_page_refresh" value="" />
+<input type="hidden" name="token" value="9be8b6669888ba220be59de72554fa9f" />
+<input type="hidden" name="submit_save" value="Navi_panel" /><input type="hidden" name="token" value="9be8b6669888ba220be59de72554fa9f" /><ul class="tabs"    >
+
+                                    <li     >
+
+            <a href="#Navi_panel"                                        >
+            Panneau de navigation            </a>
+        </li>
+                                <li     >
+
+            <a href="#Navi_tree"                                        >
+            Arborescence de navigation            </a>
+        </li>
+                                <li     >
+
+            <a href="#Navi_databases"                                        >
+            Bases de données            </a>
+        </li>
+                                <li     >
+
+            <a href="#Navi_tables"                                        >
+            Tables            </a>
+        </li>
+            </ul><br /><div class="tabs_contents"><fieldset class="optbox" id="Navi_panel"><legend>Panneau de navigation</legend><p>Personnaliser l'apparence du panneau de navigation.</p><table width="100%" cellspacing="0"><tr><th><label for="ShowDatabasesNavigationAsTree">Afficher la navigation des bases de données en tant qu'arborescence</label><span class="doc"><a href="./doc/html/config.html#cfg_ShowDatabasesNavigationAsTree" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Dans le volet de navigation, remplace l'arborescence de la base de données par un sélecteur</small></th><td><span class="checkbox"><input type="checkbox" name="ShowDatabasesNavigationAsTree" id="ShowDatabasesNavigationAsTree" checked="checked" /></span><a class="restore-default" href="#ShowDatabasesNavigationAsTree" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationLinkWithMainPanel">Relier au panneau principal</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationLinkWithMainPanel" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Relier au panneau principal en mettant en surbrillance la base de données ou la table active.</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationLinkWithMainPanel" id="NavigationLinkWithMainPanel" checked="checked" /></span><a class="restore-default" href="#NavigationLinkWithMainPanel" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationDisplayLogo">Afficher le logo</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationDisplayLogo" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Afficher le logo dans le panneau de navigation.</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationDisplayLogo" id="NavigationDisplayLogo" checked="checked" /></span><a class="restore-default" href="#NavigationDisplayLogo" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationLogoLink">URL du lien sous le logo</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationLogoLink" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>L'URL vers lequel pointera le logo dans le panneau de navigation.</small></th><td><input type="text" size="40" name="NavigationLogoLink" id="NavigationLogoLink" value="index.php" /><a class="restore-default" href="#NavigationLogoLink" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationLogoLinkWindow">Fenêtre cible pour la page ouverte lors d'un clic sur le logo</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationLogoLinkWindow" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Ouvrir la page en lien dans la fenêtre principale, (<kbd>main</kbd>) ou dans une nouvelle fenêtre, (<kbd>new</kbd>).</small></th><td><select name="NavigationLogoLinkWindow" id="NavigationLogoLinkWindow"><option value="main" selected="selected">main</option><option value="new">new</option></select><a class="restore-default" href="#NavigationLogoLinkWindow" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreePointerEnable">Active la surbrillance</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreePointerEnable" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Faire ressortir le nom du serveur dans le panneau de navigation.</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationTreePointerEnable" id="NavigationTreePointerEnable" checked="checked" /></span><a class="restore-default" href="#NavigationTreePointerEnable" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="FirstLevelNavigationItems">Nombre maximum d'éléments au premier niveau</label><span class="doc"><a href="./doc/html/config.html#cfg_FirstLevelNavigationItems" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Le nombre d'éléments qui peuvent être affichés pour chaque page du premier niveau de l'arborescence de navigation.</small></th><td><input type="number" name="FirstLevelNavigationItems" id="FirstLevelNavigationItems" value="100" /><a class="restore-default" href="#FirstLevelNavigationItems" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeDisplayItemFilterMinimum">Nombre minimum d'éléments pour afficher la boîte de filtrage</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeDisplayItemFilterMinimum" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Définit le nombre minimum d'éléments (tables, vues, procédures et événements) nécessaires pour afficher la boîte de filtrage.</small></th><td><input type="number" name="NavigationTreeDisplayItemFilterMinimum" id="NavigationTreeDisplayItemFilterMinimum" value="30" /><a class="restore-default" href="#NavigationTreeDisplayItemFilterMinimum" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NumRecentTables">Tables récemment utilisées</label><span class="doc"><a href="./doc/html/config.html#cfg_NumRecentTables" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Nombre maximum de tables récentes ; définir à 0 pour désactiver.</small></th><td><input type="number" name="NumRecentTables" id="NumRecentTables" value="10" /><a class="restore-default" href="#NumRecentTables" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NumFavoriteTables">Tables préférées</label><span class="doc"><a href="./doc/html/config.html#cfg_NumFavoriteTables" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Le nombre maximum de tables préférées ; définir à 0 pour désactiver.</small></th><td><input type="number" name="NumFavoriteTables" id="NumFavoriteTables" value="10" /><a class="restore-default" href="#NumFavoriteTables" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr></table></fieldset><fieldset class="optbox" id="Navi_tree"><legend>Arborescence de navigation</legend><p>Personnaliser l'arborescence de navigation.</p><table width="100%" cellspacing="0"><tr><th><label for="MaxNavigationItems">Nombre maximum d'éléments dans la branche</label><span class="doc"><a href="./doc/html/config.html#cfg_MaxNavigationItems" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Le nombre d'éléments qui peuvent être affichés pour chaque page de l'arborescence de navigation.</small></th><td><input type="number" name="MaxNavigationItems" id="MaxNavigationItems" value="50" /><a class="restore-default" href="#MaxNavigationItems" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeEnableGrouping">Regrouper les éléments dans l'arborescence</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeEnableGrouping" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Regrouper les éléments dans l'arborescence de navigation (déterminé par le séparateur défini dans les onglets Bases de données et Tables ci-dessus).</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationTreeEnableGrouping" id="NavigationTreeEnableGrouping" checked="checked" /></span><a class="restore-default" href="#NavigationTreeEnableGrouping" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeEnableExpansion">Activer l'expansion de l'arborescence de navigation</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeEnableExpansion" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Pour offrir la possibilité d'expansion de l'arborescence dans le panneau de navigation.</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationTreeEnableExpansion" id="NavigationTreeEnableExpansion" checked="checked" /></span><a class="restore-default" href="#NavigationTreeEnableExpansion" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeShowTables">Afficher les tables dans l'arborescence</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeShowTables" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Pour afficher les tables dans l'arborescence de navigation</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationTreeShowTables" id="NavigationTreeShowTables" checked="checked" /></span><a class="restore-default" href="#NavigationTreeShowTables" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeShowViews">Afficher les vues dans l'arborescence</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeShowViews" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Pour afficher les vues dans l'arborescence de navigation</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationTreeShowViews" id="NavigationTreeShowViews" checked="checked" /></span><a class="restore-default" href="#NavigationTreeShowViews" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeShowFunctions">Afficher les fonctions dans l'arborescence</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeShowFunctions" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Pour afficher les fonctions dans l'arborescence de navigation</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationTreeShowFunctions" id="NavigationTreeShowFunctions" checked="checked" /></span><a class="restore-default" href="#NavigationTreeShowFunctions" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeShowProcedures">Afficher les procédures dans l'arborescence</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeShowProcedures" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Pour afficher les procédures dans l'arborescence de navigation</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationTreeShowProcedures" id="NavigationTreeShowProcedures" checked="checked" /></span><a class="restore-default" href="#NavigationTreeShowProcedures" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeShowEvents">Afficher les évènements dans l'arborescence</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeShowEvents" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Pour afficher les événements dans l'arborescence de navigation</small></th><td><span class="checkbox"><input type="checkbox" name="NavigationTreeShowEvents" id="NavigationTreeShowEvents" checked="checked" /></span><a class="restore-default" href="#NavigationTreeShowEvents" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr></table></fieldset><fieldset class="optbox" id="Navi_databases"><legend>Bases de données</legend><p>Options d'affichage des bases de données.</p><table width="100%" cellspacing="0"><tr><th><label for="NavigationTreeDisplayDbFilterMinimum">Nombre minimum de bases de données pour activer le filtre</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeDisplayDbFilterMinimum" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span></th><td><input type="number" name="NavigationTreeDisplayDbFilterMinimum" id="NavigationTreeDisplayDbFilterMinimum" value="30" /><a class="restore-default" href="#NavigationTreeDisplayDbFilterMinimum" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeDbSeparator">Séparateur pour l'arborescence des bases de données</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeDbSeparator" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Chaîne qui sépare les noms de bases de données en niveaux.</small></th><td><input type="text" size="25" name="NavigationTreeDbSeparator" id="NavigationTreeDbSeparator" value="_" /><a class="restore-default" href="#NavigationTreeDbSeparator" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr></table></fieldset><fieldset class="optbox" id="Navi_tables"><legend>Tables</legend><p>Options d'affichage des tables.</p><table width="100%" cellspacing="0"><tr><th><label for="NavigationTreeDefaultTabTable">Cible de l'icône d'accès rapide</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeDefaultTabTable" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span></th><td><select name="NavigationTreeDefaultTabTable" id="NavigationTreeDefaultTabTable"><option value="structure" selected="selected">Structure</option><option value="sql">SQL</option><option value="search">Rechercher</option><option value="insert">Insérer</option><option value="browse">Parcourir</option></select><a class="restore-default" href="#NavigationTreeDefaultTabTable" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeDefaultTabTable2">Cible de la deuxième icône d'accès rapide</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeDefaultTabTable2" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span></th><td><select name="NavigationTreeDefaultTabTable2" id="NavigationTreeDefaultTabTable2"><option value="" selected="selected"></option><option value="structure">Structure</option><option value="sql">SQL</option><option value="search">Rechercher</option><option value="insert">Insérer</option><option value="browse">Parcourir</option></select><a class="restore-default" href="#NavigationTreeDefaultTabTable2" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeTableSeparator">Séparateur pour l'arborescence des noms de tables</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeTableSeparator" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span><small>Chaîne qui sépare les noms de table en niveaux.</small></th><td><input type="text" size="25" name="NavigationTreeTableSeparator" id="NavigationTreeTableSeparator" value="__" /><a class="restore-default" href="#NavigationTreeTableSeparator" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr><tr><th><label for="NavigationTreeTableLevel">Nombre de niveaux pour l'arborescence des tables</label><span class="doc"><a href="./doc/html/config.html#cfg_NavigationTreeTableLevel" target="documentation"><img src="themes/dot.gif" title="Documentation" alt="Documentation" class="icon ic_b_help" /></a>
+</span></th><td><input type="number" name="NavigationTreeTableLevel" id="NavigationTreeTableLevel" value="1" /><a class="restore-default" href="#NavigationTreeTableLevel" title="Restaurer la valeur par défaut" style="display:none"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_reload" /></a></td></tr></table></fieldset></div>
+</form>
+<script type="text/javascript">
+if (typeof configInlineParams === "undefined" || !Array.isArray(configInlineParams)) configInlineParams = [];
+configInlineParams.push(function() {
+validateField('FirstLevelNavigationItems', 'PMA_validatePositiveNumber', true);
+validateField('NumRecentTables', 'PMA_validateNonNegativeNumber', true);
+validateField('NumFavoriteTables', 'PMA_validateNonNegativeNumber', true);
+validateField('MaxNavigationItems', 'PMA_validatePositiveNumber', true);
+validateField('NavigationTreeTableLevel', 'PMA_validatePositiveNumber', true);
+$.extend(PMA_messages, {
+	'error_nan_p': 'Nombre non positif !',
+	'error_nan_nneg': 'Nombre non négatif !',
+	'error_incorrect_port': 'Numéro de port invalide !',
+	'error_invalid_value': 'Valeur incorrecte !',
+	'error_value_lte': 'La valeur doit être égale ou plus petite que %s !'});
+$.extend(defaultValues, {
+	'ShowDatabasesNavigationAsTree': true,
+	'NavigationLinkWithMainPanel': true,
+	'NavigationDisplayLogo': true,
+	'NavigationLogoLink': 'index.php',
+	'NavigationLogoLinkWindow': ['main'],
+	'NavigationTreePointerEnable': true,
+	'FirstLevelNavigationItems': '100',
+	'NavigationTreeDisplayItemFilterMinimum': '30',
+	'NumRecentTables': '10',
+	'NumFavoriteTables': '10',
+	'MaxNavigationItems': '50',
+	'NavigationTreeEnableGrouping': true,
+	'NavigationTreeEnableExpansion': true,
+	'NavigationTreeShowTables': true,
+	'NavigationTreeShowViews': true,
+	'NavigationTreeShowFunctions': true,
+	'NavigationTreeShowProcedures': true,
+	'NavigationTreeShowEvents': true,
+	'NavigationTreeDisplayDbFilterMinimum': '30',
+	'NavigationTreeDbSeparator': '_',
+	'NavigationTreeDefaultTabTable': ['structure'],
+	'NavigationTreeDefaultTabTable2': [''],
+	'NavigationTreeTableSeparator': '__',
+	'NavigationTreeTableLevel': '1'});
+});
+if (typeof configScriptLoaded !== "undefined" && configInlineParams) loadInlineConfig();
+</script></div></div></div></div><div class="pma_drop_handler">Déposer des fichiers ici</div><div class="pma_sql_import_status"><h2>SQL upload ( <span class="pma_import_count">0</span> ) <span class="close">x</span><span class="minimize">-</span></h2><div></div></div></div><noscript><div class="error"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_error" /> JavaScript doit être activé !</div></noscript><div id='floating_menubar'></div><div id='serverinfo'><img src="themes/dot.gif" title="" alt="" class="icon ic_s_host item" /><a href="index.php" class="item">Serveur: 127.0.0.1</a><span class='separator item'>&nbsp;»</span><img src="themes/dot.gif" title="" alt="" class="icon ic_s_db item" /><a href="db_structure.php?db=hansburger" class="item">Base de données: hansburger</a><div class="clearfloat"></div></div><div id="topmenucontainer" class="menucontainer"><ul id="topmenu"  class="resizable-menu"><li     >
+
+            <a href="db_structure.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Structure" alt="Structure" class="icon ic_b_props" />&nbsp;Structure            </a>
+        </li>
+<li     >
+
+            <a href="db_sql.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="SQL" alt="SQL" class="icon ic_b_sql" />&nbsp;SQL            </a>
+        </li>
+<li     >
+
+            <a href="db_search.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Rechercher" alt="Rechercher" class="icon ic_b_search" />&nbsp;Rechercher            </a>
+        </li>
+<li     >
+
+            <a href="db_qbe.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Requête" alt="Requête" class="icon ic_s_db" />&nbsp;Requête            </a>
+        </li>
+<li     >
+
+            <a href="db_export.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Exporter" alt="Exporter" class="icon ic_b_export" />&nbsp;Exporter            </a>
+        </li>
+<li     >
+
+            <a href="db_import.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Importer" alt="Importer" class="icon ic_b_import" />&nbsp;Importer            </a>
+        </li>
+<li     >
+
+            <a href="db_operations.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Opérations" alt="Opérations" class="icon ic_b_tblops" />&nbsp;Opérations            </a>
+        </li>
+<li     >
+
+            <a href="server_privileges.php?db=hansburger&amp;checkprivsdb=hansburger&amp;viewing_mode=db"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Privilèges" alt="Privilèges" class="icon ic_s_rights" />&nbsp;Privilèges            </a>
+        </li>
+<li     >
+
+            <a href="db_routines.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Procédures stockées" alt="Procédures stockées" class="icon ic_b_routines" />&nbsp;Procédures stockées            </a>
+        </li>
+<li     >
+
+            <a href="db_events.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Évènements" alt="Évènements" class="icon ic_b_events" />&nbsp;Évènements            </a>
+        </li>
+<li     >
+
+            <a href="db_triggers.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Déclencheurs" alt="Déclencheurs" class="icon ic_b_triggers" />&nbsp;Déclencheurs            </a>
+        </li>
+<li     >
+
+            <a href="db_tracking.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Suivi" alt="Suivi" class="icon ic_eye" />&nbsp;Suivi            </a>
+        </li>
+<li      class="active">
+
+            <a href="db_designer.php?db=hansburger"                         id="designer_tab"         class="tabactive"        >
+            <img src="themes/dot.gif" title="Concepteur" alt="Concepteur" class="icon ic_b_relations" />&nbsp;Concepteur            </a>
+        </li>
+<li     >
+
+            <a href="db_central_columns.php?db=hansburger"                                 class="tab"        >
+            <img src="themes/dot.gif" title="Colonnes centrales" alt="Colonnes centrales" class="icon ic_centralColumns" />&nbsp;Colonnes centrales            </a>
+        </li>
+<div class="clearfloat"></div></ul>
+</div>
+<span id="page_nav_icons"><span id="lock_page_icon"></span><span id="page_settings_icon"><img src="themes/dot.gif" title="Paramètres relatifs à la page" alt="Paramètres relatifs à la page" class="icon ic_s_cog" /></span><a id="goto_pagetop" href="#"><img src="themes/dot.gif" title="Cliquer sur la barre pour faire défiler en haut de page" alt="Cliquer sur la barre pour faire défiler en haut de page" class="icon ic_s_top" /></a></span><div id="pma_console_container">
+    <div id="pma_console">
+        <!-- Console toolbar -->
+        <div class="toolbar collapsed">
+            <div class="switch_button console_switch">
+            <img src="themes/dot.gif" title="Console de requête SQL" alt="Console de requête SQL" class="icon ic_console" />            <span> Console de requêtes SQL </span>
+        </div>
+            <div class="button clear">
+                        <span> Effacer </span>
+        </div>
+            <div class="button history">
+                        <span> Historique </span>
+        </div>
+            <div class="button options">
+                        <span> Options </span>
+        </div>
+            <div class="button bookmarks">
+                        <span> Signets </span>
+        </div>
+            <div class="button debug hide">
+                        <span> Déboguer SQL </span>
+        </div>
+    </div>
+        <!-- Toolbar end -->
+        <!-- Console messages -->
+        <div class="content">
+            <div class="console_message_container">
+                <div class="message welcome">
+                    <span id="instructions-0">
+                        Faire Ctrl+Entrée pour exécuter la requête                    </span>
+                    <span class="hide" id="instructions-1">
+                        Faire Entrée pour exécuter la requête                    </span>
+                </div>
+                                    <div class="message history collapsed hide select"
+                        targetdb="hansburger" targettable="statut">
+                        <div class="action_content">
+            <span class="action collapse">
+            Réduire                    </span>
+            <span class="action expand">
+            Développer                    </span>
+            <span class="action requery">
+            Exécuter la requête à nouveau                    </span>
+            <span class="action edit">
+            Éditer                    </span>
+            <span class="action explain">
+            Expliquer                    </span>
+            <span class="action profiling">
+            Profilage                    </span>
+            <span class="action bookmark">
+            Signet                    </span>
+            <span class="text failed">
+            La requête a échoué                    </span>
+            <span class="text targetdb">
+            Base de données                            : <span> hansburger </span>
+                    </span>
+            <span class="text query_time">
+            Daté du                            : <span> Durant la session en cours </span>
+                    </span>
+    </div>
+                        <span class="query"> SELECT * FROM `statut` </span>
+                    </div>
+                                        <div class="message history collapsed hide select"
+                        targetdb="hansburger" targettable="partie">
+                        <div class="action_content">
+            <span class="action collapse">
+            Réduire                    </span>
+            <span class="action expand">
+            Développer                    </span>
+            <span class="action requery">
+            Exécuter la requête à nouveau                    </span>
+            <span class="action edit">
+            Éditer                    </span>
+            <span class="action explain">
+            Expliquer                    </span>
+            <span class="action profiling">
+            Profilage                    </span>
+            <span class="action bookmark">
+            Signet                    </span>
+            <span class="text failed">
+            La requête a échoué                    </span>
+            <span class="text targetdb">
+            Base de données                            : <span> hansburger </span>
+                    </span>
+            <span class="text query_time">
+            Daté du                            : <span> Durant la session en cours </span>
+                    </span>
+    </div>
+                        <span class="query"> SELECT * FROM `partie` </span>
+                    </div>
+                                        <div class="message history collapsed hide select"
+                        targetdb="hansburger" targettable="carte_modele">
+                        <div class="action_content">
+            <span class="action collapse">
+            Réduire                    </span>
+            <span class="action expand">
+            Développer                    </span>
+            <span class="action requery">
+            Exécuter la requête à nouveau                    </span>
+            <span class="action edit">
+            Éditer                    </span>
+            <span class="action explain">
+            Expliquer                    </span>
+            <span class="action profiling">
+            Profilage                    </span>
+            <span class="action bookmark">
+            Signet                    </span>
+            <span class="text failed">
+            La requête a échoué                    </span>
+            <span class="text targetdb">
+            Base de données                            : <span> hansburger </span>
+                    </span>
+            <span class="text query_time">
+            Daté du                            : <span> Durant la session en cours </span>
+                    </span>
+    </div>
+                        <span class="query"> SELECT * FROM `carte_modele` </span>
+                    </div>
+                                        <div class="message history collapsed hide select"
+                        targetdb="hansburger" targettable="partie">
+                        <div class="action_content">
+            <span class="action collapse">
+            Réduire                    </span>
+            <span class="action expand">
+            Développer                    </span>
+            <span class="action requery">
+            Exécuter la requête à nouveau                    </span>
+            <span class="action edit">
+            Éditer                    </span>
+            <span class="action explain">
+            Expliquer                    </span>
+            <span class="action profiling">
+            Profilage                    </span>
+            <span class="action bookmark">
+            Signet                    </span>
+            <span class="text failed">
+            La requête a échoué                    </span>
+            <span class="text targetdb">
+            Base de données                            : <span> hansburger </span>
+                    </span>
+            <span class="text query_time">
+            Daté du                            : <span> Durant la session en cours </span>
+                    </span>
+    </div>
+                        <span class="query"> SELECT * FROM `partie` </span>
+                    </div>
+                                </div> <!-- console_message_container -->
+            <div class="query_input">
+                <span class="console_query_input"></span>
+            </div>
+        </div> <!-- message end -->
+        <!-- Drak the console with other cards over it -->
+        <div class="mid_layer"></div>
+        <!-- Debug SQL card -->
+        <div class="card" id="debug_console">
+            <div class="toolbar ">
+            <div class="button order order_asc">
+                        <span> croissant </span>
+        </div>
+            <div class="button order order_desc">
+                        <span> décroissant </span>
+        </div>
+            <div class="text">
+                        <span> Ordre : </span>
+        </div>
+            <div class="switch_button">
+                        <span> Déboguer SQL </span>
+        </div>
+            <div class="button order_by sort_count">
+                        <span> Nombre </span>
+        </div>
+            <div class="button order_by sort_exec">
+                        <span> Ordre d'exécution </span>
+        </div>
+            <div class="button order_by sort_time">
+                        <span> Temps nécessaire </span>
+        </div>
+            <div class="text">
+                        <span> Trier par : </span>
+        </div>
+            <div class="button group_queries">
+                        <span> Regrouper les requêtes </span>
+        </div>
+            <div class="button ungroup_queries">
+                        <span> Dissocier les groupes </span>
+        </div>
+    </div>
+            <div class="content debug">
+                <div class="message welcome"></div>
+                <div class="debugLog"></div>
+            </div> <!-- Content -->
+            <div class="templates">
+                <div class="debug_query action_content">
+            <span class="action collapse">
+            Réduire                    </span>
+            <span class="action expand">
+            Développer                    </span>
+            <span class="action dbg_show_trace">
+            Afficher le suivi                    </span>
+            <span class="action dbg_hide_trace">
+            Masquer le suivi                    </span>
+            <span class="text count hide">
+            Nombre                            : <span>  </span>
+                    </span>
+            <span class="text time">
+            Temps nécessaire                            : <span>  </span>
+                    </span>
+    </div>
+            </div> <!-- Template -->
+        </div> <!-- Debug SQL card -->
+                <div class="card" id="pma_bookmarks">
+            <div class="toolbar ">
+            <div class="switch_button">
+                        <span> Signets </span>
+        </div>
+            <div class="button refresh">
+                        <span> Actualiser </span>
+        </div>
+            <div class="button add">
+                        <span> Ajouter </span>
+        </div>
+    </div>
+            <div class="content bookmark">
+                <div class="message welcome">
+    <span> Aucun signet </span>
+</div>
+            </div>
+            <div class="mid_layer"></div>
+            <div class="card add">
+                <div class="toolbar ">
+            <div class="switch_button">
+                        <span> Ajouter un signet </span>
+        </div>
+    </div>
+                <div class="content add_bookmark">
+                    <div class="options">
+                        <label>
+                            Intitulé: <input type="text" name="label">
+                        </label>
+                        <label>
+                            Base de données cible: <input type="text" name="targetdb">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="shared"> Partager ce signet                        </label>
+                        <button type="submit" name="submit">OK</button>
+                    </div> <!-- options -->
+                    <div class="query_input">
+                        <span class="bookmark_add_input"></span>
+                    </div>
+                </div>
+            </div> <!-- Add bookmark card -->
+        </div> <!-- Bookmarks card -->
+                <!-- Options card: -->
+        <div class="card" id="pma_console_options">
+            <div class="toolbar ">
+            <div class="switch_button">
+                        <span> Options </span>
+        </div>
+            <div class="button default">
+                        <span> Définir par défaut </span>
+        </div>
+    </div>
+            <div class="content">
+                <label>
+                    <input type="checkbox" name="always_expand">Toujours développer les messages                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="start_history">Afficher l'historique des requêtes au démarrage                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="current_query">Afficher la requête de navigation courante                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="enter_executes">
+                        Exécuter les requêtes avec Entrée et insérer une nouvelle ligne avec Maj+Entrée. Ce choix peut être rendu permanent via les paramètres.                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="dark_theme">Passer au thème sombre                </label>
+                <br>
+            </div>
+        </div> <!-- Options card -->
+        <div class="templates">
+            <!-- Templates for console message actions -->
+            <div class="query_actions">
+            <span class="action collapse">
+            Réduire                    </span>
+            <span class="action expand">
+            Développer                    </span>
+            <span class="action requery">
+            Exécuter la requête à nouveau                    </span>
+            <span class="action edit">
+            Éditer                    </span>
+            <span class="action explain">
+            Expliquer                    </span>
+            <span class="action profiling">
+            Profilage                    </span>
+            <span class="action bookmark">
+            Signet                    </span>
+            <span class="text failed">
+            La requête a échoué                    </span>
+            <span class="text targetdb">
+            Base de données                            : <span>  </span>
+                    </span>
+            <span class="text query_time">
+            Daté du                            : <span>  </span>
+                    </span>
+    </div>
+        </div>
+    </div> <!-- #console end -->
+</div> <!-- #console_container end -->
+<div id="page_content"><!-- Do not expand HTML here, invisible characters will make javascript crash -->
+<div id="script_server" class="hide">1</div>
+<div id="script_db" class="hide">hansburger</div>
+<div id="script_tables" class="hide">{&quot;j_tabs&quot;:{&quot;hansburger.action&quot;:1,&quot;hansburger.carte_modele&quot;:1,&quot;hansburger.carte_partie&quot;:1,&quot;hansburger.evenement&quot;:1,&quot;hansburger.heros_modele&quot;:1,&quot;hansburger.heros_partie&quot;:1,&quot;hansburger.illustration&quot;:1,&quot;hansburger.joueur&quot;:1,&quot;hansburger.partie&quot;:1,&quot;hansburger.plateau&quot;:1,&quot;hansburger.statut&quot;:1,&quot;hansburger.type&quot;:1},&quot;h_tabs&quot;:{&quot;hansburger.action&quot;:1,&quot;hansburger.carte_modele&quot;:1,&quot;hansburger.carte_partie&quot;:1,&quot;hansburger.evenement&quot;:1,&quot;hansburger.heros_modele&quot;:1,&quot;hansburger.heros_partie&quot;:1,&quot;hansburger.illustration&quot;:1,&quot;hansburger.joueur&quot;:1,&quot;hansburger.partie&quot;:1,&quot;hansburger.plateau&quot;:1,&quot;hansburger.statut&quot;:1,&quot;hansburger.type&quot;:1}}</div>
+<div id="script_contr" class="hide">[{&quot;FK_action_id_illustration&quot;:{&quot;hansburger.action&quot;:{&quot;id_illustration&quot;:[&quot;hansburger.illustration&quot;,&quot;id_illustration&quot;]}}},{&quot;FK_carte_modele_id_heros_modele&quot;:{&quot;hansburger.carte_modele&quot;:{&quot;id_heros_modele&quot;:[&quot;hansburger.heros_modele&quot;,&quot;id_heros_modele&quot;]}}},{&quot;FK_carte_modele_id_illustration&quot;:{&quot;hansburger.carte_modele&quot;:{&quot;id_illustration&quot;:[&quot;hansburger.illustration&quot;,&quot;id_illustration&quot;]}}},{&quot;FK_carte_modele_id_type&quot;:{&quot;hansburger.carte_modele&quot;:{&quot;id_type&quot;:[&quot;hansburger.type&quot;,&quot;id_type&quot;]}}},{&quot;FK_carte_partie_id_carte_modele&quot;:{&quot;hansburger.carte_partie&quot;:{&quot;id_carte_modele&quot;:[&quot;hansburger.carte_modele&quot;,&quot;id_carte_modele&quot;]}}},{&quot;FK_carte_partie_id_heros_partie&quot;:{&quot;hansburger.carte_partie&quot;:{&quot;id_heros_partie&quot;:[&quot;hansburger.heros_partie&quot;,&quot;id_heros_partie&quot;]}}},{&quot;FK_carte_partie_id_statut&quot;:{&quot;hansburger.carte_partie&quot;:{&quot;id_statut&quot;:[&quot;hansburger.statut&quot;,&quot;id_statut&quot;]}}},{&quot;FK_carte_partie_id_type&quot;:{&quot;hansburger.carte_partie&quot;:{&quot;id_type&quot;:[&quot;hansburger.type&quot;,&quot;id_type&quot;]}}},{&quot;FK_evenement_id_action&quot;:{&quot;hansburger.evenement&quot;:{&quot;id_action&quot;:[&quot;hansburger.action&quot;,&quot;id_action&quot;]}}},{&quot;FK_evenement_id_carte_partie&quot;:{&quot;hansburger.evenement&quot;:{&quot;id_carte_partie&quot;:[&quot;hansburger.carte_partie&quot;,&quot;id_carte_partie&quot;]}}},{&quot;FK_evenement_id_carte_partie_1&quot;:{&quot;hansburger.evenement&quot;:{&quot;id_carte_partie_1&quot;:[&quot;hansburger.carte_partie&quot;,&quot;id_carte_partie&quot;]}}},{&quot;FK_evenement_id_heros_partie&quot;:{&quot;hansburger.evenement&quot;:{&quot;id_heros_partie&quot;:[&quot;hansburger.heros_partie&quot;,&quot;id_heros_partie&quot;]}}},{&quot;FK_evenement_id_partie&quot;:{&quot;hansburger.evenement&quot;:{&quot;id_partie&quot;:[&quot;hansburger.partie&quot;,&quot;id_partie&quot;]}}},{&quot;FK_heros_modele_id_illustration&quot;:{&quot;hansburger.heros_modele&quot;:{&quot;id_illustration&quot;:[&quot;hansburger.illustration&quot;,&quot;id_illustration&quot;]}}},{&quot;FK_heros_partie_id_heros_modele&quot;:{&quot;hansburger.heros_partie&quot;:{&quot;id_heros_modele&quot;:[&quot;hansburger.heros_modele&quot;,&quot;id_heros_modele&quot;]}}},{&quot;FK_heros_partie_id_joueur&quot;:{&quot;hansburger.heros_partie&quot;:{&quot;id_joueur&quot;:[&quot;hansburger.joueur&quot;,&quot;id_joueur&quot;]}}},{&quot;FK_partie_id_heros_partie&quot;:{&quot;hansburger.partie&quot;:{&quot;id_heros_partie&quot;:[&quot;hansburger.heros_partie&quot;,&quot;id_heros_partie&quot;]}}},{&quot;FK_partie_id_heros_partie_1&quot;:{&quot;hansburger.partie&quot;:{&quot;id_heros_partie_1&quot;:[&quot;hansburger.heros_partie&quot;,&quot;id_heros_partie&quot;]}}},{&quot;FK_partie_id_plateau&quot;:{&quot;hansburger.partie&quot;:{&quot;id_plateau&quot;:[&quot;hansburger.plateau&quot;,&quot;id_plateau&quot;]}}},{&quot;FK_plateau_id_heros_modele&quot;:{&quot;hansburger.plateau&quot;:{&quot;id_heros_modele&quot;:[&quot;hansburger.heros_modele&quot;,&quot;id_heros_modele&quot;]}}},{&quot;FK_plateau_id_heros_modele_1&quot;:{&quot;hansburger.plateau&quot;:{&quot;id_heros_modele_1&quot;:[&quot;hansburger.heros_modele&quot;,&quot;id_heros_modele&quot;]}}},{&quot;FK_plateau_id_illustration&quot;:{&quot;hansburger.plateau&quot;:{&quot;id_illustration&quot;:[&quot;hansburger.illustration&quot;,&quot;id_illustration&quot;]}}}]</div>
+<div id="script_display_field" class="hide">{&quot;action&quot;:&quot;libelle&quot;,&quot;carte_modele&quot;:&quot;nom&quot;,&quot;heros_modele&quot;:&quot;nom&quot;,&quot;heros_partie&quot;:&quot;statut&quot;,&quot;illustration&quot;:&quot;path&quot;,&quot;joueur&quot;:&quot;pseudo&quot;,&quot;statut&quot;:&quot;libelle&quot;,&quot;type&quot;:&quot;libelle&quot;}</div>
+<div id="script_display_page" class="hide">-1</div>
+<div id="pmd_tables_enabled" class="hide">1</div>
+    <div id="name-panel" style="overflow:hidden">
+        <span id="page_name" style="border:none">
+            Sans titre        </span>
+        <span id="saved_state" style="border:none">
+            *        </span>
+    </div>
+<div class="pmd_header side-menu" id="side_menu">
+    <a class="M_butt" id="key_Show_left_menu" href="#">
+        <img title="Afficher/Masquer la liste des tables"
+             alt="v"
+             src="./themes/pmahomme/img/pmd/downarrow2_m.png"
+             data-down="./themes/pmahomme/img/pmd/downarrow2_m.png"
+             data-up="./themes/pmahomme/img/pmd/uparrow2_m.png" />
+        <span class="hide hidable">
+            Afficher/Masquer la liste des tables        </span>
+    </a>
+    <a href="#" id="toggleFullscreen" class="M_butt">
+        <img title="Voir en plein écran"
+             src="./themes/pmahomme/img/pmd/viewInFullscreen.png"
+             data-enter="./themes/pmahomme/img/pmd/viewInFullscreen.png"
+             data-exit="./themes/pmahomme/img/pmd/exitFullscreen.png" />
+        <span class="hide hidable"
+              data-exit="Quitter le plein écran"
+              data-enter="Voir en plein écran">
+            Voir en plein écran        </span>
+    </a>
+            <a id="newPage" href="#" class="M_butt">
+            <img title="Nouvelle page"
+                 alt=""
+                 src="./themes/pmahomme/img/pmd/page_add.png" />
+            <span class="hide hidable">
+                Nouvelle page            </span>
+        </a>
+        <a href="#" id="editPage" class="M_butt ajax">
+            <img title="Ouvrir la page"
+                 src="./themes/pmahomme/img/pmd/page_edit.png" />
+            <span class="hide hidable">
+                Ouvrir la page            </span>
+        </a>
+        <a href="#" id="savePos" class="M_butt">
+            <img title="Enregistrer la page"
+                 src="./themes/pmahomme/img/pmd/save.png" />
+            <span class="hide hidable">
+                Enregistrer la page            </span>
+        </a>
+        <a href="#" id="SaveAs" class="M_butt ajax">
+            <img title="Enregistrer la page sous"
+                 src="./themes/pmahomme/img/pmd/save_as.png" />
+            <span class="hide hidable">
+                Enregistrer la page sous            </span>
+        </a>
+        <a href="#" id="delPages" class="M_butt ajax">
+            <img title="Supprimer les pages"
+                 src="./themes/pmahomme/img/pmd/page_delete.png" />
+            <span class="hide hidable">
+                Supprimer les pages            </span>
+        </a>
+        <a href="#" id="StartTableNew" class="M_butt">
+            <img title="Nouvelle table"
+                 src="./themes/pmahomme/img/pmd/table.png" />
+            <span class="hide hidable">
+                Nouvelle table            </span>
+        </a>
+        <a href="#" class="M_butt" id="rel_button">
+            <img title="Nouvelle relation"
+                 src="./themes/pmahomme/img/pmd/relation.png" />
+            <span class="hide hidable">
+                Nouvelle relation            </span>
+        </a>
+        <a href="#" class="M_butt" id="display_field_button">
+            <img title="Choisir la colonne à afficher"
+                 src="./themes/pmahomme/img/pmd/display_field.png" />
+            <span class="hide hidable">
+                Choisir la colonne à afficher            </span>
+        </a>
+        <a href="#" id="reloadPage" class="M_butt">
+            <img title="Recharger"
+                 src="./themes/pmahomme/img/pmd/reload.png" />
+            <span class="hide hidable">
+                Recharger            </span>
+        </a>
+        <a href="./doc/html/faq.html#faq6-31"
+           target="documentation"
+           class="M_butt">
+            <img title="Aide"
+                 src="./themes/pmahomme/img/pmd/help.png" />
+            <span class="hide hidable">
+                Aide            </span>
+        </a>
+        <a href="#" class="M_butt" id="angular_direct_button">
+        <img title="Liens angulaires / Liens directs"
+             src="./themes/pmahomme/img/pmd/ang_direct.png" />
+        <span class="hide hidable">
+            Liens angulaires / Liens directs        </span>
+    </a>
+    <a href="#" class="M_butt" id="grid_button">
+        <img title="Accrocher à la grille" src="./themes/pmahomme/img/pmd/grid.png" />
+        <span class="hide hidable">
+            Accrocher à la grille        </span>
+    </a>
+    <a href="#" class="M_butt" id="key_SB_all">
+        <img title="Agrandir/Réduire tout"
+             alt="v"
+             src="./themes/pmahomme/img/pmd/downarrow1.png"
+             data-down="./themes/pmahomme/img/pmd/downarrow1.png"
+             data-right="./themes/pmahomme/img/pmd/rightarrow1.png" />
+        <span class="hide hidable">
+            Agrandir/Réduire tout        </span>
+    </a>
+    <a href="#" id="SmallTabInvert" class="M_butt" >
+        <img title="Commuter entre agrandir/réduire"
+             src="./themes/pmahomme/img/pmd/bottom.png" />
+        <span class="hide hidable">
+            Commuter entre agrandir/réduire        </span>
+    </a>
+    <a href="#" id="relLineInvert" class="M_butt" >
+        <img title="Commuter les lignes de relations"
+             src="./themes/pmahomme/img/pmd/toggle_lines.png" />
+        <span class="hide hidable">
+            Commuter les lignes de relations        </span>
+    </a>
+            <a href="#" id="exportPages" class="M_butt" >
+            <img title="Exporter le schéma"
+                 src="./themes/pmahomme/img/pmd/export.png" />
+            <span class="hide hidable">
+                Exporter le schéma            </span>
+        </a>
+        <a href="#" class="M_butt" id="key_Left_Right">
+        <img title="Déplacer le menu" alt=">"
+             data-right="./themes/pmahomme/img/pmd/2leftarrow_m.png"
+             src="./themes/pmahomme/img/pmd/2rightarrow_m.png" />
+        <span class="hide hidable">
+            Déplacer le menu        </span>
+    </a>
+    <a href="#" class="M_butt" id="pin_Text">
+        <img title="Épingler le texte"
+             alt=">"
+             data-right="./themes/pmahomme/img/pmd/anchor.png"
+             src="./themes/pmahomme/img/pmd/anchor.png" />
+        <span class="hide hidable">
+            Épingler le texte        </span>
+    </a>
+</div><div id="canvas_outer"><form action="" id="container-form" method="post" name="form1"><div id="osn_tab">
+    <canvas class="pmd" id="canvas" width="100" height="100" ></canvas>
+</div><div id="layer_menu" style="display:none;">
+    <div class="center">
+        <a href="#" class="M_butt" target="_self" >
+            <img title="Masquer/Afficher tout"
+                 alt="v"
+                 id="key_HS_all"
+                 src="./themes/pmahomme/img/pmd/downarrow1.png"
+                 data-down="./themes/pmahomme/img/pmd/downarrow1.png"
+                 data-right="./themes/pmahomme/img/pmd/rightarrow1.png" />
+        </a>
+        <a href="#" class="M_butt" target="_self" >
+            <img alt="v"
+                 id="key_HS"
+                 title="Masquer/Afficher les tables sans relations"
+                 src="./themes/pmahomme/img/pmd/downarrow2.png"
+                 data-down="./themes/pmahomme/img/pmd/downarrow2.png"
+                 data-right="./themes/pmahomme/img/pmd/rightarrow2.png" />
+        </a>
+    </div>
+    <div id="id_scroll_tab" class="scroll_tab">
+        <table width="100%" style="padding-left: 3px;">
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="action"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.action"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.action"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.action">
+                        hansburger.action                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="carte_modele"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.carte_modele"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.carte_modele"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.carte_modele">
+                        hansburger.carte_modele                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="carte_partie"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.carte_partie"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.carte_partie"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.carte_partie">
+                        hansburger.carte_partie                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="evenement"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.evenement"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.evenement"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.evenement">
+                        hansburger.evenement                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="heros_modele"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.heros_modele"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.heros_modele"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.heros_modele">
+                        hansburger.heros_modele                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="heros_partie"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.heros_partie"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.heros_partie"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.heros_partie">
+                        hansburger.heros_partie                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="illustration"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.illustration"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.illustration"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.illustration">
+                        hansburger.illustration                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="joueur"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.joueur"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.joueur"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.joueur">
+                        hansburger.joueur                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="partie"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.partie"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.partie"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.partie">
+                        hansburger.partie                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="plateau"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.plateau"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.plateau"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.plateau">
+                        hansburger.plateau                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="statut"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.statut"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.statut"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.statut">
+                        hansburger.statut                    </td>
+                </tr>
+                            <tr>
+                    <td title="Structure"
+                        width="1px"
+                        onmouseover="this.className='L_butt2_2'"
+                        onmouseout="this.className='L_butt2_1'"
+                        class="L_butt2_1">
+                        <img alt=""
+                             table_name="type"
+                             class="scroll_tab_struct"
+                             src="./themes/pmahomme/img/pmd/exec.png"/>
+                    </td>
+                    <td width="1px">
+                        <input class="scroll_tab_checkbox"
+                               title="Masquer"
+                               id="check_vis_hansburger.type"
+                               style="margin:0;"
+                               type="checkbox"
+                               value="hansburger.type"
+                               checked="checked" />
+                    </td>
+                    <td class="pmd_Tabs"
+                        onmouseover="this.className='pmd_Tabs2'"
+                        onmouseout="this.className='pmd_Tabs'"
+                        pmd_url_table_name="hansburger.type">
+                        hansburger.type                    </td>
+                </tr>
+                    </table>
+    </div>
+    <!-- end id_scroll_tab -->
+    <div class="center">
+        Nombre de tables :  12    </div>
+    <div id="layer_menu_sizer" onmousedown="layer_menu_cur_click=1">
+        <div class="floatleft">
+            <img class="icon"
+                 data-right="./themes/pmahomme/img/pmd/resizeright.png"
+                 src="./themes/pmahomme/img/pmd/resize.png"/>
+        </div>
+    </div>
+</div>
+<!-- end layer_menu -->
+    <input name="t_x[hansburger.action]" type="hidden" id="t_x_hansburger.action_" />
+    <input name="t_y[hansburger.action]" type="hidden" id="t_y_hansburger.action_" />
+    <input name="t_v[hansburger.action]" type="hidden" id="t_v_hansburger.action_" />
+    <input name="t_h[hansburger.action]" type="hidden" id="t_h_hansburger.action_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.action"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:195px; top:236px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.action"
+                    table_name="hansburger.action"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="action"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.action"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.action');"
+                    table_name="hansburger.action"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    action                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.action" style="">
+                            <tr id="id_tr_action.id_action"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="action,id_action,1">
+                                        <td width="10px" colspan="3" id="hansburger.action.id_action">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_action : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_action.libelle"
+                    class="tab_field_3"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="action,libelle,0">
+                                        <td width="10px" colspan="3" id="hansburger.action.libelle">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        libelle : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_action.id_illustration"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="action,id_illustration,1">
+                                        <td width="10px" colspan="3" id="hansburger.action.id_illustration">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_illustration : int(11)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.carte_modele]" type="hidden" id="t_x_hansburger.carte_modele_" />
+    <input name="t_y[hansburger.carte_modele]" type="hidden" id="t_y_hansburger.carte_modele_" />
+    <input name="t_v[hansburger.carte_modele]" type="hidden" id="t_v_hansburger.carte_modele_" />
+    <input name="t_h[hansburger.carte_modele]" type="hidden" id="t_h_hansburger.carte_modele_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.carte_modele"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:223px; top:463px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.carte_modele"
+                    table_name="hansburger.carte_modele"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="carte_modele"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.carte_modele"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.carte_modele');"
+                    table_name="hansburger.carte_modele"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    carte_modele                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.carte_modele" style="">
+                            <tr id="id_tr_carte_modele.id_carte_modele"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_modele,id_carte_modele,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_modele.id_carte_modele">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_carte_modele : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_modele.nom"
+                    class="tab_field_3"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_modele,nom,0">
+                                        <td width="10px" colspan="3" id="hansburger.carte_modele.nom">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        nom : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_modele.pv"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_modele,pv,0">
+                                        <td width="10px" colspan="3" id="hansburger.carte_modele.pv">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        pv : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_modele.degat"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_modele,degat,0">
+                                        <td width="10px" colspan="3" id="hansburger.carte_modele.degat">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        degat : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_modele.prix"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_modele,prix,0">
+                                        <td width="10px" colspan="3" id="hansburger.carte_modele.prix">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        prix : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_modele.id_heros_modele"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_modele,id_heros_modele,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_modele.id_heros_modele">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_heros_modele : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_modele.id_type"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_modele,id_type,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_modele.id_type">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_type : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_modele.id_illustration"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_modele,id_illustration,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_modele.id_illustration">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_illustration : int(11)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.carte_partie]" type="hidden" id="t_x_hansburger.carte_partie_" />
+    <input name="t_y[hansburger.carte_partie]" type="hidden" id="t_y_hansburger.carte_partie_" />
+    <input name="t_v[hansburger.carte_partie]" type="hidden" id="t_v_hansburger.carte_partie_" />
+    <input name="t_h[hansburger.carte_partie]" type="hidden" id="t_h_hansburger.carte_partie_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.carte_partie"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:142px; top:228px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.carte_partie"
+                    table_name="hansburger.carte_partie"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="carte_partie"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.carte_partie"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.carte_partie');"
+                    table_name="hansburger.carte_partie"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    carte_partie                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.carte_partie" style="">
+                            <tr id="id_tr_carte_partie.id_carte_partie"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_partie,id_carte_partie,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_partie.id_carte_partie">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_carte_partie : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_partie.pv"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_partie,pv,0">
+                                        <td width="10px" colspan="3" id="hansburger.carte_partie.pv">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        pv : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_partie.degat"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_partie,degat,0">
+                                        <td width="10px" colspan="3" id="hansburger.carte_partie.degat">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        degat : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_partie.prix"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_partie,prix,0">
+                                        <td width="10px" colspan="3" id="hansburger.carte_partie.prix">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        prix : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_partie.id_carte_modele"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_partie,id_carte_modele,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_partie.id_carte_modele">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_carte_modele : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_partie.id_heros_partie"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_partie,id_heros_partie,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_partie.id_heros_partie">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_heros_partie : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_partie.id_statut"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_partie,id_statut,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_partie.id_statut">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_statut : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_carte_partie.id_type"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="carte_partie,id_type,1">
+                                        <td width="10px" colspan="3" id="hansburger.carte_partie.id_type">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_type : int(11)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.evenement]" type="hidden" id="t_x_hansburger.evenement_" />
+    <input name="t_y[hansburger.evenement]" type="hidden" id="t_y_hansburger.evenement_" />
+    <input name="t_v[hansburger.evenement]" type="hidden" id="t_v_hansburger.evenement_" />
+    <input name="t_h[hansburger.evenement]" type="hidden" id="t_h_hansburger.evenement_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.evenement"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:503px; top:208px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.evenement"
+                    table_name="hansburger.evenement"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="evenement"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.evenement"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.evenement');"
+                    table_name="hansburger.evenement"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    evenement                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.evenement" style="">
+                            <tr id="id_tr_evenement.id_evenement"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="evenement,id_evenement,1">
+                                        <td width="10px" colspan="3" id="hansburger.evenement.id_evenement">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_evenement : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_evenement.id_partie"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="evenement,id_partie,1">
+                                        <td width="10px" colspan="3" id="hansburger.evenement.id_partie">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_partie : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_evenement.id_action"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="evenement,id_action,1">
+                                        <td width="10px" colspan="3" id="hansburger.evenement.id_action">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_action : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_evenement.id_carte_partie"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="evenement,id_carte_partie,1">
+                                        <td width="10px" colspan="3" id="hansburger.evenement.id_carte_partie">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_carte_partie : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_evenement.id_heros_partie"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="evenement,id_heros_partie,1">
+                                        <td width="10px" colspan="3" id="hansburger.evenement.id_heros_partie">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_heros_partie : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_evenement.id_carte_partie_1"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="evenement,id_carte_partie_1,1">
+                                        <td width="10px" colspan="3" id="hansburger.evenement.id_carte_partie_1">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_carte_partie_1 : int(11)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.heros_modele]" type="hidden" id="t_x_hansburger.heros_modele_" />
+    <input name="t_y[hansburger.heros_modele]" type="hidden" id="t_y_hansburger.heros_modele_" />
+    <input name="t_v[hansburger.heros_modele]" type="hidden" id="t_v_hansburger.heros_modele_" />
+    <input name="t_h[hansburger.heros_modele]" type="hidden" id="t_h_hansburger.heros_modele_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.heros_modele"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:143px; top:357px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.heros_modele"
+                    table_name="hansburger.heros_modele"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="heros_modele"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.heros_modele"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.heros_modele');"
+                    table_name="hansburger.heros_modele"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    heros_modele                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.heros_modele" style="">
+                            <tr id="id_tr_heros_modele.id_heros_modele"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_modele,id_heros_modele,1">
+                                        <td width="10px" colspan="3" id="hansburger.heros_modele.id_heros_modele">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_heros_modele : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_modele.nom"
+                    class="tab_field_3"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_modele,nom,0">
+                                        <td width="10px" colspan="3" id="hansburger.heros_modele.nom">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        nom : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_modele.statut"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_modele,statut,0">
+                                        <td width="10px" colspan="3" id="hansburger.heros_modele.statut">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        statut : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_modele.pv"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_modele,pv,0">
+                                        <td width="10px" colspan="3" id="hansburger.heros_modele.pv">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        pv : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_modele.cagnotte"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_modele,cagnotte,0">
+                                        <td width="10px" colspan="3" id="hansburger.heros_modele.cagnotte">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        cagnotte : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_modele.id_illustration"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_modele,id_illustration,1">
+                                        <td width="10px" colspan="3" id="hansburger.heros_modele.id_illustration">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_illustration : int(11)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.heros_partie]" type="hidden" id="t_x_hansburger.heros_partie_" />
+    <input name="t_y[hansburger.heros_partie]" type="hidden" id="t_y_hansburger.heros_partie_" />
+    <input name="t_v[hansburger.heros_partie]" type="hidden" id="t_v_hansburger.heros_partie_" />
+    <input name="t_h[hansburger.heros_partie]" type="hidden" id="t_h_hansburger.heros_partie_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.heros_partie"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:496px; top:50px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.heros_partie"
+                    table_name="hansburger.heros_partie"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="heros_partie"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.heros_partie"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.heros_partie');"
+                    table_name="hansburger.heros_partie"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    heros_partie                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.heros_partie" style="">
+                            <tr id="id_tr_heros_partie.id_heros_partie"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_partie,id_heros_partie,1">
+                                        <td width="10px" colspan="3" id="hansburger.heros_partie.id_heros_partie">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_heros_partie : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_partie.statut"
+                    class="tab_field_3"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_partie,statut,0">
+                                        <td width="10px" colspan="3" id="hansburger.heros_partie.statut">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        statut : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_partie.pv"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_partie,pv,0">
+                                        <td width="10px" colspan="3" id="hansburger.heros_partie.pv">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        pv : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_partie.cagnotte"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_partie,cagnotte,0">
+                                        <td width="10px" colspan="3" id="hansburger.heros_partie.cagnotte">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        cagnotte : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_partie.id_joueur"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_partie,id_joueur,1">
+                                        <td width="10px" colspan="3" id="hansburger.heros_partie.id_joueur">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_joueur : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_heros_partie.id_heros_modele"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="heros_partie,id_heros_modele,1">
+                                        <td width="10px" colspan="3" id="hansburger.heros_partie.id_heros_modele">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_heros_modele : int(11)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.illustration]" type="hidden" id="t_x_hansburger.illustration_" />
+    <input name="t_y[hansburger.illustration]" type="hidden" id="t_y_hansburger.illustration_" />
+    <input name="t_v[hansburger.illustration]" type="hidden" id="t_v_hansburger.illustration_" />
+    <input name="t_h[hansburger.illustration]" type="hidden" id="t_h_hansburger.illustration_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.illustration"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:423px; top:517px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.illustration"
+                    table_name="hansburger.illustration"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="illustration"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.illustration"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.illustration');"
+                    table_name="hansburger.illustration"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    illustration                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.illustration" style="">
+                            <tr id="id_tr_illustration.id_illustration"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="illustration,id_illustration,1">
+                                        <td width="10px" colspan="3" id="hansburger.illustration.id_illustration">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_illustration : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_illustration.path"
+                    class="tab_field_3"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="illustration,path,0">
+                                        <td width="10px" colspan="3" id="hansburger.illustration.path">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        path : varchar(150)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.joueur]" type="hidden" id="t_x_hansburger.joueur_" />
+    <input name="t_y[hansburger.joueur]" type="hidden" id="t_y_hansburger.joueur_" />
+    <input name="t_v[hansburger.joueur]" type="hidden" id="t_v_hansburger.joueur_" />
+    <input name="t_h[hansburger.joueur]" type="hidden" id="t_h_hansburger.joueur_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.joueur"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:588px; top:418px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.joueur"
+                    table_name="hansburger.joueur"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="joueur"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.joueur"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.joueur');"
+                    table_name="hansburger.joueur"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    joueur                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.joueur" style="">
+                            <tr id="id_tr_joueur.id_joueur"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,id_joueur,1">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.id_joueur">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_joueur : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.pseudo"
+                    class="tab_field_3"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,pseudo,1">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.pseudo">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        pseudo : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.prenom"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,prenom,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.prenom">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        prenom : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.nom"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,nom,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.nom">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        nom : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.naissance"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,naissance,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.naissance">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_date.png" alt="*" />
+                                                        naissance : date                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.email"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,email,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.email">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        email : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.mot_de_passe"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,mot_de_passe,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.mot_de_passe">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        mot_de_passe : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.ratio_vd"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,ratio_vd,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.ratio_vd">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        ratio_vd : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.adresse"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,adresse,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.adresse">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        adresse : varchar(250)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.code_postal"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,code_postal,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.code_postal">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        code_postal : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.ville"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,ville,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.ville">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        ville : varchar(50)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.telephone"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,telephone,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.telephone">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        telephone : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_joueur.en_ligne"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="joueur,en_ligne,0">
+                                        <td width="10px" colspan="3" id="hansburger.joueur.en_ligne">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        en_ligne : tinyint(1)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.partie]" type="hidden" id="t_x_hansburger.partie_" />
+    <input name="t_y[hansburger.partie]" type="hidden" id="t_y_hansburger.partie_" />
+    <input name="t_v[hansburger.partie]" type="hidden" id="t_v_hansburger.partie_" />
+    <input name="t_h[hansburger.partie]" type="hidden" id="t_h_hansburger.partie_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.partie"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:114px; top:380px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.partie"
+                    table_name="hansburger.partie"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="partie"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.partie"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.partie');"
+                    table_name="hansburger.partie"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    partie                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.partie" style="">
+                            <tr id="id_tr_partie.id_partie"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="partie,id_partie,1">
+                                        <td width="10px" colspan="3" id="hansburger.partie.id_partie">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_partie : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_partie.date"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="partie,date,0">
+                                        <td width="10px" colspan="3" id="hansburger.partie.date">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_date.png" alt="*" />
+                                                        date : date                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_partie.cpt_tour"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="partie,cpt_tour,0">
+                                        <td width="10px" colspan="3" id="hansburger.partie.cpt_tour">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        cpt_tour : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_partie.id_heros_partie"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="partie,id_heros_partie,1">
+                                        <td width="10px" colspan="3" id="hansburger.partie.id_heros_partie">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_heros_partie : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_partie.id_heros_partie_1"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="partie,id_heros_partie_1,1">
+                                        <td width="10px" colspan="3" id="hansburger.partie.id_heros_partie_1">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_heros_partie_1 : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_partie.id_plateau"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="partie,id_plateau,1">
+                                        <td width="10px" colspan="3" id="hansburger.partie.id_plateau">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_plateau : int(11)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.plateau]" type="hidden" id="t_x_hansburger.plateau_" />
+    <input name="t_y[hansburger.plateau]" type="hidden" id="t_y_hansburger.plateau_" />
+    <input name="t_v[hansburger.plateau]" type="hidden" id="t_v_hansburger.plateau_" />
+    <input name="t_h[hansburger.plateau]" type="hidden" id="t_h_hansburger.plateau_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.plateau"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:520px; top:232px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.plateau"
+                    table_name="hansburger.plateau"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="plateau"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.plateau"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.plateau');"
+                    table_name="hansburger.plateau"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    plateau                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.plateau" style="">
+                            <tr id="id_tr_plateau.id_plateau"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="plateau,id_plateau,1">
+                                        <td width="10px" colspan="3" id="hansburger.plateau.id_plateau">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_plateau : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_plateau.id_illustration"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="plateau,id_illustration,1">
+                                        <td width="10px" colspan="3" id="hansburger.plateau.id_illustration">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_illustration : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_plateau.id_heros_modele"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="plateau,id_heros_modele,1">
+                                        <td width="10px" colspan="3" id="hansburger.plateau.id_heros_modele">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_heros_modele : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_plateau.id_heros_modele_1"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="plateau,id_heros_modele_1,1">
+                                        <td width="10px" colspan="3" id="hansburger.plateau.id_heros_modele_1">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_int.png" alt="*" />
+                                                        id_heros_modele_1 : int(11)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.statut]" type="hidden" id="t_x_hansburger.statut_" />
+    <input name="t_y[hansburger.statut]" type="hidden" id="t_y_hansburger.statut_" />
+    <input name="t_v[hansburger.statut]" type="hidden" id="t_v_hansburger.statut_" />
+    <input name="t_h[hansburger.statut]" type="hidden" id="t_h_hansburger.statut_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.statut"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:213px; top:374px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.statut"
+                    table_name="hansburger.statut"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="statut"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.statut"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.statut');"
+                    table_name="hansburger.statut"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    statut                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.statut" style="">
+                            <tr id="id_tr_statut.id_statut"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="statut,id_statut,1">
+                                        <td width="10px" colspan="3" id="hansburger.statut.id_statut">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_statut : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_statut.libelle"
+                    class="tab_field_3"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="statut,libelle,0">
+                                        <td width="10px" colspan="3" id="hansburger.statut.libelle">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        libelle : varchar(50)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+    <input name="t_x[hansburger.type]" type="hidden" id="t_x_hansburger.type_" />
+    <input name="t_y[hansburger.type]" type="hidden" id="t_y_hansburger.type_" />
+    <input name="t_v[hansburger.type]" type="hidden" id="t_v_hansburger.type_" />
+    <input name="t_h[hansburger.type]" type="hidden" id="t_h_hansburger.type_" />
+    <!-- Why should we put styles here?! -->
+    <table id="hansburger.type"
+           cellpadding="0"
+           cellspacing="0"
+           class="pmd_tab"
+           style="position:absolute; left:227px; top:283px; display:block;; z-index: 1;">
+        <thead>
+            <tr class="header">
+                                <td class="small_tab"
+                    title="Afficher/Masquer les colonnes"
+                    id="id_hide_tbody_hansburger.type"
+                    table_name="hansburger.type"
+                    onmouseover="this.className='small_tab2';"
+                    onmouseout="this.className='small_tab';" >v                </td>
+                <td class="small_tab_pref small_tab_pref_1"
+                    table_name_small="type"
+                    onmouseover="this.className='small_tab_pref2 small_tab_pref_1';"
+                    onmouseout="this.className='small_tab_pref small_tab_pref_1';" >
+                    <img src="./themes/pmahomme/img/pmd/exec_small.png"
+                         title="Voir la structure de la table" />
+                </td>
+                <td id="id_zag_hansburger.type"
+                    class="tab_zag nowrap tab_zag_noquery"
+                    onmousedown="cur_click=document.getElementById('hansburger.type');"
+                    table_name="hansburger.type"
+                    query_set="0" >
+                    <span class="owner">
+                        hansburger                    </span>
+                    type                </td>
+                            </tr>
+        </thead>
+        <tbody id="id_tbody_hansburger.type" style="">
+                            <tr id="id_tr_type.id_type"
+                    class="tab_field"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="type,id_type,1">
+                                        <td width="10px" colspan="3" id="hansburger.type.id_type">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/FieldKey_small.png" alt="*" />
+                                                        id_type : int(11)                        </div>
+                    </td>
+                                    </tr>
+                            <tr id="id_tr_type.libelle"
+                    class="tab_field_3"                    onmouseover="old_class = this.className; this.className = 'tab_field_2';"
+                    onmouseout="this.className = old_class;"
+                    click_field_param="type,libelle,0">
+                                        <td width="10px" colspan="3" id="hansburger.type.libelle">
+                        <div class="nowrap">
+                                                            <img src="./themes/pmahomme/img/pmd/Field_small_char.png" alt="*" />
+                                                        libelle : varchar(25)                        </div>
+                    </td>
+                                    </tr>
+                    </tbody>
+    </table>
+</form></div><div id="pmd_hint"></div><table id="layer_new_relation" style="display:none;" width="5%" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td class="frams1" width="10px">
+            </td>
+            <td class="frams5" width="99%" >
+            </td>
+            <td class="frams2" width="10px">
+                <div class="bor">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="frams8">
+            </td>
+            <td class="input_tab">
+                <table width="168" class="center" cellpadding="2" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td colspan="2" class="center nowrap">
+                                <strong>
+                                    Nouvelle relation                                </strong>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="foreign_relation">
+                        <tr>
+                            <td colspan="2" class="center nowrap">
+                                <strong>
+                                    FOREIGN KEY
+                                </strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="58" class="nowrap">
+                                on delete
+                            </td>
+                            <td width="102">
+                                <select name="on_delete" id="on_delete">
+                                    <option value="nix" selected="selected">
+                                        --
+                                    </option>
+                                    <option value="CASCADE">
+                                        CASCADE
+                                    </option>
+                                    <option value="SET NULL">
+                                        SET NULL
+                                    </option>
+                                    <option value="NO ACTION">
+                                        NO ACTION
+                                    </option>
+                                    <option value="RESTRICT">
+                                        RESTRICT
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="nowrap">
+                                on update
+                            </td>
+                            <td>
+                                <select name="on_update" id="on_update">
+                                    <option value="nix" selected="selected">
+                                        --
+                                    </option>
+                                    <option value="CASCADE">
+                                        CASCADE
+                                    </option>
+                                    <option value="SET NULL">
+                                        SET NULL
+                                    </option>
+                                    <option value="NO ACTION">
+                                        NO ACTION
+                                    </option>
+                                    <option value="RESTRICT">
+                                        RESTRICT
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="2" class="center nowrap">
+                                <input type="button" id="ok_new_rel_panel" class="butt" name="Button" value="OK" />
+                                <input type="button" id="cancel_new_rel_panel" class="butt" name="Button" value="Annuler" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td class="frams6">
+            </td>
+        </tr>
+        <tr>
+            <td class="frams4">
+                <div class="bor">
+                </div>
+            </td>
+            <td class="frams7">
+            </td>
+            <td class="frams3">
+            </td>
+        </tr>
+    </tbody>
+</table><table id="layer_upd_relation" style="display:none;" width="5%" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td class="frams1" width="10px">
+            </td>
+            <td class="frams5" width="99%">
+            </td>
+            <td class="frams2" width="10px">
+                <div class="bor">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="frams8">
+            </td>
+            <td class="input_tab">
+                <table width="100%" class="center" cellpadding="2" cellspacing="0">
+                    <tr>
+                        <td colspan="3" class="center nowrap">
+                            <strong>
+                                Supprimer la relation                            </strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="center nowrap">
+                            <input id="del_button" name="Button" type="button" class="butt" value="Supprimer" />
+                            <input id="cancel_button" type="button" class="butt" name="Button" value="Annuler" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td class="frams6">
+            </td>
+        </tr>
+        <tr>
+            <td class="frams4">
+                <div class="bor">
+                </div>
+            </td>
+            <td class="frams7">
+            </td>
+            <td class="frams3">
+            </td>
+        </tr>
+    </tbody>
+</table><div id="PMA_disable_floating_menubar"></div></div></body></html>

@@ -52,7 +52,7 @@ abstract class Manager {
     public function setDb() {
            try { 
                 $_str_host = 'localhost';
-                $_str_dbname = 'street_fighter';
+                $_str_dbname = 'hansburger';
                 $_str_login = 'root';
                 $_str_pwd = '';
                 self::$db =  new PDO(   'mysql:host=' . $_str_host . 
