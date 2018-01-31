@@ -16,10 +16,10 @@ abstract class Manager {
        } 
    }
 
-   protected function executeQuery( string $requete, array $userInput = [] ) {
-        if( $ressource = $this->getDb() !== false ) {
-            if( $reponse = $ressource->prepare( $requete ) !== false ) {
-                if( $reponse->execute( $userInput ) !== false ) {
+   public function executeQuery( string $requete, array $userInput = [] ) {
+        if( ( $ressource = self::getDb() ) !== false ) {
+            if( ( $reponse = $ressource->prepare( $requete ) ) !== false ) {
+                if( ( $reponse->execute( $userInput ) ) !== false ) {
                     if( strtolower( substr( $requete, 0, 6) ) == 'select' ){
                             $data = $reponse->fetchAll( PDO::FETCH_ASSOC );
                             $reponse->closeCursor(); 
@@ -52,7 +52,7 @@ abstract class Manager {
     public function setDb() {
            try { 
                 $_str_host = 'localhost';
-                $_str_dbname = 'street_fighter';
+                $_str_dbname = 'hansburger';
                 $_str_login = 'root';
                 $_str_pwd = '';
                 self::$db =  new PDO(   'mysql:host=' . $_str_host . 
