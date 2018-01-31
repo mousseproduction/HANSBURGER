@@ -171,9 +171,9 @@ class Partie
         {
             $methode = 'set' . ucfirst( $key );
 
-            if( method_exists( $this, $methode ) 
+            if( method_exists( $this, $methode )) 
             {
-                $this->$methode($value)
+                $this->$methode($value);
             }
         }
     }
@@ -183,6 +183,22 @@ class Partie
         $this->hydrate( $data );
 
     } 
+
+        /**
+     * undocumented function
+     *
+     * @return void
+     */
+    public function haveAttributeTable() {
+        $partieData = array(  
+                            'id'           =>  $partie->getId(),
+                            'date'          =>  $partie->getdateDebutPartie(),
+                            'cpt'           =>  $partie->getCpt(),
+                            'heros1'        =>  $partie->getHeros1(),
+                            'heros2'        =>  $partie->getHeros2(),
+                            'plateau'       =>  $partie->getPlateau()
+                            );
+    }
 
     public function display()
     {

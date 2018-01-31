@@ -378,7 +378,8 @@ $burger =
         $burger['caracteristiques']['statut']='inactif';
         $joueurActif = $zimmer;
         $joueurInactif = $burger;
-    } else { $zimmer ['statut']='inactif';
+    } else {
+        $zimmer ['statut']='inactif';
         $burger['caracteristiques']['statut']='actif';
         $joueurActif = $burger;
         $joueurInactif = $zimmer;
