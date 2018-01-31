@@ -4,15 +4,15 @@ class PartieManager extends Manager
 {
     public function add( Partie $partie ) {
         $partieDatas = $partie->haveAttributeTable();
-        $query =    "INSERT INTO `partie` (`id`, `date`, `cpt_tour`, `id_heros_partie`, `id_heros_partie_1`, `id_plateau`)". 
-                    "VALUES (NULL, ':date', ':cpt', ':heros1', ':heros2', ':plateau');";
+        $query =    "INSERT INTO `partie` (`id`, `date_debut`, `cpt_tour`, `partie_terminee`,`heros1_partie_id`, `heros2_partie_id`, `plateau_id`)". 
+                    "VALUES (NULL, ':date', ':cpt', ':finpartie', ':heros1', ':heros2', ':plateau');";
         return $this->executeQuery( $query, $partieDatas );
     }
     
     public function update( Partie $partie ) {
         $partieDatas = $partie->haveAttributeTable();
         $query =    "UPDATE `partie`".
-                    "SET `id` = ':id', `date` = ':date', `cpt_tour` = ':cpt', `id_heros_partie` = ':heros1', `id_heros_partie_1` = ':heros2' `id_plateau` = ':plateau'";  
+                    "SET `id` = ':id', `date` = ':date', `cpt_tour` = ':cpt',`partie_terminee` = 'finpartie', `heros1_partie_id` = ':heros1', `heros2_partie_id` = ':heros2' `plateau_id` = ':plateau'";  
         return $this->executeQuery( $query, $partieDatas );
     }
     
@@ -20,12 +20,13 @@ class PartieManager extends Manager
         $query =    'SELECT  `partie`.`id_partie` AS id,
                     `partie`.`date` AS date,
                     `partie`.`cpt_tour`AS cpt,
-                    `partie`.`id_heros_partie`AS heros1,
-                    `partie`.`id_heros_partie_1`AS heros2,
-                    `partie`.`id_plateau`AS plateau,
-                    INNER JOIN `heros_partie` ON `partie`.`id_heros_partie` = `heros_partie`.`id_heros_partie`
-                    INNER JOIN `heros_partie` ON `partie`.`id_heros_partie_1` = `heros_partie`.`id_heros_partie`
-                    INNER JOIN `plateau` ON `partie`.`id_plateau` = `plateau`.`id_plateau`
+                    `partie`.`partie_terminee`AS finpartie,
+                    `partie`.`heros1_partie_id`AS heros1,
+                    `partie`.`heros2_partie_id`AS heros2,
+                    `partie`.`plateau_id`AS plateau,
+                    INNER JOIN `heros_partie` ON `partie`.`heros1_partie_id` = `heros_partie`.`id`
+                    INNER JOIN `heros_partie` ON `partie`.`heros2_partie_id` = `heros_partie`.`id`
+                    INNER JOIN `plateau` ON `partie`.`plateau_id` = `plateau`.`id`
                     ' . $condition . ';';
 
         $partieDatas = $this->executeQuery( $query );
