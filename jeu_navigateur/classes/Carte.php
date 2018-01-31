@@ -1,6 +1,8 @@
 <?php
 class Carte {
-
+    
+  
+    
     //----------------------------------------------
     //attributs
     //----------------------------------------------
@@ -9,10 +11,12 @@ class Carte {
     private $pv;
     private $degat;
     private $prix;
-    private $modele;
-    private $heros;
+    private $herosModeleId;
+    private $heroModeleNom;
     private $statut;
     private $type;
+    private $illustrationId;
+    private $illustrationPath;
 
     private function hydrate( array $data ) {
         foreach( $data as $key => $value ) {
@@ -25,7 +29,6 @@ class Carte {
 
     public function __construct( array $data ) {
         $this->hydrate( $data );
-
     }
 
     /**
@@ -33,17 +36,14 @@ class Carte {
      *
      * @return void
      */
-    public function haveAttributeTable() {
-        $carteData = array(  'id'           =>  $carte->getId(),
-                             'nom'          =>  $carte->getNom(),
-                             'pv'           =>  $carte->getPv(),
-                             'degat'        =>  $carte->getDegat(),
-                             'prix'         =>  $carte->getPrix(),
-                             'modele'       =>  $carte->getModele()['id'],
-                             'heros'        =>  $carte->getHeros()['id'],
-                             'statut'       =>  $carte->getStatut()['id'],
-                             'type'         =>  $carte->getType()['id'],
-                             'illustration' =>  $carte->getIllustration()['id'] );
+    public function getAttributeTable() {
+        $attributeList = [ 'id'=>'', 'nom'=>'', 'pv'=>'', 'degat'=>'', 'prix'=>'', 'modele'=>'', 'heros'=>'', 'statut'=>'', 'type'=>'', 'illustration'=>'' ];
+        foreach( $attributeList as $key => $value ) {
+            $methode = 'get' . ucfirst( $key );
+            if( method_exists( $this, $methode ) ) {
+                $value = $this->$methode;
+            }
+        }
     }
                 
 
@@ -141,88 +141,99 @@ class Carte {
     }
 
     /**
-     * Get heros.
+     * Set illustrationPath.
      *
-     * @return heros.
+     * @param illustrationPath the value to set.
      */
-    public function getHeros() { return $this->heros; }
-
-    /**
-     * Set heros.
-     *
-     * @param heros the value to set.
-     */
-    public function setHeros($heros) {
-        if( is_array( $heros ) && isset( $heros['id'] ) && isset( $heros['nom'] ) ) {
-            if( is_int( $heros['id'] ) && $heros['id'] >= 0 ) {
-                $this->heros = $heros;
-            }
-        }
+    public function setIllustrationPath($illustrationPath) {
+        $this->illustrationPath = $illustrationPath;
     }
-
+    
     /**
-     * Get statut.
+     * Get illustrationPath.
      *
-     * @return statut.
+     * @return illustrationPath.
      */
-    public function getStatut() { return $this->statut; }
-
+    public function getIllustrationPath() { return $this->illustrationPath; }
+    
     /**
-     * Set statut.
+     * Set illustrationId.
      *
-     * @param statut the value to set.
+     * @param illustrationId the value to set.
      */
-    public function setStatut($statut) {
-        if( is_array( $statut ) && isset( $statut['id'] ) && isset( $statut['nom'] ) ) {
-            if( is_int( $statut['id'] ) && $statut['id'] >= 0 ) {
-                $this->statut = $statut;
-            }
-            $this->statut = $statut;
-        }
+    public function setIllustrationId($illustrationId) {
+        $this->illustrationId = $illustrationId;
     }
-
+    
     /**
-     * Get modele.
+     * Get illustrationId.
      *
-     * @return modele.
+     * @return illustrationId.
      */
-    public function getModele() { return $this->modele; }
-
-    /**
-     * Set modele.
-     *
-     * @param modele the value to set.
-     */
-    public function setModele($modele) {
-        if( is_array( $modele ) && isset( $modele['id'] ) && isset( $modele['nom'] ) ) {
-            if( is_int( $modele['id'] ) && $modele['id'] >= 0 ) {
-                $this->modele = $modele;
-            }
-            $this->modele = $modele;
-        }
-    }
-
-    /**
-     * Get type.
-     *
-     * @return type.
-     */
-    public function getType() { return $this->type; }
-
+    public function getIllustrationId() { return $this->illustrationId; }
+    
     /**
      * Set type.
      *
      * @param type the value to set.
      */
     public function setType($type) {
-        if( is_array( $type ) && isset( $type['id'] ) && isset( $type['nom'] ) ) {
-            if( is_int( $type['id'] ) && $type['id'] >= 0 ) {
-                $this->type = $type;
-            }
-            $this->type = $type;
-        }
+        $this->type = $type;
     }
+    
+    /**
+     * Get type.
+     *
+     * @return type.
+     */
+    public function getType() { return $this->type; }
+    
+    /**
+     * Set statut.
+     *
+     * @param statut the value to set.
+     */
+    public function setStatut($statut) {
+        $this->statut = $statut;
+    }
+    
+    /**
+     * Get statut.
+     *
+     * @return statut.
+     */
+    public function getStatut() { return $this->statut; }
+    
+    /**
+     * Set heroModeleNom.
+     *
+     * @param heroModeleNom the value to set.
+     */
+    public function setHeroModeleNom($heroModeleNom) {
+        $this->heroModeleNom = $heroModeleNom;
+    }
+    
+    /**
+     * Get heroModeleNom.
+     *
+     * @return heroModeleNom.
+     */
+    public function getHeroModeleNom() { return $this->heroModeleNom; }
+    
+    /**
+     * Set herosModeleId.
+     *
+     * @param herosModeleId the value to set.
+     */
+    public function setHerosModeleId($herosModeleId) {
+        $this->herosModeleId = $herosModeleId;
+    }
+    
+    /**
+     * Get herosModeleId.
+     *
+     * @return herosModeleId.
+     */
+    public function getHerosModeleId() { return $this->herosModeleId; }
+      
 }
-
-
-
