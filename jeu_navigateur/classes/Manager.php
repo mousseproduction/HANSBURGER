@@ -16,10 +16,10 @@ abstract class Manager {
        } 
    }
 
-   protected function executeQuery( string $requete, array $userInput = [] ) {
-        if( $ressource = $this->getDb() !== false ) {
-            if( $reponse = $ressource->prepare( $requete ) !== false ) {
-                if( $reponse->execute( $userInput ) !== false ) {
+   public function executeQuery( string $requete, array $userInput = [] ) {
+        if( ( $ressource = self::getDb() ) !== false ) {
+            if( ( $reponse = $ressource->prepare( $requete ) ) !== false ) {
+                if( ( $reponse->execute( $userInput ) ) !== false ) {
                     if( strtolower( substr( $requete, 0, 6) ) == 'select' ){
                             $data = $reponse->fetchAll( PDO::FETCH_ASSOC );
                             $reponse->closeCursor(); 
