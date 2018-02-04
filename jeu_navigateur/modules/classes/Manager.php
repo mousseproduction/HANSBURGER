@@ -5,6 +5,8 @@ abstract class Manager {
     //-----------------------------------------------------
     //	ATTRIBUTES
     //-----------------------------------------------------
+
+    //TODO : Ajouter le SPDO
     private static $db = NULL;
    
    //-----------------------------------------------------
@@ -16,6 +18,7 @@ abstract class Manager {
        } 
    }
 
+    //TODO : Ajouter gestion d'erreurs
    public function executeQuery( string $requete, array $userInput = [] ) {
         if( ( $ressource = self::getDb() ) !== false ) {
             if( ( $reponse = $ressource->prepare( $requete ) ) !== false ) {
@@ -49,6 +52,7 @@ abstract class Manager {
      *
      * @param db the value to set.
      */
+    //TODO : Ajouter constantes de DB
     public function setDb() {
            try { 
                 $_str_host = 'localhost';

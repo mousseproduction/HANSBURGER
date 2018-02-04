@@ -2,10 +2,12 @@
 class Carte {
     
   
-    
-    //----------------------------------------------
-    //attributs
-    //----------------------------------------------
+    //TODO : Conditionner les setters et commenter les fonctions
+    /**
+     *-----------------------------------------------------
+     *  attributs
+     *-----------------------------------------------------
+    **/
     private $id;
     private $nom;
     private $pv;
@@ -18,7 +20,7 @@ class Carte {
     private $illustrationId;
     private $illustrationPath;
 
-    private function hydrate( array $data ) {
+    public function hydrate( array $data ) {
         foreach( $data as $key => $value ) {
             $methode = 'set' . ucfirst( $key );
             if( method_exists( $this, $methode ) ) {
@@ -27,29 +29,41 @@ class Carte {
         }
     }
 
-    public function __construct( array $data ) {
+    public function __construct( array $data = [] ) {
         $this->hydrate( $data );
     }
 
     /**
-     * undocumented function
+     * getAttributeTable - return the attributes of the instance in an array
      *
-     * @return void
+     * @return array $attributeTable
      */
     public function getAttributeTable() {
-        $attributeList = [ 'id'=>'', 'nom'=>'', 'pv'=>'', 'degat'=>'', 'prix'=>'', 'herosModeleId'=>'', 'herosModeleNom'=>'', 'statut'=>'', 'type'=>'', 'illustrationId'=>'' 'illustrationNom'=>''];
-        foreach( $attributeList as $key => $value ) {
-            $methode = 'get' . ucfirst( $key );
+        $attributeTable = [ 'id'=>'',
+                            'nom'=>'', 'pv'=>'',
+                            'degat'=>'',
+                            'prix'=>'',
+                            'herosModeleId'=>'',
+                            'herosModeleNom'=>'',
+                            'statut'=>'',
+                            'type'=>'',
+                            'illustrationId'=>'',
+                            'illustrationNom'=>''];
+        
+        foreach( $attributeTable as $attributeName => $attributeValue ) {
+            $methode = 'get' . ucfirst( $attributeName );
             if( method_exists( $this, $methode ) ) {
-                $value = $this->$methode;
+                $attributeValue = $this->$methode;
             }
         }
     }
                 
+    /**
+     *-----------------------------------------------------
+     *  getters and setters
+     *-----------------------------------------------------
+    **/
 
-    //----------------------------------------------
-    //getters et setters
-    //----------------------------------------------
     /**
      * Get id.
      *

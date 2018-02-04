@@ -289,14 +289,14 @@ abstract class Heros {
     private function hydrate( array $data ) {
         foreach( $data as $key => $value ) {
             $methode = 'set' . ucfirst( $key );
-            if( method_exists( $this, $methode ) {
+            if( method_exists( $this, $methode ) ) {
                 $this->$methode( $value );
             }
         }
     }
 
     function __construct( array $data ) {
-        $this->hydrate( $data )
+        $this->hydrate( $data );
     }
     //----------------------------------------------
     //méthodes
@@ -372,7 +372,7 @@ abstract class Heros {
      * @return void
      */
     public function abandonner(){
-       $partie->setPartie_terminee('true'));
+       $partie->setPartie_terminee('true');
         $message='La partie est finie';
     }
 
