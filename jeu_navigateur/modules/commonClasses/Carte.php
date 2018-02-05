@@ -14,7 +14,7 @@ class Carte {
     private $degat;
     private $prix;
     private $herosModeleId;
-    private $heroModeleNom;
+    private $herosModeleNom;
     private $statut;
     private $type;
     private $illustrationId;
@@ -77,7 +77,7 @@ class Carte {
      * @param id the value to set.
      */
     public function setId($id) {
-        if( is_int( $id ) && $id >= 0 ) {
+        if( ctype_digit( $id ) && $id >= 0 ) {
             $this->id = $id;
         }
     }
@@ -113,7 +113,7 @@ class Carte {
      * @param pv the value to set.
      */
     public function setPv($pv) {
-        if( is_int( $pv ) ) {
+        if( ctype_digit( $pv ) ) {
             $this->pv = $pv;
         }
     }
@@ -131,7 +131,7 @@ class Carte {
      * @param degat the value to set.
      */
     public function setDegat($degat) {
-        if( is_int( $degat ) ) {
+        if( ctype_digit( $degat ) ) {
             $this->degat = $degat;
         }
     }
@@ -149,7 +149,7 @@ class Carte {
      * @param prix the value to set.
      */
     public function setPrix($prix) {
-        if( is_int( $prix ) ) {
+        if( ctype_digit( $prix ) ) {
             $this->prix = $prix;
         }
     }
@@ -223,8 +223,8 @@ class Carte {
      *
      * @param heroModeleNom the value to set.
      */
-    public function setHeroModeleNom($heroModeleNom) {
-        $this->heroModeleNom = $heroModeleNom;
+    public function setHerosModeleNom($heroModeleNom) {
+        $this->herosModeleNom = $heroModeleNom;
     }
     
     /**
@@ -232,7 +232,7 @@ class Carte {
      *
      * @return heroModeleNom.
      */
-    public function getHeroModeleNom() { return $this->heroModeleNom; }
+    public function getHerosModeleNom() { return $this->herosModeleNom; }
     
     /**
      * Set herosModeleId.

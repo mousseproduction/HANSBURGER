@@ -1,4 +1,4 @@
-<!DOCTYPE htmlB>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
 </head>
 <body>
     <header>
-        <h1>HansBurger, the fabulous game by MousseProduction</h1>
+        <h1>HansBurger</h1>
         <nav>
             <ul>
                 <li><a href=".?m=admin&c=carte">Gestion des cartes</a></li>
@@ -15,5 +15,3 @@
             </ul>
         </nav>
     </header>
-</body>
-</html>

@@ -25,8 +25,8 @@ class CarteModeleManager extends Manager {
                     `carte_modele`.`type_id`AS type,
                     `illustration`.`id` AS illustrationId,
                     `illustration`.`path` AS illustrationPath,
-                    `heros_modele`.`id` AS herosId,
-                    `heros_modele`.`nom` AS herosNom
+                    `heros_modele`.`id` AS herosModeleId,
+                    `heros_modele`.`nom` AS herosModeleNom
                     FROM `carte_modele`
                     INNER JOIN `illustration` ON `illustration`.`id` = `carte_modele`.`illustration_id`
                     INNER JOIN `heros_modele` ON `carte_modele`.`heros_modele_id` = `heros_modele`.`id`
@@ -34,7 +34,7 @@ class CarteModeleManager extends Manager {
 
         $datas = $this->executeQuery( $query );
         $objects = [];
-        foreach( $Datas as $key => $data ) {
+        foreach( $datas as $key => $data ) {
             $objects[ $data['id'] ] = new Carte( $data );
         }
         return $objects;
@@ -44,7 +44,21 @@ class CarteModeleManager extends Manager {
        $query = 'DELETE FROM `carte_modele` WHERE' . $condition; 
        return $this->executeQuery( $query );
     }
+
+    public function getIllustrationList( ) {
+       $query = 'SELECT `id` AS id, `path` AS path FROM `illustration`;'; 
+       return $this->executeQuery( $query );
+    }
     
+    public function getHerosModeleList( ) {
+       $query = 'SELECT `id` AS id, `nom` AS nom FROM `heros_modele`;'; 
+       return $this->executeQuery( $query );
+    }
+
+    public function getTypeList( ) {
+       $query = 'SELECT `id` AS id, `libelle` AS libelle FROM `type`;'; 
+       return $this->executeQuery( $query );
+    }
 }
  
 

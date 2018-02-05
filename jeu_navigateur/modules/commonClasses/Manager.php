@@ -16,6 +16,8 @@ abstract class Manager {
        if( self::$db === NULL ) {
            $this->setDb();
        } 
+echo 'test poulet';
+
    }
 
     //TODO : Ajouter gestion d'erreurs
