@@ -15,7 +15,7 @@ if( isset( $_GET['m'] ) ) {
                 if( isset( $_GET['a'] ) ) {
                     $methodName = strtolower( $_GET['a'] ) . 'Action';
                     if( method_exists( $controller, $methodName ) ) {
-                        $controller->$methodName();
+                        $controller->$methodName( $_POST, $_GET );
                     } else {
                         header( 'Location: 404' );
                     }

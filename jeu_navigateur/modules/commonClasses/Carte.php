@@ -15,8 +15,10 @@ class Carte {
     private $prix;
     private $herosModeleId;
     private $herosModeleNom;
-    private $statut;
-    private $type;
+    private $statutId;
+    private $statutNom;
+    private $typeId;
+    private $typeNom;
     private $illustrationId;
     private $illustrationPath;
 
@@ -40,22 +42,21 @@ class Carte {
      */
     public function getAttributeTable() {
         $attributeTable = [ 'id'=>'',
-                            'nom'=>'', 'pv'=>'',
+                            'nom'=>'', 
+                            'pv'=>'',
                             'degat'=>'',
                             'prix'=>'',
                             'herosModeleId'=>'',
-                            'herosModeleNom'=>'',
-                            'statut'=>'',
-                            'type'=>'',
-                            'illustrationId'=>'',
-                            'illustrationNom'=>''];
+                            'typeId'=>'',
+                            'illustrationId'=>''];
         
         foreach( $attributeTable as $attributeName => $attributeValue ) {
             $methode = 'get' . ucfirst( $attributeName );
             if( method_exists( $this, $methode ) ) {
-                $attributeValue = $this->$methode;
+                $attributeTable[$attributeName] = $this->$methode();
             }
         }
+        return $attributeTable;
     }
                 
     /**
@@ -154,85 +155,13 @@ class Carte {
         }
     }
 
-    /**
-     * Set illustrationPath.
-     *
-     * @param illustrationPath the value to set.
-     */
-    public function setIllustrationPath($illustrationPath) {
-        $this->illustrationPath = $illustrationPath;
-    }
     
     /**
-     * Get illustrationPath.
+     * Get herosModeleId.
      *
-     * @return illustrationPath.
+     * @return herosModeleId.
      */
-    public function getIllustrationPath() { return $this->illustrationPath; }
-    
-    /**
-     * Set illustrationId.
-     *
-     * @param illustrationId the value to set.
-     */
-    public function setIllustrationId($illustrationId) {
-        $this->illustrationId = $illustrationId;
-    }
-    
-    /**
-     * Get illustrationId.
-     *
-     * @return illustrationId.
-     */
-    public function getIllustrationId() { return $this->illustrationId; }
-    
-    /**
-     * Set type.
-     *
-     * @param type the value to set.
-     */
-    public function setType($type) {
-        $this->type = $type;
-    }
-    
-    /**
-     * Get type.
-     *
-     * @return type.
-     */
-    public function getType() { return $this->type; }
-    
-    /**
-     * Set statut.
-     *
-     * @param statut the value to set.
-     */
-    public function setStatut($statut) {
-        $this->statut = $statut;
-    }
-    
-    /**
-     * Get statut.
-     *
-     * @return statut.
-     */
-    public function getStatut() { return $this->statut; }
-    
-    /**
-     * Set heroModeleNom.
-     *
-     * @param heroModeleNom the value to set.
-     */
-    public function setHerosModeleNom($heroModeleNom) {
-        $this->herosModeleNom = $heroModeleNom;
-    }
-    
-    /**
-     * Get heroModeleNom.
-     *
-     * @return heroModeleNom.
-     */
-    public function getHerosModeleNom() { return $this->herosModeleNom; }
+    public function getHerosModeleId() { return $this->herosModeleId; }
     
     /**
      * Set herosModeleId.
@@ -244,10 +173,114 @@ class Carte {
     }
     
     /**
-     * Get herosModeleId.
+     * Get herosModeleNom.
      *
-     * @return herosModeleId.
+     * @return herosModeleNom.
      */
-    public function getHerosModeleId() { return $this->herosModeleId; }
-      
+    public function getHerosModeleNom() { return $this->herosModeleNom; }
+    
+    /**
+     * Set herosModeleNom.
+     *
+     * @param herosModeleNom the value to set.
+     */
+    public function setHerosModeleNom($herosModeleNom) {
+        $this->herosModeleNom = $herosModeleNom;
+    }
+    
+    /**
+     * Get statutId.
+     *
+     * @return statutId.
+     */
+    public function getStatutId() { return $this->statutId; }
+    
+    /**
+     * Set statutId.
+     *
+     * @param statutId the value to set.
+     */
+    public function setStatutId($statutId) {
+        $this->statutId = $statutId;
+    }
+    
+    /**
+     * Get statutNom.
+     *
+     * @return statutNom.
+     */
+    public function getStatutNom() { return $this->statutNom; }
+    
+    /**
+     * Set statutNom.
+     *
+     * @param statutNom the value to set.
+     */
+    public function setStatutNom($statutNom) {
+        $this->statutNom = $statutNom;
+    }
+    
+    /**
+     * Get typeId.
+     *
+     * @return typeId.
+     */
+    public function getTypeId() { return $this->typeId; }
+    
+    /**
+     * Set typeId.
+     *
+     * @param typeId the value to set.
+     */
+    public function setTypeId($typeId) {
+        $this->typeId = $typeId;
+    }
+    
+    /**
+     * Get typeNom.
+     *
+     * @return typeNom.
+     */
+    public function getTypeNom() { return $this->typeNom; }
+    
+    /**
+     * Set typeNom.
+     *
+     * @param typeNom the value to set.
+     */
+    public function setTypeNom($typeNom) {
+        $this->typeNom = $typeNom;
+    }
+    
+    /**
+     * Get illustrationId.
+     *
+     * @return illustrationId.
+     */
+    public function getIllustrationId() { return $this->illustrationId; }
+    
+    /**
+     * Set illustrationId.
+     *
+     * @param illustrationId the value to set.
+     */
+    public function setIllustrationId($illustrationId) {
+        $this->illustrationId = $illustrationId;
+    }
+    
+    /**
+     * Get illustrationPath.
+     *
+     * @return illustrationPath.
+     */
+    public function getIllustrationPath() { return $this->illustrationPath; }
+    
+    /**
+     * Set illustrationPath.
+     *
+     * @param illustrationPath the value to set.
+     */
+    public function setIllustrationPath($illustrationPath) {
+        $this->illustrationPath = $illustrationPath;
+    }
 }

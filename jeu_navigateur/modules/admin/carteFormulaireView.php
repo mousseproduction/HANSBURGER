@@ -5,9 +5,9 @@ if( isset( $message) ) {
     echo '<div class="message">' . $message . '</div>';
 }
 ?>
-<h2>Créer une carte</h2>
+<h2>Ajouterc une carte</h2>
 <div class="creer ligne">
-    <form action="" method="post">
+    <form action=".?m=admin&c=carte&a=create" method="post">
         <input type="text" name="nom" value="" placeholder="Nom" >
         <input type="text" name="pv" value="" placeholder="Pv">
         <input type="text" name="degat" value=""placeholder="Dégats">
@@ -17,7 +17,7 @@ if( isset( $message) ) {
             <option value="<?php echo $heros['id'] ?>"><?php echo $heros['nom'] ?></option>
         <?php } ?>
         </select>
-        <select name="type">
+        <select name="typeId">
         <?php foreach( $typeList as $key => $type ) { ?>
             <option value="<?php echo $type['id'] ?>"><?php echo $type['libelle'] ?></option>
         <?php } ?>
@@ -27,6 +27,7 @@ if( isset( $message) ) {
             <option value="<?php echo $illustration['id'] ?>"><?php echo $illustration['path'] ?></option>
         <?php } ?>
         </select>
+        <button type="submit">Créer</button>
     </form>
 </div>
 
@@ -44,9 +45,9 @@ if( isset( $message) ) {
                 <option value="<?php echo $heros['id'] ?>" <?php echo($carte->getHerosModeleId() == $heros['id'])?'selected="selected"':''; ?>><?php echo $heros['nom'] ?></option>
             <?php } ?>
             </select>
-            <select name="type">
+            <select name="typeId">
             <?php foreach( $typeList as $key => $type ) { ?>
-                <option value="<?php echo $type['id'] ?>" <?php echo($carte->getType() == $type['id'])?'selected="selected"':''; ?>><?php echo $type['libelle'] ?></option>
+                <option value="<?php echo $type['id'] ?>" <?php echo($carte->getTypeId() == $type['id'])?'selected="selected"':''; ?>><?php echo $type['libelle'] ?></option>
             <?php } ?>
             </select>
             <select name="illustrationId">
@@ -54,10 +55,10 @@ if( isset( $message) ) {
                 <option value="<?php echo $illustration['id'] ?>" <?php echo($carte->getIllustrationId() == $illustration['id'])?'selected="selected"':''; ?>><?php echo $illustration['path'] ?></option>
             <?php } ?>
             </select>
-            <button type="submit" name="id">Modifier</button>
+            <button type="submit" name="id" value="<?php echo $carte->getId() ?>">Modifier</button>
         </form>
-        <form action=".?m=admin&c=carte&a=update" method="get">
-            <button type="submit" name="id" >Supprimer</button>
+        <form action=".?m=admin&c=carte&a=delete" method="post">
+            <button type="submit" name="id"  value="<?php echo $carte->getId() ?>">Supprimer</button>
         </form>
     </div>
     <?php } ?>
