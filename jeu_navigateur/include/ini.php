@@ -41,12 +41,12 @@ if( !defined( 'VENDORPATH' ) )
     define( 'VENDORPATH', ABSPATH . 'vendor' . DS ); // Defines the path to the folder containing third-party dependencies
 
 
-require_once( CONFIGPATH . 'framewind.conf' );
-require_once( CONFIGPATH . 'app.conf' );
+//require_once( CONFIGPATH . 'framewind.conf' );
+//require_once( CONFIGPATH . 'app.conf' );
+//
+//require_once( VENDORPATH . 'common.php' );
 
-require_once( VENDORPATH . 'common.php' );
-
-/** 
+/**
 *----------------------------------------------------
 * CARDS STATUS CONSTANT
 *----------------------------------------------------
@@ -57,14 +57,14 @@ define("ATTENTE","3");
 define("COMBAT","4");
 define("CIMETIERE","5");
 
-/** 
+/**
 *----------------------------------------------------
 * SESSION START
 *----------------------------------------------------
 */
 session_start();
 
-/** 
+/**
 *----------------------------------------------------
 * AUTOLOADER
 *----------------------------------------------------
@@ -72,10 +72,32 @@ session_start();
 /**
  * loadClasses - Vérifie si un fichier existe et l'inclut
  * @param   string  $className
- * @return  
+ * @return
 **/
 function loadClasses( $className ) {
-    $_file_ = 'classes/' . $className . '.php';
-    if( file_exists( $_file_ ) ) require_once( $_file_ );
+    $find = false;
+    $_file_ = 'include/' . $className . '.php';
+    if( file_exists( $_file_ ) && $find === false) {
+        require_once( $_file_ );
+        $find = true;
+    }
+
+    $_file_ = 'modules/classes/' . $className . '.php';
+    if( file_exists( $_file_ ) && $find === false) {
+        require_once( $_file_ );
+        $find = true;
+    }
+
+    $_file_ = 'modules/admin/' . $className . '.php';
+    if( file_exists( $_file_ ) && $find === false) {
+        require_once( $_file_ );
+        $find = true;
+    }
+
+    $_file_ = 'modules/game/' . $className . '.php';
+    if( file_exists( $_file_ ) && $find === false) {
+        require_once( $_file_ );
+        $find = true;
+    }
 }
 spl_autoload_register( 'loadClasses' ); // On enregistre la fonction "loadClasses" en tant qu'implémentation de __autoload()
