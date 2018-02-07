@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Hansburger</title>
+    <link rel="stylesheet" href="assets/stylesheet.css">
 </head>
 <body>
     <header>
