@@ -2,15 +2,14 @@
 class CarteModeleManager extends Manager {
     
     public function insert( Carte $carte ) {
-        $carteDatas = $carte->getAttributeTable();
-        unset( $carteDatas['id'] );
-        $query =    "INSERT INTO `carte_modele` (`id`, `nom`, `pv`, `degat`, `prix`, `heros_modele_id`, `type_id`, `illustration_id`) 
-                    VALUES (NULL, :nom, :pv, :degat, :prix, :herosModeleId, :typeId, :illustrationId);";
+        $carteDatas = $carte->getAttributeTable( ['nom', 'pv', 'degat', 'prix', 'herosModeleId', 'typeId', 'illustrationId', 'description'  ]);
+        $query =    "INSERT INTO `carte_modele` (`id`, `nom`, `pv`, `degat`, `prix`, `heros_modele_id`, `type_id`, `illustration_id`, `description` ) 
+                    VALUES (NULL, :nom, :pv, :degat, :prix, :herosModeleId, :typeId, :illustrationId, :description );";
         return $this->executeQuery( $query, $carteDatas );
     }
     
     public function update( Carte $carte ) {
-        $carteDatas = $carte->getAttributeTable();
+        $carteDatas = $carte->getAttributeTable( ['nom', 'pv', 'degat', 'prix', 'herosModeleId', 'typeId', 'illustrationId', 'id', 'description' ] );
         $query =    "UPDATE `carte_modele`".
             "SET `nom` = :nom,
             `pv` = :pv,
@@ -18,7 +17,8 @@ class CarteModeleManager extends Manager {
             `prix` = :prix,
             `heros_modele_id` = :herosModeleId,
             `type_id` = :typeId,
-            `illustration_id` = :illustrationId 
+            `illustration_id` = :illustrationId, 
+            `description` = :description
             WHERE `carte_modele`.`id` = :id;";  
         return $this->executeQuery( $query, $carteDatas );
     }
@@ -30,6 +30,7 @@ class CarteModeleManager extends Manager {
                     `carte_modele`.`degat` AS degat,
                     `carte_modele`.`prix` AS prix,
                     `carte_modele`.`type_id` AS typeId,
+                    `carte_modele`.`description` AS description,
                     `type`.`libelle` AS typeNom,
                     `illustration`.`id` AS illustrationId,
                     `illustration`.`path` AS illustrationPath,

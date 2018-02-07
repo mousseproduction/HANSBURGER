@@ -1,24 +1,25 @@
-1,Supermad,9,11,5,1,1,1,@,@,@,@
-7,Simbale,1,2,1,1,1,1,@,@,@,@
-8,"a déterminer",3,2,2,1,1,1,@,@,@,@
-9,"Gong fu panda",4,2,4,1,1,1,@,@,@,@
-10,"Hannibal lecteur",3,5,3,1,1,1,@,@,@,@
-11,Badman,5,7,5,1,1,6,@,@,@,@
-12,Gladbatteur,6,8,7,1,1,1,@,@,@,@
-5,"Pinguin's united",3,1,1,1,2,1,@,@,@,@
-6,Spidermaid,6,3,3,1,2,1,@,@,@,@
-2,"Voisin relou",0,1,1,1,3,1,@,,@,@
-3,"Séquence émotions",0,4,3,1,3,1,@,,@,@
-4,"Jack pipow",0,6,5,1,3,1,@,,@,@
-13,"Fan de fast food",9,9,9,2,1,1,@,@,@,@
-19,"File d'attente",1,1,1,2,1,1,@,@,@,@
-20,Ke-babacool,3,2,2,2,1,1,@,@,@,@
-21,Skate-chup',3,4,3,2,1,1,@,@,@,@
-22,Do-nut-eat,4,2,4,2,1,1,@,@,@,@
-23,"Miss Meuffin",5,6,5,2,1,1,@,@,@,@
-24,"Tahin Sushi ?",6,8,7,2,1,1,@,@,@,@
-17,"Intoxication alimentaire",3,1,1,2,2,1,@,@,@,@
-18,"Menu XXL",6,3,3,2,2,1,@,@,@,@
-14,"Maître soda",0,2,1,2,3,1,@,,@,@
-15,"Enfants agites",0,5,3,2,3,1,@,,@,@
-16,"Sol glissant",0,7,5,2,3,1,@,,@,@
+nom,pv,degat,prix,type,@illustration,description,@bordure,@pictovie,@pictoprix,@pictodegat
+Supermad,9,9,9,Créature,@test/test/st/Supermad.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+"DJ Da funky Code",2,3,2,Créature,"@test/test/st/DJ Da funky Code.psd","Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+Simbale,1,2,1,Créature,@test/test/st/Simbale.psd,"Il donne le LA !",joli,,,,test/test/st/
+"Gong fu panda",4,2,4,Créature,"@test/test/st/Gong fu panda.psd","Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+"Hannibal lecteur",3,5,3,Créature,"@test/test/st/Hannibal lecteur.psd","Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+Badman,5,7,5,Créature,@test/test/st/Badman.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+Gladbatteur,6,8,7,Créature,@test/test/st/Gladbatteur.psd,"Il bat les tambours de guerre.",joli,,,,test/test/st/
+"Pinguin's united",3,1,1,Bouclier,"@test/test/st/Pinguin's united.psd","Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+Spidermaid,6,3,3,Bouclier,@test/test/st/Spidermaid.psd,"On se fait une toile ?",joli,,,,test/test/st/
+Interstellarsen,0,4,3,Sort,@test/test/st/Interstellarsen.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+"Jack pipow",0,6,5,Sort,"@test/test/st/Jack pipow.psd","Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+Prinception,0,1,1,Sort,@test/test/st/Prinception.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",joli,,,,test/test/st/
+"Maître Soda",9,9,9,Créature,"@test/test/st/Maître Soda.psd","Le sucre redouter tu dois !",joli,,,,test/test/st/
+Ke-babacool,3,2,2,Créature,@test/test/st/Ke-babacool.psd,,joli,,,,test/test/st/
+Skate-chup',3,4,3,Créature,@test/test/st/Skate-chup'.psd,,joli,,,,test/test/st/
+Do-nut-eat,4,2,4,Créature,@test/test/st/Do-nut-eat.psd,,joli,,,,test/test/st/
+"Miss Meuffin",5,6,5,Créature,"@test/test/st/Miss Meuffin.psd",,joli,,,,test/test/st/
+"Tahin Sushi ?",6,8,7,Créature,"@test/test/st/Tahin Sushi ?.psd",,joli,,,,test/test/st/
+"Intoxication alimentaire",3,1,1,Bouclier,"@test/test/st/Intoxication alimentaire.psd",,joli,,,,test/test/st/
+"Menu XXL",6,3,3,Bouclier,"@test/test/st/Menu XXL.psd",,joli,,,,test/test/st/
+"File d'attente",6,3,3,Bouclier,"@test/test/st/File d'attente.psd","Vous allez pas mal poireauter !",joli,,,,test/test/st/
+"Maître soda",0,2,1,Sort,"@test/test/st/Maître soda.psd",,joli,,,,test/test/st/
+"Enfants agites",0,5,3,Sort,"@test/test/st/Enfants agites.psd",,joli,,,,test/test/st/
+"Sol glissant",0,7,5,Sort,"@test/test/st/Sol glissant.psd",,joli,,,,test/test/st/

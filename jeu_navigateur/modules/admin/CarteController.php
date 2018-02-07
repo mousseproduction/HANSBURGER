@@ -50,6 +50,7 @@ class CarteController {
         if( !isset( $carteModeleManager ) ) {
             $carteModeleManager = new CarteModeleManager;
         }
+        $post['illustrationPath'] = 'assets/images/' . $post['nom'] . 'svg';
         $carte = new Carte( $post );
         $carteModeleManager->insert( $carte );
         $this->showAction();

@@ -35,12 +35,12 @@ class CsvController {
     public function generateCsv( $post ) {
         $carteManager = new CarteModeleManager;
         $cartes = $carteManager->selectWhere();
-        $csv = [];
-        $cpt = 0;
+        $csv[0]= [ 'nom', 'pv', 'degat', 'prix', 'type', '@illustration', 'description', '@bordure', '@pictovie', '@pictoprix', '@pictodegat' ];
+        $cpt = 1;
         foreach( $cartes as $key => $carte ) {
-            $carte->setIllustrationPath( '@' . $carte->getIllustrationPath() );
-            $csv[$cpt] = array_merge( $carte->getAttributeTable(), $post );
-            if( $carte->getTypeId() == 3 ) {
+            $carte->setIllustrationPath( '@' . $post['path'] . str_replace( ' ', '_', strtolower($carte->getNom() ) ) . '.psd' );
+            $csv[$cpt] = array_merge( $carte->getAttributeTable( [ 'nom', 'pv', 'degat', 'prix', 'typeNom', 'illustrationPath', 'description' ] ), $post );
+            if( $carte->getTypeNom() == 'sort' ) {
                 $csv[$cpt]['pictovie'] = '';
             }
             $cpt ++;

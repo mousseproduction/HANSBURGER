@@ -1,17 +1,17 @@
 <?php
-require_once( 'common/headerView.php' );
+require_once( 'include/headerView.php' );
 
 if( isset( $message) ) {
     echo '<div class="message">' . $message . '</div>';
 }
 ?>
-<h2>Ajouterc une carte</h2>
+<h2>Ajouter une carte</h2>
 <div class="creer ligne">
     <form action=".?m=admin&c=carte&a=create" method="post">
         <input type="text" name="nom" value="" placeholder="Nom" >
-        <input type="text" name="pv" value="" placeholder="Pv">
-        <input type="text" name="degat" value=""placeholder="Dégats">
-        <input type="text" name="prix" value=""placeholder="Prix">
+        <input type="number" name="pv" value="" placeholder="Pv">
+        <input type="number" name="degat" value=""placeholder="Dégats">
+        <input type="number" name="prix" value=""placeholder="Prix">
         <select name="herosModeleId">
         <?php foreach( $herosModeleList as $key => $heros ) { ?>
             <option value="<?php echo $heros['id'] ?>"><?php echo $heros['nom'] ?></option>
@@ -27,6 +27,7 @@ if( isset( $message) ) {
             <option value="<?php echo $illustration['id'] ?>"><?php echo $illustration['path'] ?></option>
         <?php } ?>
         </select>
+            <textarea name="description" cols="30" rows="5" placeholder="Description"></textarea>
         <button type="submit">Créer</button>
     </form>
 </div>
@@ -55,6 +56,7 @@ if( isset( $message) ) {
                 <option value="<?php echo $illustration['id'] ?>" <?php echo($carte->getIllustrationId() == $illustration['id'])?'selected="selected"':''; ?>><?php echo $illustration['path'] ?></option>
             <?php } ?>
             </select>
+            <textarea name="description" cols="30" rows="5" ><?php echo $carte->getDescription() ?></textarea>
             <button type="submit" name="id" value="<?php echo $carte->getId() ?>">Modifier</button>
         </form>
         <form action=".?m=admin&c=carte&a=delete" method="post">
@@ -65,5 +67,5 @@ if( isset( $message) ) {
 </div>
 
 <?php
-require_once( 'common/footerView.php' );
+require_once( 'include/footerView.php' );
 ?>

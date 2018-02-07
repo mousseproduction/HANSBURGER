@@ -1,5 +1,5 @@
 <?php
-require_once( 'common/headerView.php');
+require_once( 'include/headerView.php');
 
 if( isset( $message) ) {
     echo '<div class="message">' . $message . '</div>';
@@ -31,6 +31,6 @@ if( isset( $message) ) {
 </div>
 
 <?php
-require_once( 'common/footerView.php');
+require_once( 'include/footerView.php');
 ?>
 

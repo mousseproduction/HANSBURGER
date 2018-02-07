@@ -21,6 +21,7 @@ class Carte {
     private $typeNom;
     private $illustrationId;
     private $illustrationPath;
+    private $description;
 
     public function hydrate( array $data ) {
         foreach( $data as $key => $value ) {
@@ -40,17 +41,14 @@ class Carte {
      *
      * @return array $attributeTable
      */
-    public function getAttributeTable() {
-        $attributeTable = [ 'id'=>'',
-                            'nom'=>'', 
-                            'pv'=>'',
-                            'degat'=>'',
-                            'prix'=>'',
-                            'herosModeleId'=>'',
-                            'typeId'=>'',
-                            'illustrationId'=>''];
-        
-        foreach( $attributeTable as $attributeName => $attributeValue ) {
+    public function getAttributeTable( $attributeList = [ 'id', 'nom', 'pv', 'degat', 'prix', 'herosModeleId',
+                                                          'herosModeleNom', 'statutId', 'statutNom', 'typeId',
+                                                          'typeNom', 'illustrationId', 'illustrationPath', 'description' ] ) {
+        $attributeList = array_flip( $attributeList );
+        foreach( $attributeList as $value ) {
+            $value = null;
+        }
+        foreach( $attributeList as $attributeName => $attributeValue ) {
             $methode = 'get' . ucfirst( $attributeName );
             if( method_exists( $this, $methode ) ) {
                 $attributeTable[$attributeName] = $this->$methode();
@@ -282,5 +280,21 @@ class Carte {
      */
     public function setIllustrationPath($illustrationPath) {
         $this->illustrationPath = $illustrationPath;
+    }
+    
+    /**
+     * Get description.
+     *
+     * @return description.
+     */
+    public function getDescription() { return $this->description; }
+    
+    /**
+     * Set description.
+     *
+     * @param description the value to set.
+     */
+    public function setDescription($description) {
+        $this->description = $description;
     }
 }
