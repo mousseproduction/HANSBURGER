@@ -296,7 +296,7 @@ abstract class Heros {
     }
 
     function __construct( array $data ) {
-        $this->hydrate( $data )
+        $this->hydrate( $data );
     }
     //----------------------------------------------
     //méthodes
@@ -380,14 +380,13 @@ abstract class Heros {
     /**
      *Le héros choisit quelle carte il va utiliser pour combattre
      *
-     * @param [int] $indexAttaquant
+     * @param [int] $carteAttaquante
      * @return void
      */
-    public function choisirAttaquant($indexAttaquant) {//Numéro de carte choisie par le heros
+    public function choisirAttaquant($carteAttaquant) {//Numéro de carte choisie par le heros
     // vérifier si la carte choisie est bien dans la zone d'attente dans l'algo principal (si GET indique ?attente=  ???)
-        $this->cartes['attente'][$indexCarte]->setStatut('Combat');//On passe la carte en statut "combat"
-        $this->cartes['combat'][]=$this->cartes['main'][$indexCarte];//On la stocke dans la zone "combat" du héros
-        unset($this->cartes['attente'][$indexCarte]);// On la supprime de la zone d'attente du du héros
+        $this->deplacerCarte ($indexAttaquant,'attente','combat');
+        $this->
      }
 
     /**
@@ -423,7 +422,19 @@ abstract class Heros {
         return $message;
     }
      
-
+/**
+     *Déplacer une carte d'une zone à une autre
+     *
+     * @param [int] $indexcarte
+     *  @param [char] $zonedépart
+     * @param [char] $zonearrivée
+     * @return void
+     */
+    public function deplacerCarte ($carte,$zonedépart,$zonearrivée){
+            $this->cartes[$zonedépart][$carte->getId()]->getStatus()=$zonearrivée;//On change le statut de la carte choisie
+            $this->cartes[$zonearrivée][]=$this->cartes[$zonedépart][$indexCarte];//On la stocke dans la zone d'arrivée
+            unset($this->cartes[$zonedépart][$carte->getId()]);// On la supprime dans la zone de départ
+    }
  
 
 
