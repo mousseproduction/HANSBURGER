@@ -13,8 +13,8 @@ class Carte {
     private $pv;
     private $degat;
     private $prix;
-    private $herosModeleId;
-    private $herosModeleNom;
+    private $herosId;
+    private $herosNom;
     private $statutId;
     private $statutNom;
     private $typeId;
@@ -41,8 +41,8 @@ class Carte {
      *
      * @return array $attributeTable
      */
-    public function getAttributeTable( $attributeList = [ 'id', 'nom', 'pv', 'degat', 'prix', 'herosModeleId',
-                                                          'herosModeleNom', 'statutId', 'statutNom', 'typeId',
+    public function getAttributeTable( $attributeList = [ 'id', 'nom', 'pv', 'degat', 'prix', 'herosId',
+                                                          'herosNom', 'statutId', 'statutNom', 'typeId',
                                                           'typeNom', 'illustrationId', 'illustrationPath', 'description' ] ) {
         $attributeList = array_flip( $attributeList );
         foreach( $attributeList as $value ) {
@@ -155,35 +155,35 @@ class Carte {
 
     
     /**
-     * Get herosModeleId.
+     * Get herosId.
      *
-     * @return herosModeleId.
+     * @return herosId.
      */
-    public function getHerosModeleId() { return $this->herosModeleId; }
+    public function getHerosId() { return $this->herosId; }
     
     /**
-     * Set herosModeleId.
+     * Set herosId.
      *
-     * @param herosModeleId the value to set.
+     * @param herosId the value to set.
      */
-    public function setHerosModeleId($herosModeleId) {
-        $this->herosModeleId = $herosModeleId;
+    public function setHerosId($herosId) {
+        $this->herosId = $herosId;
     }
     
     /**
-     * Get herosModeleNom.
+     * Get herosNom.
      *
-     * @return herosModeleNom.
+     * @return herosNom.
      */
-    public function getHerosModeleNom() { return $this->herosModeleNom; }
+    public function getHerosNom() { return $this->herosNom; }
     
     /**
-     * Set herosModeleNom.
+     * Set herosNom.
      *
-     * @param herosModeleNom the value to set.
+     * @param herosNom the value to set.
      */
-    public function setHerosModeleNom($herosModeleNom) {
-        $this->herosModeleNom = $herosModeleNom;
+    public function setHerosNom($herosNom) {
+        $this->herosNom = $herosNom;
     }
     
     /**

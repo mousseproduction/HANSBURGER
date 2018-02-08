@@ -4,15 +4,15 @@ class HerosPartieManager extends Manager {
 
     public function add( Heros $heros_partie ) {
         $herosDatas = $heros->haveAttributeTable();
-        $query =    "INSERT INTO `heros_partie` (`id`, `statut`,  `pv`, `cagnotte`, `joueur_id`, `heros_modele_id`)
-        VALUES (NULL, ':nom', ':statut', ':pv', ':cagnotte',':joueur_id', ':heros_modele_id');";
+        $query =    "INSERT INTO `heros_partie` (`id`, `statut`,  `pv`, `cagnotte`, `joueur_id`, `heros_collection_id`)
+        VALUES (NULL, ':nom', ':statut', ':pv', ':cagnotte',':joueur_id', ':heros_collection_id');";
         return $this->executeQuery( $query, $herosDatas );
     }
 
     public function update( Heros $heros_partie ) {
         $herosDatas = $heros->haveAttributeTable();
         $query =    "UPDATE `heros_partie`
-                    SET `nom` = ':nom', `statut` = ':statut', `pv` = ':pv', `cagnotte` = ':cagnotte', `joueur_id` = ':joueur_id, , `heros_modele_id` = ':heros_modele_id WHERE `heros_partie_id` = :id;";
+                    SET `nom` = ':nom', `statut` = ':statut', `pv` = ':pv', `cagnotte` = ':cagnotte', `joueur_id` = ':joueur_id, , `heros_collection_id` = ':heros_collection_id WHERE `heros_partie_id` = :id;";
         return $this->executeQuery( $query, $herosDatas );
     }
 
@@ -25,8 +25,8 @@ class HerosPartieManager extends Manager {
                     `illustration`.`id` AS illustrationId,
                     `illustration`.`path` AS illustrationPath,
                     FROM `heros_partie`
-                    INNER JOIN `heros_model` ON `heros_model`.`id` = `heros_partie`.`heros_modele_id`
-                    INNER JOIN `illustration` ON `illustration`.`id` = `heros_modele`.`illustration_id`
+                    INNER JOIN `heros_model` ON `heros_model`.`id` = `heros_partie`.`heros_collection_id`
+                    INNER JOIN `illustration` ON `illustration`.`id` = `heros_collection`.`illustration_id`
                     WHERE'. $condition . ';';
 
         $hero = $this->executeQuery( $query );

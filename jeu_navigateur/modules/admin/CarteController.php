@@ -13,14 +13,14 @@ class CarteController {
      *          array $get
     **/
     public function showAction( array $post = [], array $get = [] ) {
-        if( !isset( $carteModeleManager ) ) {
-            $carteModeleManager = new CarteModeleManager;
+        if( !isset( $carteCollectionManager ) ) {
+            $carteCollectionManager = new CarteCollectionManager;
         }
         $illustrationManager = new IllustrationManager;
         $illustrationList = $illustrationManager->selectWhere();
-        $cartes = $carteModeleManager->selectWhere();
-        $herosModeleList = $carteModeleManager->getHerosModeleList();
-        $typeList = $carteModeleManager->getTypeList();
+        $cartes = $carteCollectionManager->selectWhere();
+        $herosCollectionList = $carteCollectionManager->getHerosCollectionList();
+        $typeList = $carteCollectionManager->getTypeList();
 
         include( 'modules/admin/CarteFormulaireView.php');
     }
@@ -32,11 +32,11 @@ class CarteController {
      *          array $get
     **/
     public function updateAction( array $post = [], array $get = [] ) {
-        if( !isset( $carteModeleManager ) ) {
-            $carteModeleManager = new CarteModeleManager;
+        if( !isset( $carteCollectionManager ) ) {
+            $carteCollectionManager = new CarteCollectionManager;
         }
         $carte = new Carte( $post );
-        $carteModeleManager->update( $carte );
+        $carteCollectionManager->update( $carte );
         $this->showAction();
     }
     
@@ -47,12 +47,12 @@ class CarteController {
      *          array $get
     **/
     public function createAction( array $post = [], array $get = [] ) {
-        if( !isset( $carteModeleManager ) ) {
-            $carteModeleManager = new CarteModeleManager;
+        if( !isset( $carteCollectionManager ) ) {
+            $carteCollectionManager = new CarteCollectionManager;
         }
         $post['illustrationPath'] = 'assets/images/' . $post['nom'] . 'svg';
         $carte = new Carte( $post );
-        $carteModeleManager->insert( $carte );
+        $carteCollectionManager->insert( $carte );
         $this->showAction();
     }
 
@@ -63,10 +63,10 @@ class CarteController {
      *          array $get
     **/
     public function deleteAction( array $post = [], array $get = [] ) {
-        if( !isset( $carteModeleManager ) ) {
-            $carteModeleManager = new CarteModeleManager;
+        if( !isset( $carteCollectionManager ) ) {
+            $carteCollectionManager = new CarteCollectionManager;
         }
-        $carteModeleManager->delete( 'WHERE `id` = ' . $post['id'] .';' );
+        $carteCollectionManager->delete( 'WHERE `id` = ' . $post['id'] .';' );
         $this->showAction();
     }
 

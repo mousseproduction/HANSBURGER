@@ -12,8 +12,8 @@ if( isset( $message) ) {
         <input type="number" name="pv" value="" placeholder="Pv">
         <input type="number" name="degat" value=""placeholder="Dégats">
         <input type="number" name="prix" value=""placeholder="Prix">
-        <select name="herosModeleId">
-        <?php foreach( $herosModeleList as $key => $heros ) { ?>
+        <select name="herosId">
+        <?php foreach( $herosCollectionList as $key => $heros ) { ?>
             <option value="<?php echo $heros['id'] ?>"><?php echo $heros['nom'] ?></option>
         <?php } ?>
         </select>
@@ -41,9 +41,9 @@ if( isset( $message) ) {
             <label>Pv<input type="text" name="pv" value="<?php echo $carte->getPv()?>"></label>
             <label>Dégats<input type="text" name="degat" value="<?php echo $carte->getDegat()?>"></label>
             <label>Prix<input type="text" name="prix" value="<?php echo $carte->getPrix()?>"></label>
-            <select name="herosModeleId">
-            <?php foreach( $herosModeleList as $key => $heros ) { ?>
-                <option value="<?php echo $heros['id'] ?>" <?php echo($carte->getHerosModeleId() == $heros['id'])?'selected="selected"':''; ?>><?php echo $heros['nom'] ?></option>
+            <select name="herosId">
+            <?php foreach( $herosCollectionList as $key => $heros ) { ?>
+                <option value="<?php echo $heros['id'] ?>" <?php echo($carte->getHerosId() == $heros['id'])?'selected="selected"':''; ?>><?php echo $heros['nom'] ?></option>
             <?php } ?>
             </select>
             <select name="typeId">

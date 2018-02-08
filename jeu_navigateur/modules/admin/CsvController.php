@@ -29,11 +29,11 @@ class CsvController {
     }
 
     /**
-     * generateCsv - generate the csv file for carteModele
+     * generateCsv - generate the csv file for carteCollection
      * 
     **/
     public function generateCsv( $post ) {
-        $carteManager = new CarteModeleManager;
+        $carteManager = new CarteCollectionManager;
         $cartes = $carteManager->selectWhere();
         $csv[0]= [ 'nom', 'pv', 'degat', 'prix', 'type', '@illustration', 'description', '@bordure', '@pictovie', '@pictoprix', '@pictodegat' ];
         $cpt = 1;
