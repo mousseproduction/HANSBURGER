@@ -191,7 +191,7 @@ class Partie
      */
     public function haveAttributeTable() {
         $partieData = array(  
-                            'id'           =>  $partie->getId(),
+                            'id'            =>  $partie->getId(),
                             'date'          =>  $partie->getdateDebutPartie(),
                             'cpt'           =>  $partie->getCpt(),
                             'heros1'        =>  $partie->getHeros1(),
@@ -207,17 +207,34 @@ class Partie
 
     public function finDePartie()
     {
-
+        if (($heros1['pv'] = 0) || $heros2['pv'] = 0  )
+        {
+            header('Location: index.php');
+        }elseif ($heros1['cimetiere']=20 || $heros2['cimetiere']=20) 
+        {
+            header('Location: index.php');
+        }
     }
 
-    public function abandon()
+    public function abandon( $heros )
     {
-
+        if(isset($_POST['abandon']))
+        {
+           $this->heros['pv'] = 0;
+           header ('Location: index.php'); // CREER CONSTANTE PAGE FIN DE PARTIE // 
+        }
     }
 
     public function compteurTour()
     {
-
+        $compteur = 0;
+        foreach ($heros as $key => $value) {
+            # code...
+        
+            while ($compteur <= 10) {
+                $compteur ++; 
+            }
+        }
     }
 
     public function attenteToCombat()  // Deplace la carte de la zone d'attente à la zone de combat
@@ -253,11 +270,13 @@ class Partie
         $compteurTour = 0;
     }
 
-    public function switchHerosActif()
+    public function switchHerosActif($heros1 , $heros2)
     {
-        if(($heros1['caracteristiques']['statut'])='actif') || $heros2['caracteristiques']['statut'])='actif' )
+        if (($heros1['caracteristiques']['statut']) == 'actif')
         {
-            
+            $joueurInactif = $heros2['caracteristiques']['statut'] == 'inactif';
+        }else{
+            $joueurInactif = $heros1['caracteristiques']['statut'] == 'inactif';
         }
         
     }
