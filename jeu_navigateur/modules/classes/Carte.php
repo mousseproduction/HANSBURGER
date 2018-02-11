@@ -2,10 +2,9 @@
 class Carte {
     
   
-    //TODO : Conditionner les setters et commenter les fonctions
     /**
      *-----------------------------------------------------
-     *  attributs
+     *  ATTRIBUTES
      *-----------------------------------------------------
     **/
     private $id;
@@ -23,6 +22,17 @@ class Carte {
     private $illustrationPath;
     private $description;
 
+
+    /**
+     *-----------------------------------------------------
+     *  METHODES
+     *-----------------------------------------------------
+    **/
+    public function __construct( array $data = [] ) {
+        $this->hydrate( $data );
+    }
+
+
     public function hydrate( array $data ) {
         foreach( $data as $key => $value ) {
             $methode = 'set' . ucfirst( $key );
@@ -32,12 +42,11 @@ class Carte {
         }
     }
 
-    public function __construct( array $data = [] ) {
-        $this->hydrate( $data );
-    }
 
     /**
-     * getAttributeTable - return the attributes of the instance in an array
+     * getAttributeTable - return the attributes listed in the parameter array 
+     *
+     * @param  array $attributeList - an array with the list of the attributes you want to get back
      *
      * @return array $attributeTable
      */
@@ -56,7 +65,26 @@ class Carte {
         }
         return $attributeTable;
     }
-                
+    
+    
+    /**
+     * display - return html code to display the card
+     *
+     * @param  string $mode - normale or clicable?
+     *
+     * @return string $cardHtml
+     */
+    public function display( string $mode = normale ) {
+        if( $mode == 'normale' ) {
+            $cardHtml = '';
+        }
+        if( $mode == 'clicable' ) {
+            $cardHtml = '';
+        }
+        return $cardHtml;
+    }
+    
+
     /**
      *-----------------------------------------------------
      *  getters and setters
@@ -167,7 +195,9 @@ class Carte {
      * @param herosId the value to set.
      */
     public function setHerosId($herosId) {
-        $this->herosId = $herosId;
+        if( ctype_digit( $herosId ) && $herosId >= 0 ) {
+            $this->herosId = $herosId;
+        }
     }
     
     /**
@@ -183,7 +213,9 @@ class Carte {
      * @param herosNom the value to set.
      */
     public function setHerosNom($herosNom) {
-        $this->herosNom = $herosNom;
+        if( is_string( $herosNom) ) {
+            $this->herosNom = $herosNom;
+        }
     }
     
     /**
@@ -199,7 +231,9 @@ class Carte {
      * @param statutId the value to set.
      */
     public function setStatutId($statutId) {
-        $this->statutId = $statutId;
+        if( ctype_digit( $statutId ) && $statutId >= 0 ) {
+            $this->statutId = $statutId;
+        }
     }
     
     /**
@@ -215,7 +249,9 @@ class Carte {
      * @param statutNom the value to set.
      */
     public function setStatutNom($statutNom) {
-        $this->statutNom = $statutNom;
+        if( is_string( $statutNom ) ) {
+            $this->statutNom = $statutNom;
+        }
     }
     
     /**
@@ -231,7 +267,9 @@ class Carte {
      * @param typeId the value to set.
      */
     public function setTypeId($typeId) {
-        $this->typeId = $typeId;
+        if( ctype_digit( $typeId ) && $typeId >= 0 ) {
+            $this->typeId = $typeId;
+        }
     }
     
     /**
@@ -247,7 +285,9 @@ class Carte {
      * @param typeNom the value to set.
      */
     public function setTypeNom($typeNom) {
-        $this->typeNom = $typeNom;
+        if( is_string( $typeNom ) ) {
+            $this->typeNom = $typeNom;
+        }
     }
     
     /**
@@ -263,7 +303,9 @@ class Carte {
      * @param illustrationId the value to set.
      */
     public function setIllustrationId($illustrationId) {
-        $this->illustrationId = $illustrationId;
+        if( ctype_digit( $illustrationId ) && $illustrationId >= 0 ) {
+            $this->illustrationId = $illustrationId;
+        }
     }
     
     /**
@@ -279,7 +321,9 @@ class Carte {
      * @param illustrationPath the value to set.
      */
     public function setIllustrationPath($illustrationPath) {
-        $this->illustrationPath = $illustrationPath;
+        if( is_string( $illustrationPath ) ) {
+            $this->illustrationPath = $illustrationPath;
+        }
     }
     
     /**
@@ -295,6 +339,9 @@ class Carte {
      * @param description the value to set.
      */
     public function setDescription($description) {
-        $this->description = $description;
+        if( is_string( $description ) ) {
+            $this->description = $description;
+        }
     }
+
 }

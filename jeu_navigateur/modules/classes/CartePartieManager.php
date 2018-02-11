@@ -1,5 +1,5 @@
 <?php
-class CarteCollectionManager extends Manager {
+class CartePartieManager extends Manager {
     
     public function insert( Carte $carte ) {
         $carteDatas = $carte->getAttributeTable( ['nom', 'pv', 'degat', 'prix', 'herosId', 'typeId', 'illustrationId', 'description'  ]);
@@ -24,22 +24,24 @@ class CarteCollectionManager extends Manager {
     }
     
     public function selectWhere( string $condition = '') {
-        $query =    'SELECT  `carte_collection`.`id` AS id,
+        $query =    'SELECT  `carte_partie`.`id` AS id,
                     `carte_collection`.`nom` AS nom,
-                    `carte_collection`.`pv` AS pv,
-                    `carte_collection`.`degat` AS degat,
-                    `carte_collection`.`prix` AS prix,
-                    `carte_collection`.`type_id` AS typeId,
+                    `carte_partie`.`pv` AS pv,
+                    `carte_partie`.`degat` AS degat,
+                    `carte_partie`.`prix` AS prix,
+                    `carte_partie`.`type_id` AS typeId,
                     `carte_collection`.`description` AS description,
                     `type`.`libelle` AS typeNom,
                     `illustration`.`id` AS illustrationId,
                     `illustration`.`path` AS illustrationPath,
-                    `heros_collection`.`id` AS herosId,
-                    `heros_collection`.`nom` AS herosNom
-                    FROM `carte_collection`
+                    `heros_partie`.`id` AS herosId,
+                    `heros_partie`.`nom` AS herosNom
+                    FROM `carte_partie`
+                    INNER JOIN `carte_collection` ON `carte_collection`.`id` = `carte_partie`.`id`
                     INNER JOIN `illustration` ON `illustration`.`id` = `carte_collection`.`illustration_id`
-                    INNER JOIN `heros_collection` ON `carte_collection`.`heros_collection_id` = `heros_collection`.`id`
-                    INNER JOIN `type` ON `carte_collection`.`type_id` = `type`.`id`
+                    INNER JOIN `heros_partie` ON `carte_partie`.`heros_partie_id` = `heros_partie`.`id`
+                    INNER JOIN `type` ON `carte_partie`.`type_id` = `type`.`id`
+                    INNER JOIN `statut` ON `carte_partie`.`statut_id` = `statut`.`id`
                     ' . $condition . ';';
 
         $datas = $this->executeQuery( $query );
