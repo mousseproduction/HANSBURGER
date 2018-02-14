@@ -18,6 +18,7 @@ class Carte {
     private $statutNom;
     private $typeId;
     private $typeNom;
+    private $carteCollectionId;
     private $illustrationId;
     private $illustrationPath;
     private $description;
@@ -344,4 +345,20 @@ class Carte {
         }
     }
 
+    
+    /**
+     * Get carteCollectionId.
+     *
+     * @return carteCollectionId.
+     */
+    public function getCarteCollectionId() { return $this->carteCollectionId; }
+    
+    /**
+     * Set carteCollectionId.
+     *
+     * @param carteCollectionId the value to set.
+     */
+    public function setCarteCollectionId($carteCollectionId) {
+        $this->carteCollectionId = $carteCollectionId;
+    }
 }
