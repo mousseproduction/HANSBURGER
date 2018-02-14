@@ -326,7 +326,7 @@ class Heros {
             $this->cartes['combat'][]=$this->cartes['main'][$indexCarte];//On la stocke dans la zone "combat" du joueur actif
             unset($this->cartes['main'][$indexCarte]);// On la supprime de la main du joueur actif
             $indexAttaquant = (count($this->cartes['combat']))-1;// l'index de la carte sort est le dernier des cartes en zone de combat
-                if (substr( $indexCible, 0, 5) ) == 'heros' && substr($indexCible,5,1) == $this->id)){//Si l'index transmis commence par heros et si le chiffre correspond à l'id du heros
+                if ( ( substr( $indexCible, 0, 5)  == 'heros' ) &&  ( substr($indexCible,5,1) == $this->id ) ){//Si l'index transmis commence par heros et si le chiffre correspond à l'id du heros
             $this->setPv( $this->getPv() - $this->getHeros_adverse()->cartes['combat'][$indexAttaquant]->getDegat());//on met à jour les points de vie du heros ciblé en enlevant les degats de la carte attaquante
             // test de la fin de vie du heros
             // if ($this->getPv() < 0 ) {
