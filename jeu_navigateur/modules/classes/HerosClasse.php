@@ -355,7 +355,7 @@ class Heros {
      * @return void
      */
     public function deplacerCarte ($carte,$zonedépart,$zonearrivée){
-            $this->cartes[$zonedépart][$carte->getId()]->getStatutNom()=$zonearrivée;//On change le statut de la carte choisie
+            $this->cartes[$zonedépart][$carte->getId()]->getStatus()=$zonearrivée;//On change le statut de la carte choisie
             $this->cartes[$zonearrivée][]=$this->cartes[$zonedépart][$indexCarte];//On la stocke dans la zone d'arrivée
             unset($this->cartes[$zonedépart][$carte->getId()]);// On la supprime dans la zone de départ
     }
