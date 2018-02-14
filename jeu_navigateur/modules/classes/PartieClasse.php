@@ -6,8 +6,8 @@ class Partie
  private $dateDebutPartie;
  private $cpt;
  private $dateFinPartie;
- private $heros1;
- private $heros2;
+ private $herosActif;
+ private $herosInactif;
  private $plateau;
 
  /************************
@@ -227,18 +227,17 @@ class Partie
 
     public function compteurTour()
     {
-        $compteur = 0;
-        foreach ($heros as $key => $value) {
-            # code...
-        
-            while ($compteur <= 10) {
-                $compteur ++; 
-            }
+        $compteurTour ++;
+        if( $compteurTour <= 20) {
+            $joueurActif['caracteristiques']['cagnotte'] = number_format($compteurTour / 2);
+        } else {
+            $joueurActif['caracteristiques']['cagnotte'] = 10;
         }
+    
     }
 
     public function attenteToCombat()  // Deplace la carte de la zone d'attente à la zone de combat
-    {
+    {0
         foreach($joueur['attente'] as $key => $carte) 
         {
             $carte['statut'] = 'combat';
@@ -270,14 +269,61 @@ class Partie
         $compteurTour = 0;
     }
 
-    public function switchHerosActif($heros1 , $heros2)
+    public function switchHeros()
     {
-        if (($heros1['caracteristiques']['statut']) == 'actif')
-        {
-            $joueurInactif = $heros2['caracteristiques']['statut'] == 'inactif';
-        }else{
-            $joueurInactif = $heros1['caracteristiques']['statut'] == 'inactif';
-        }
+         $tmp = $this->herosActif;
+        $this->herosActif = $this->herosInactif;
+        $this->herosInactif = $tmp;
         
     }
+
+    /**
+     *Le héros actif choisit quelle carte il va utiliser pour combattre et quelle carte/héros il veut attaquer
+     *
+     * @param [int] $carteAttaquante
+     * @return void
+     */
+    public function combattre($indexCarteAttaquant, $indexCible) {//Numéro de carte choisie par le heros
+        
+        switch($this->cartes['combat'][$indexCarteAttaquant]->getType())
+        {
+            case'creature':
+            if (is_int($indexCible))
+            {
+            $this->heros_inactif()->getCartes()['combat'][$indexCible]->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
+            }
+            elseif(is_string($indexCible)) 
+            {
+             $this->heros_inactif()->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
+            }
+            break; 
+            
+            case'bouclier':
+            if (is_int($indexCible))
+            {
+            $this->heros_inactif()->getCartes()['combat'][$indexCible]->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
+            }
+            elseif(is_string($indexCible)) 
+            {
+             $this->heros_inactif()->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
+            }
+            break; 
+            
+            case'sort':
+            if (is_int($indexCible))
+            {
+            $this->heros_inactif()->getCartes()['combat'][$indexCible]->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
+            }
+            elseif(is_string($indexCible)) 
+            {
+             $this->heros_inactif()->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
+            }
+            $this->heros_actif->deplacerCarte($this->cartes['combat'][$indexCarteAttaquant], 'combat', 'cimetiere');
+            break;
+        
+        }
+   
+    }
+
+
 }

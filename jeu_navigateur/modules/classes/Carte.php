@@ -1,5 +1,6 @@
 <?php
 class Carte {
+    use tGetAtrributeTable, tHydrate;
     
   
     /**
@@ -32,40 +33,6 @@ class Carte {
         $this->hydrate( $data );
     }
 
-
-    public function hydrate( array $data ) {
-        foreach( $data as $key => $value ) {
-            $methode = 'set' . ucfirst( $key );
-            if( method_exists( $this, $methode ) ) {
-                $this->$methode( $value );
-            }
-        }
-    }
-
-
-    /**
-     * getAttributeTable - return the attributes listed in the parameter array 
-     *
-     * @param  array $attributeList - an array with the list of the attributes you want to get back
-     *
-     * @return array $attributeTable
-     */
-    public function getAttributeTable( $attributeList = [ 'id', 'nom', 'pv', 'degat', 'prix', 'herosId',
-                                                          'herosNom', 'statutId', 'statutNom', 'typeId',
-                                                          'typeNom', 'illustrationId', 'illustrationPath', 'description' ] ) {
-        $attributeList = array_flip( $attributeList );
-        foreach( $attributeList as $value ) {
-            $value = null;
-        }
-        foreach( $attributeList as $attributeName => $attributeValue ) {
-            $methode = 'get' . ucfirst( $attributeName );
-            if( method_exists( $this, $methode ) ) {
-                $attributeTable[$attributeName] = $this->$methode();
-            }
-        }
-        return $attributeTable;
-    }
-    
     
     /**
      * display - return html code to display the card
