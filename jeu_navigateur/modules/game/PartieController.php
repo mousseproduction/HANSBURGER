@@ -1,17 +1,13 @@
 <?php
 class PartieController {
+
     private $partiemodel;
-    private $herosmodel;
-    private $cartemodel;
-    private $partie;
     private $request;
 
 
     public function __construct() {
         $this->partiemodel = new PartieModel;
-        $this->herosmodel = new HerosModel;
-        $this->cartemodel = new CarteModel;
-        $this->partie= new PartieClasse;
+        $partie =
         $this->request = sRequest::getInstance();
     }
 
@@ -39,26 +35,36 @@ class PartieController {
 
     public function invoquerAction( $post ) {
         if( isset( $post['id'] ) ) {
-            if( $this->getPartie()->getHerosActif()->invoquer( $post['id'] ) ) {
-               $this->getCarteManager()->update(  'je met quoi ici???'); 
+            if( $partie->getJoueurActif()->invoquer( $post['id'] ) ) {
+                $partie->update(); 
             } else {
                 $message = "Tu as tenté de tricher petit coquinou, mais sache que tant que je vivrai, tu ne seras jamais qu'une ptite bite...";
             }
         } else {
             $message = "Tu as tenté de tricher petit coquinou, mais sache que tant que je vivrai, tu ne seras jamais qu'une ptite bite...";
         }
-        $cliquableListe = $this->getPartie()->listerCliquable( 'choix' );
+        $partie->listerCliquable( 'choix' );
         require_once('partieView.php');
     }
+
+
 
     public function attaquerAction() {
+        //ajouter les methodes d'attaque
+        $partie->getJoueurActif()->attaquer( $post );
+        $partie->update(); 
+        $partie->listerCliquable( 'choix' );
         require_once('partieView.php');
         
     }
 
+
+
     public function passerTourAction() {
+        $partie->passerTour();
+        $partie->update(); 
+        $partie->listerCliquable( 'choix' );
         require_once('partieView.php');
-        
     }
     
     

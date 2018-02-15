@@ -1,5 +1,6 @@
 <?php
 class Carte {
+
     use tGetAtrributeTable, tHydrate;
     
   
@@ -30,6 +31,7 @@ class Carte {
      *  METHODES
      *-----------------------------------------------------
     **/
+
     public function __construct( array $data = [] ) {
         $this->hydrate( $data );
     }

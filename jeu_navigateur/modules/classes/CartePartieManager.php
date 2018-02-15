@@ -55,20 +55,7 @@ class CartePartieManager extends Manager {
     }
     
     public function delete( string $condition ) {
-       $query = 'DELETE FROM `carte_collection` ' . $condition; 
-       return $this->executeQuery( $query );
-    }
-
-
-    //TODO : add a class for listing methodes
-
-    public function getHerosCollectionList( ) {
-       $query = 'SELECT `id` AS id, `nom` AS nom FROM `heros_collection`;'; 
-       return $this->executeQuery( $query );
-    }
-
-    public function getTypeList( ) {
-       $query = 'SELECT `id` AS id, `libelle` AS libelle FROM `type`;'; 
+       $query = 'DELETE FROM `carte_partie` ' . $condition; 
        return $this->executeQuery( $query );
     }
 }
