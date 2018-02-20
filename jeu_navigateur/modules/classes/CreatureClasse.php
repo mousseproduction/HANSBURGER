@@ -10,7 +10,11 @@ class Creature extends Carte {
     **/
     public function frapper( $cible ) {
         $cible->subir( $this->getDegat() );
-        $this->subir( $target->getDegat() );
+        $partie->addToUpdate( $cible );
+        if( is_a( $cible, 'Creature' ) ) {
+            $this->subir( $target->getDegat() );
+            $partie->addToUpdate( $this );
+        }
     }
     
 }
