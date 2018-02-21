@@ -1,5 +1,5 @@
 <?php
-class IllustrationManager extends Manager {
+class IllustrationModel extends KernelModel {
 
     /**
      *-----------------------------------------------------

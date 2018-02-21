@@ -1,6 +1,6 @@
 <?php
 
-class Evenement extends Partie
+class Event 
 {
     private $id;
     private $partieId;

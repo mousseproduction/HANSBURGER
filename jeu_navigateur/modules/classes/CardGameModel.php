@@ -1,5 +1,5 @@
 <?php
-class CartePartieManager extends Manager {
+class CardGameModel extends KernelModel {
     
     public function insert( Carte $carte ) {
         $carteDatas = $carte->getAttributeTable( [ 'pv', 'degat', 'prix', 'carteCollectionId', 'herosId', 'typeId', 'statutId'  ]);

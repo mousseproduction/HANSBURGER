@@ -1,0 +1,403 @@
+<!-- 
+    INVOQUER  === SORTIR CARTE DE SA MAIN !!!
+ -->
+
+<?php
+class Heros {
+
+     use tGetAtrributeTable, tHydrate, tSuffer, tIsDead;
+
+    //----------------------------------------------
+    //attributs
+    //----------------------------------------------
+    
+    /**
+     * id = id du heros
+     *
+     * @var [int]
+     */
+    private $id;
+
+    /**
+     * nom = nom du heros model
+     *
+     * @var [char]
+     */
+    private $nom;
+
+    
+    /**
+     * pv = point de vie du héros
+     *
+     * @var [int]
+     */
+    private $pv;
+
+    /**
+     * cagnotte disponible à chaque tour
+     *
+     * @var [type]
+     */
+    private $cagnotte;
+
+    /**
+     * joueur = tableau composé de plusieurs clés : id,nom
+     *
+     * @var [array]
+     */
+    private $joueur;
+
+    /**
+     * heros_collection = id
+     *
+     * @var [string]
+     */
+    private $heros_collection;
+
+    /**
+     * illustration =  id
+     *
+     * @var [INT]
+     */
+    private $illustrationId;
+        
+    /**
+     * illustration = path
+     *
+     * @var [string]
+     */
+    private $illustrationPath;
+
+    /**
+     * cartes = tableau composé de plusieurs clés (deck,main,attente,combat, cimetière) stockant des objets "cartes"
+     *
+     * @var [array]
+     */
+    private $cartes;
+
+
+     
+
+     
+    //----------------------------------------------
+    //méthodes magiques
+    //----------------------------------------------
+    
+   function __construct( array $data ) {
+        $this->hydrate( $data );
+    }
+
+
+    //----------------------------------------------
+    //méthodes
+    //----------------------------------------------
+
+
+
+                //GESTION ZONE DEST CARTE
+    //-----------------------------------------------
+    
+    /**
+     * isCardInZone - test si une carte est dans une zone, retourne la carte si vrai sinon false
+     * 
+     * @ param int $cardId
+     * @ param string $zone
+    **/
+    public function isCardInZone( $cardId, $zone  ) {
+        $zone = ucfirst( $zone );
+        if( isset( $this->getCartes()[ $zone ][ $cardId ] ) ) {
+            return $this->getCartes()[ $zone ][ $cardId ];
+        } else {
+            return false;
+        }
+    }
+    
+
+   /**
+     *Déplacer une carte d'une zone à une autre
+     *
+     * @param [int] $indexcard
+     *  @param [char] $zonedépart
+     * @param [char] $zonearrivée
+     * @return void
+     */
+    public function moveCard ( Card $card, $destination ){
+        $destination = ucfirst( $destination );
+        $this->cartes[ $destination ][] = $card;//On la stocke dans la zone d'arrivée
+        unset($this->cartes[ $card->getStatutNom() ][ $carte->getId() ]);// On la supprime dans la zone de départ
+        $card->setStatutNom( $destination );//On change le statut de la carte choisie
+        switch( $destination ) {
+            case 'Main' :
+                $card->setStatutId( 2 );
+                break;
+            case 'Attente' :
+                $card->setStatutId( 3 );
+                break;
+            case 'Combat' :
+                $card->setStatutId( 4 );
+                break;
+            case 'Cimetiere' :
+                $card->setStatutId( 5 );
+                break;
+        }
+        $game->addToUpdateList( $card );
+    } 
+
+
+                //GESTION ACHATS
+    //-----------------------------------------------
+
+
+    /**
+     * Déplace les cartes de la zone d'attente à la zone de combat
+     */
+    public function endRound()
+        {
+            foreach($this->getCartes()['attente'] as $key => $card) 
+            {
+                $this->moveCard( $card, 'Combat' );
+            }   
+        }
+
+
+    /**
+     * beginRound - pioche une carte et attribue la cagnotte
+     * 
+    **/
+    public function beginRound() {
+        $this->draw();
+        $this->allocateCagnotte();
+    }
+    
+
+    /**
+     * allocateCagnotte - attribue la cagnotte
+     * 
+    **/
+    public function allocateCagnotte() {
+            $this->setCagnotte( number_format( $partie->getCpt() / 2 ) );
+    }
+    
+
+
+    /**
+     * Le héros sélectionne au hasard une(ou plussieurs) carte(s) dans le deck
+     *
+     * @param [int] $nbpioche
+     * @return void
+     */
+    public function draw ($nbpioche=1){//Nombre de carte à piocher ( 1 par défault)
+    $selection=array_rand($this->cartes['Deck'],$nbpioche);//Choisis au hasard une ou plusieurs cartes dans le deck identifiée avec leur index
+        if( is_array( $selection ) ) {
+            foreach ($selection as $carte) {//Pour chaque carte selectionnée (index)
+                $this->moveCard($carte,'Main');//On déplace la carte du deck vers la main
+                }
+        } else {
+                $this->moveCard ($selection, 'Main');
+        }
+    }
+
+
+                //GESTION ACHATS
+    //-----------------------------------------------
+
+    /**
+     * canIBuy - test si assez d'argent pour acheter la carte
+     * 
+    **/
+    public function canIBuy( Card $card ) {
+        if ($card->getPrix() <= $this->cagnotte) {//Si le prix de la carte choisie est inférieur ou égal à la cagnotte
+            return true;
+        } 
+        return false;
+    }
+
+
+    /**
+     * buy - achete la carte
+     * 
+    **/
+    public function buy( Card $card ) {
+        $this->setCagnotte( $this->getCagnotte() - $card->getPrix() );
+    }
+    
+         
+
+ 
+    //----------------------------------------------
+    //getters et setters
+    //----------------------------------------------
+    /**
+     * Get id.
+     *
+     * @return id.
+     */
+    public function getId() { return $this->id; }
+
+    /**
+     * Set id.
+     *
+     * @param id the value to set.
+     */
+    public function setId($id) {
+        if( is_int( $id ) && $id >= 0 ) {
+            $this->id = $id;
+        }
+    }
+
+    /**
+     * Get nom.
+     *
+     * @return nom.
+     */
+    public function getNom() { return $this->nom; }
+
+    /**
+     * Set nom.
+     *
+     * @param nom the value to set.
+     */
+    public function setNom($nom) {
+        if( is_string( $nom  ) ) {
+            $this->nom = $nom;
+        }
+    }
+
+    /**
+     * Get pv.
+     *
+     * @return pv.
+     */
+    public function getPv() { return $this->pv; }
+
+    /**
+     * Set pv.
+     *
+     * @param pv the value to set.
+     */
+    public function setPv($pv) {
+        if( is_int( $pv ) ) {
+            $this->pv = $pv;
+        }
+    }
+
+    /**
+     * Get cagnotte.
+     *
+     * @return cagnotte.
+     */
+    public function getCagnotte() { return $this->cagnotte; }
+
+    /**
+     * Set cagnotte.
+     *
+     * @param cagnotte the value to set.
+     */
+    public function setCagnotte($cagnotte) {
+        if( is_int( $cagnotte ) ) {
+            $this->cagnotte = $cagnotte;
+        }
+    }
+
+    /**
+     * Get joueur.
+     *
+     * @return joueur.
+     */
+    public function getJoueur() { return $this->joueur; }
+
+    /**
+     * Set joueur.
+     *
+     * @param joueur the value to set.
+     */
+    public function setJoueur($joueur) {
+                    $this->joueur = $joueur;
+    }
+        /**
+     * Get illustration = id
+     *
+     * @return  [INT]
+     */ 
+    public function getIllustrationId()
+    {
+        return $this->illustrationId;
+    }
+
+    /**
+     * Set illustration = id
+     *
+     * @param  [INT]  $illustrationId  illustration = id
+     *
+     * @return  self
+     */ 
+    public function setIllustrationId($illustrationId)
+    {
+        $this->illustrationId = $illustrationId;
+
+        return $this;
+    }
+
+    /**
+     * Get illustration = path
+     *
+     * @return  [string]
+     */ 
+    public function getIllustrationPath()
+    {
+        return $this->illustrationPath;
+    }
+
+    /**
+     * Set illustration = path
+     *
+     * @param  [string]  $illustrationPath  illustration = path
+     *
+     * @return  self
+     */ 
+    public function setIllustrationPath($illustrationPath)
+    {
+        $this->illustrationPath = $illustrationPath;
+
+        return $this;
+    }
+     /**
+     * Get heros_collection.
+     *
+     * @return heros_collection.
+     */
+    public function getHeros_collection() { return $this->heros_collection; }
+
+    /**
+     * Set heros_collection.
+     *
+     * @param heros_collection the value to set.
+     */
+    public function setHeros_collection($heros_collection) {
+        if( is_array( $heros_collection) && isset( $heros_collection['id'] ) && is_int( $heros_collection['id'] ) && isset( $heros_collection['nom'] ) ) {
+            $this->heros_collection = $heros_collection;
+        }
+    }
+
+    
+    
+    /**
+     * Get the value of cartes
+     */ 
+    public function getCartes()
+    {
+        return $this->cartes;
+    }
+
+    /**
+     * Set the value of cartes
+     *
+     * @return  self
+     */ 
+    public function setCartes($cartes)
+    {
+        $this->cartes = $cartes;
+
+        return $this;
+    }
+}

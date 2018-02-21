@@ -1,5 +1,5 @@
 <?php
-class Carte {
+class Card {
 
     use tGetAtrributeTable, tHydrate;
     
@@ -53,7 +53,19 @@ class Carte {
         }
         return $cardHtml;
     }
-    
+
+
+    /**
+     * hit - hit the target and is hit back
+     *
+     * @param $target
+    **/
+    private function hit( $target ) {
+        $target->suffer( $this->getDegat() );
+        if( is_a( $target, 'Creature' ) ) {
+            $this->suffer( $target->getDegat() );
+        }
+    }
 
     /**
      *-----------------------------------------------------

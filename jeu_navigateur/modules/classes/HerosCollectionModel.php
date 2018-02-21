@@ -1,6 +1,6 @@
 <?php
 
-class HerosCollectionManager extends Manager {
+class HerosCollectionModel extends KernelModel {
 
     public function add( Heros $heros ) {
         $herosDatas = $heros->haveAttributeTable();

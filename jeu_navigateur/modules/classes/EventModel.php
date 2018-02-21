@@ -1,6 +1,6 @@
 <?php
 
-class EvenementManager extends Manager
+class EventModel extends KernelModel
 {
     public function add( Evenement $evenement ) {
         $evenementDatas = $evenement->haveAttributeTable();

@@ -1,6 +1,6 @@
 <?php
 
-class HerosPartieManager extends Manager {
+class HerosGameModel extends KernelModel {
 
     public function add( Heros $heros_partie ) {
         $herosDatas = $heros->haveAttributeTable();

@@ -1,6 +1,5 @@
 <?php
-
-class Partie {
+class Game {
 
     use tHydrate, tGetAttributeTable;
 
@@ -13,7 +12,7 @@ class Partie {
      private $plateau;
 
      private $updateList; //tableau des objets à mettre à jour en base de donnée
-     private $cliquableList; //liste des objets qui doivent être cliquables
+     private $clickableList; //liste des objets qui doivent être cliquables
 
 
 
@@ -23,45 +22,116 @@ class Partie {
 
     } 
 
-//        /**
-//     * undocumented function
-//     *
-//     * @return void
-//     */
-//    public function haveAttributeTable() {
-//        $partieData = array(  
-//                            'id'            =>  $partie->getId(),
-//                            'date'          =>  $partie->getdateDebutPartie(),
-//                            'cpt'           =>  $partie->getCpt(),
-//                            'heros1'        =>  $partie->getHeros1(),
-//                            'heros2'        =>  $partie->getHeros2(),
-//                            'plateau'       =>  $partie->getPlateau()
-//                            );
-//    }
-//
-//    public function display()
-//    {
-//
-//    }
+     /**
+     * Le héros choisit quelle creature ou bouclier  il veut invoquer
+     *
+     * @param [int] $indexCarte
+     * @return void
+     */
+    public function invoke( $indexCard ) {//Numéro de carte choisie par le heros
+        if( ( $card = $this->getHerosActif()->isCardInZone( $indexCard, 'Main' ) )  !== false ) {
+            if( $this->getHerosActif()->canIBuy( $card ) ) {
+                $this->getHerosActif()->buy( $card );
+                $this->getHerosActif()->moveCard( $card, 'Attente' );
+                if( method_exists( $card, 'onInvocation' ) ) {
+                    $card->onInvocation();
+                }
+                $game->listClickable( 'buyable' );
+                $game->listClickable( 'fightable' );
+            } else {
+                $game->listClickable( 'buyable' );
+                $game->listClickable( 'fightable' );
+                return $message = "C'est la première et la dernière fois..... La prochaine fois j'appelle la crampe";
+            }
+        return false;
+        }
+    }
+
+
+    /**
+     *Le héros actif choisit quelle carte il va utiliser pour combattre et quelle carte/héros il veut attaquer
+     *
+     * @param [int] $carteAttaquante
+     * @return void
+     */
+    public function attack($assailantIndex, $targetIndex  = null ) {//Numéro de carte choisie par le heros
+        if( ( $assailantCard = $this->getHerosActif()->isCardInZone( $assailantIndex, 'Combat' ) )  !== false ) {
+            if( $targetIndex == null ) {
+                $game->listClickable( 'targetable' );
+            } else {
+                if( ( $shieldIndexList = $this->getHerosInactif()->isThereShield() ) !== false ) {
+                    if( !is_in_array( $targetIndex, $shieldIndexList )) {
+                        $message = "C'est la première et la dernière fois..... La prochaine fois je sors le gant en latex";
+                        return $message;
+                    }
+                }
+                if( is_int( $targetIndex ) ) {
+                    if( ( $targetCard = $this->getHerosActif()->isCardInZone( $targetIndex, 'Combat' ) )  !== false ) {
+                        $assailantCard->hit( $targetCard );
+                    } else {
+                        return $message = "C'est la première et la dernière fois..... La prochaine fois je sors le gant en latex";
+                    }
+                } elseif( is_string( $targetIndex ) ) {
+                    $assailantCard->hit( $this->getHerosInactif() );
+                }
+                $this->getHerosActif()->moveCard( $assailantCard, 'Attente' );
+                $game->listClickable( 'buyable' );
+                $game->listClickable( 'fightable' );
+            }
+        }
+    }
+
+    /**
+     * pass - pass round action
+     * 
+    **/
+    public function pass() {
+        $this->setCpt( $this->getCpt() + 1 );
+        $this->getHerosActif()->endRound();
+        $this->switchHeros();
+        $this->getHerosActif()->beginRound();
+    }
+    
+
+    /**
+     * switchHeros 
+    **/
+    public function switchHeros()
+    {
+         $tmp = $this->herosActif;
+        $this->herosActif = $this->herosInactif;
+        $this->herosInactif = $tmp;
+        
+    }
+
 
     /**
      * update - update (in the database) the elements listed in $this->toUpdateList
      * 
     **/
     public function update() {
-        foreach( $this->updateList as $key => $object ) {
+        foreach( $this->updateList() as $key => $object ) {
             $class = get_class( $object );
             if( $class == 'Creature' || $class == 'Sort' ) {
-                $cartePartieManager->update( $object );
+                $cardGameModel->update( $object );
             }
             if( $class == 'Heros' ) {
-                $herosManager->update( $object );
+                $herosGameModel->update( $object );
             }
             if( $class == 'Partie' ) {
-                $partieManager->update( $object );
+                $GameModel->update( $object );
             }
         }
     }
+
+
+    /**
+     * addToUpdateList - ajoute l'objet à updateList
+    **/
+    public function addToUpdateList() {
+        
+    }
+    
     
 
     /**
@@ -109,16 +179,7 @@ class Partie {
     
     }
 
-    public function attenteToCombat()  // Deplace la carte de la zone d'attente à la zone de combat
-    {0
-        foreach($joueur['attente'] as $key => $carte) 
-        {
-            $carte['statut'] = 'combat';
-            $joueur['combat'][] = $carte;
-            unset( $joueur['attente'][$key] );
-        }   
-    }
-
+    
     public function premierJoueur()
     {
         if (rand(1,2)==1) 
@@ -142,61 +203,7 @@ class Partie {
         $compteurTour = 0;
     }
 
-    public function switchHeros()
-    {
-         $tmp = $this->herosActif;
-        $this->herosActif = $this->herosInactif;
-        $this->herosInactif = $tmp;
-        
-    }
-
-    /**
-     *Le héros actif choisit quelle carte il va utiliser pour combattre et quelle carte/héros il veut attaquer
-     *
-     * @param [int] $carteAttaquante
-     * @return void
-     */
-    public function combattre($indexCarteAttaquant, $indexCible) {//Numéro de carte choisie par le heros
-        
-        switch($this->cartes['combat'][$indexCarteAttaquant]->getType())
-        {
-            case'creature':
-            if (is_int($indexCible))
-            {
-            $this->heros_inactif()->getCartes()['combat'][$indexCible]->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
-            }
-            elseif(is_string($indexCible)) 
-            {
-             $this->heros_inactif()->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
-            }
-            break; 
-            
-            case'bouclier':
-            if (is_int($indexCible))
-            {
-            $this->heros_inactif()->getCartes()['combat'][$indexCible]->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
-            }
-            elseif(is_string($indexCible)) 
-            {
-             $this->heros_inactif()->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
-            }
-            break; 
-            
-            case'sort':
-            if (is_int($indexCible))
-            {
-            $this->heros_inactif()->getCartes()['combat'][$indexCible]->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
-            }
-            elseif(is_string($indexCible)) 
-            {
-             $this->heros_inactif()->subir($this->heros_actif()->getcartes['combat'][$indexCarteAttaquant]);
-            }
-            $this->heros_actif->deplacerCarte($this->cartes['combat'][$indexCarteAttaquant], 'combat', 'cimetiere');
-            break;
-        
-        }
-   
-    }
+    
  /************************
   * GET THE VALUE OF id
   ************************/ 

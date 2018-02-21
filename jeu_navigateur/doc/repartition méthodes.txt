@@ -21,23 +21,27 @@
                // -----------------------------------------------
                     teste la requete 
                     appelle partie->invoquer()
+                    update()
                     construis la vue
 
                // attaquerAction
                // -----------------------------------------------
                     teste la requete
                     appelle partie->attaquer
+                    update()
                     construis la vue
 
                // passerTourAction
                // -----------------------------------------------
                     teste la requete
                     appelle partie->finDeTour()
+                    update()
                     construis la vue
 
                // AbandonAction
                // -----------------------------------------------
                     teste la requete
+                    update()
                     appelle partie->abandon()
 
 
@@ -67,47 +71,40 @@
                     ACTION DE JEU
         -------------------------------------------------
 
-               // invoquer
+               // invoke
                // -----------------------------------------------
-                    Si heros->isCardInZone ( main )
-                        si heros->canIBuy (on peut la payer?)
-                            heros->buy (soustrait le cout de la carte de la cagnotte)
-                            heros->deplacerCarte ( main à attente) 
-                            addToUpdate( carte, heros )
+                    Si herosActif->isCardInZone ( main )
+                        si herosActif->canIBuy( carte ) (on peut la payer?)
+                            herosActif->buy (soustrait le cout de la carte de la cagnotte)
+                            herosActif->moveCard ( main à attente) 
                         sinon return false
                     sinon return false
 
                     //si la carte a une methode qui se déclanche à l'invocation,
-                    //on l'appelle carte->onInvoquation() (pour les sorts)
+                    //on l'appelle carte->onInvoke  (pour les sorts)
                     
 
 
-               // attaquer ( attaquant, cible )
+               // attack ( attaquant, cible = null )
                // -----------------------------------------------
                     si joueurActif->isCardInZone( combat)
                         si cible = null
                             listerCliquable
                         sinon
-                            attaquant->frapper( cible )
-                            addToUpdate ( attaquant, cible)
-                            partie->isGameOver
-                    sinon return false
-                    
-               // piocher
-               // -----------------------------------------------
-                    Si heros->isCardInZone ( main )
-                        selectionne des cartes au hasard
-                        heros->deplacerCarte ( pioche à main) 
-                        addToUpdate( carte )
+                            attaquant->hit( cible )
+                            moveCard( attente)
                     sinon return false
                     
                // passerTour
                // -----------------------------------------------
                     incremente partie->cptTour
                     appelle herosActif()->finirTour()
-                    appelle herosInactif()->commencerTour()
                     appelle partie->switchHeros()
+                    appelle herosActif()->commencerTour()
 
+
+               // passerTour
+               // -----------------------------------------------
 
                     GESTION UPDATE
         -------------------------------------------------
@@ -126,7 +123,7 @@
                     GESTION AFFICHAGE
         -------------------------------------------------
 
-               // listerCliquable( situation )
+               // listClickable( situation )
                // -----------------------------------------------
                     remplit le tableau cliquableList avec la liste
                     des elements qui doivent être cliqucables en 
@@ -136,7 +133,7 @@
                     GESTION FIN DE PARTIE
         -------------------------------------------------
 
-               // isGameOver
+               // isGameOver (appelée dans subir et moveCard( cimetiere ))
                // -----------------------------------------------
                     verifie si un joueur est mort 
                         heros->isDead()
@@ -155,11 +152,6 @@
             echange le contenu des attributs herosActif et
             herosInatctif
 
-       // Attribuer Mana
-       // -----------------------------------------------
-            calcul la qté de mana a attribuer
-            jouerActif->setMana
-            addToUpdate (joueurActif)
        
    // ----------------------------------------------------
    // Heros
@@ -167,41 +159,56 @@
 
 
 
-                    GESTION ZONE DEST CARTES
+                    GESTION ZONE DES CARTES
         -------------------------------------------------
 
-               // isCardInZone(heros, zone, carte)
+               // isCardInZone( zone, carte)
                // -----------------------------------------------
                     verifie si une carte est dans une zone
                     retourne true si oui, false si non
 
-               // changeCardZone(carte, zone arrivée)
+               // moverCard(carte, zone arrivée)
                // -----------------------------------------------
                     dédlace une carte de sa zone actuelle à la 
                     zone d'arrivée
-                    addToUpdate
+                    addToUpdateList( carte )
 
+ ÇA IL FAUT LE FAIRE CONG // setTableauCartes
+               // -----------------------------------------------
+                    $cartes[ $card->getStatutNom() ][ $card->getId() ] 
+                    
+
+            
 
                     GESTION TOUR
         -------------------------------------------------
 
-               // finirTour
+               // draw
+               // -----------------------------------------------
+                    selectionne des cartes au hasard
+                    heros->deplacerCarte ( pioche à main) 
+                    
+               // endRound
                // -----------------------------------------------
                     foreach( carte en attente )
-                        deplacer carte (attente to combat)
-                    addToUpdate ( heros )?
+                        moveCard (attente to combat)
 
-               // commencerTour
+               // beginRound
                // -----------------------------------------------
-                    piocher
-                    attribuer mana
+                    draw()
+                    allocateCagnotte
 
+               // allocateCagnotte()
+               // -----------------------------------------------
+                    calcul la qté de mana a recevoir
+                    this->setMana
+                    addToUpdateList(this) 
 
                     GESTION DEGATS
         -------------------------------------------------
 
 
-               // subir(degat)
+               // suffer(degat)
                // -----------------------------------------------
                     soustrait les degats aux pv
                     partie->addToUpdate ( this )
@@ -234,7 +241,7 @@
 
        // frapper(cible)
        // -----------------------------------------------
-            inflige les degats a la cible
+            appelle subir
             si la cible est une creature, reçoit des dégats 
             en retour
 

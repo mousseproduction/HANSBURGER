@@ -1,5 +1,5 @@
 <?php
-class CarteCollectionManager extends Manager {
+class CardCollectionModel extends KernelModel {
     
     public function insert( Carte $carte ) {
         $carteDatas = $carte->getAttributeTable( ['nom', 'pv', 'degat', 'prix', 'herosId', 'typeId', 'illustrationId', 'description'  ]);
