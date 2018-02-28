@@ -110,15 +110,15 @@ class Game {
      * 
     **/
     public function update() {
-        foreach( $this->updateList() as $key => $object ) {
+        foreach( $this->updateList as $key => $object ) {
             $class = get_class( $object );
-            if( $class == 'Creature' || $class == 'Sort' ) {
+            if( $class == 'Creature' || $class == 'Spell' ) {
                 $cardGameModel->update( $object );
             }
             if( $class == 'Heros' ) {
                 $herosGameModel->update( $object );
             }
-            if( $class == 'Partie' ) {
+            if( $class == 'Game' ) {
                 $GameModel->update( $object );
             }
         }
@@ -128,8 +128,8 @@ class Game {
     /**
      * addToUpdateList - ajoute l'objet à updateList
     **/
-    public function addToUpdateList() {
-        
+    public function addToUpdateList( $object ) {
+        $this->updateList[] = $object;
     }
     
     
@@ -142,21 +142,29 @@ class Game {
     **/
     public function listerCliquable( string $mode ) {
         
-        $this->cliquableListe =
+        $this->cliquableListe = ;
     }
 
     
     
 
-    public function finDePartie()
+    public function isGameOver()
     {
-        if (($heros1['pv'] = 0) || $heros2['pv'] = 0  )
+        if (($this->herosActif->isDead()) || $this->herosActif->isCemetryFull()  )
         {
-            header('Location: index.php');
-        }elseif ($heros1['cimetiere']=20 || $heros2['cimetiere']=20) 
-        {
-            header('Location: index.php');
+            $this->gameOver( $this->herosActif->getJoueur() );
+
         }
+        elseif ($this->herosInactif->isDead() || $this->herosInactif->isCemetryFull()) 
+        {
+            $this->gameOver( $this->herosInactif->getJoueur() );
+        }
+    }
+
+    public function gameOver( $joueur )
+    {
+       
+        header('Location: index.php');
     }
 
     public function abandon( $heros )
@@ -168,20 +176,10 @@ class Game {
         }
     }
 
-    public function compteurTour()
-    {
-        $compteurTour ++;
-        if( $compteurTour <= 20) {
-            $joueurActif['caracteristiques']['cagnotte'] = number_format($compteurTour / 2);
-        } else {
-            $joueurActif['caracteristiques']['cagnotte'] = 10;
-        }
     
-    }
-
-    
-    public function premierJoueur()
+    public function init()
     {
+        $this->getModel()
         if (rand(1,2)==1) 
         {
             $heros1['caracteristiques']['statut']='actif';

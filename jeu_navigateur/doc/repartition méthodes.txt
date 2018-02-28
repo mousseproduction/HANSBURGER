@@ -1,4 +1,4 @@
-//---------------------------------------------------------
+﻿//---------------------------------------------------------
 //REPARTITION DES METHODES DANS LES CLASSES
 //---------------------------------------------------------
 
@@ -123,7 +123,7 @@
                     GESTION AFFICHAGE
         -------------------------------------------------
 
-               // listClickable( situation )
+               // listClickable( situation ) --------------- -------------------------------A FINIR
                // -----------------------------------------------
                     remplit le tableau cliquableList avec la liste
                     des elements qui doivent être cliqucables en 
@@ -141,7 +141,7 @@
                         heros->haveCarte()
                     si c'est le cas : $this->gameOver
 
-               // gameOver
+               // gameOver ---------------------------------------------------------------------A FAIRE
                // -----------------------------------------------
                     statistiques joueur
                     met la db a jour 
