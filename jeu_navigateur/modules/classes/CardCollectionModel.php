@@ -45,7 +45,7 @@ class CardCollectionModel extends KernelModel {
         $datas = $this->executeQuery( $query );
         $objects = [];
         foreach( $datas as $key => $data ) {
-            $objects[ $data['id'] ] = new Carte( $data );
+            $objects[ $data['id'] ] = new Card( $data );
         }
         return $objects;
     }

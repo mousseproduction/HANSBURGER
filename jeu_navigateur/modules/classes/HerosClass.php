@@ -394,10 +394,10 @@ class Heros {
      *
      * @return  self
      */ 
-    public function setCartes($cartes)
+    public function setCartes( array $cartes)
     {
-        $this->cartes = $cartes;
-
-        return $this;
+        foreach( $cards as $key => $card ) {
+            $this->cartes[ $card->getStatut() ][ $card->getId() ] = $cartes;
+        }
     }
 }

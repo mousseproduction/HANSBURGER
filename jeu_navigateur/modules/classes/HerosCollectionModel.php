@@ -26,11 +26,15 @@ class HerosCollectionModel extends KernelModel {
                     `illustration`.`path` AS illustrationPath,
                     FROM `heros_collection`
                     INNER JOIN `illustration` ON `illustration`.`id` = `heros_collection`.`illustration_id`
-                    WHERE'. $condition . ';';
+                    '. $condition . ';';
 
-        $hero = $this->executeQuery( $query );
-
-        return $hero[0];
+        $datas = $this->executeQuery( $query );
+        $objects = [];
+        foreach( $datas as $key => $data ) {
+            $objects[ $data['id'] ] = new Heros( $data );
+        }
+        return $objects;
+    }
     }
 
     public function delete( string $condition ) {
