@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Hôte : 127.0.0.1
--- Généré le :  jeu. 08 fév. 2018 à 14:08
--- Version du serveur :  10.1.25-MariaDB
--- Version de PHP :  7.1.7
+-- Client :  localhost
+-- Généré le :  Dim 04 Mars 2018 à 17:12
+-- Version du serveur :  5.7.21-0ubuntu0.16.04.1
+-- Version de PHP :  7.0.25-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `hansburger`
 --
+CREATE DATABASE IF NOT EXISTS `hansburger` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `hansburger`;
 
 -- --------------------------------------------------------
 
@@ -35,7 +35,12 @@ CREATE TABLE `action` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `action`
+-- Vider la table avant d'insérer `action`
+--
+
+TRUNCATE TABLE `action`;
+--
+-- Contenu de la table `action`
 --
 
 INSERT INTO `action` (`id`, `libelle`, `illustration_id`) VALUES
@@ -63,7 +68,12 @@ CREATE TABLE `carte_collection` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `carte_collection`
+-- Vider la table avant d'insérer `carte_collection`
+--
+
+TRUNCATE TABLE `carte_collection`;
+--
+-- Contenu de la table `carte_collection`
 --
 
 INSERT INTO `carte_collection` (`id`, `nom`, `pv`, `degat`, `prix`, `heros_collection_id`, `type_id`, `illustration_id`, `description`) VALUES
@@ -110,7 +120,12 @@ CREATE TABLE `carte_partie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `carte_partie`
+-- Vider la table avant d'insérer `carte_partie`
+--
+
+TRUNCATE TABLE `carte_partie`;
+--
+-- Contenu de la table `carte_partie`
 --
 
 INSERT INTO `carte_partie` (`id`, `pv`, `degat`, `prix`, `carte_modele_id`, `heros_partie_id`, `statut_id`, `type_id`) VALUES
@@ -171,6 +186,11 @@ CREATE TABLE `evenement` (
   `heros_partie_id` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `evenement`
+--
+
+TRUNCATE TABLE `evenement`;
 -- --------------------------------------------------------
 
 --
@@ -187,7 +207,12 @@ CREATE TABLE `heros_collection` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `heros_collection`
+-- Vider la table avant d'insérer `heros_collection`
+--
+
+TRUNCATE TABLE `heros_collection`;
+--
+-- Contenu de la table `heros_collection`
 --
 
 INSERT INTO `heros_collection` (`id`, `nom`, `statut`, `pv`, `cagnotte`, `illustration_id`) VALUES
@@ -210,7 +235,12 @@ CREATE TABLE `heros_partie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `heros_partie`
+-- Vider la table avant d'insérer `heros_partie`
+--
+
+TRUNCATE TABLE `heros_partie`;
+--
+-- Contenu de la table `heros_partie`
 --
 
 INSERT INTO `heros_partie` (`id`, `statut`, `pv`, `cagnotte`, `joueur_id`, `heros_modele_id`) VALUES
@@ -229,7 +259,12 @@ CREATE TABLE `illustration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `illustration`
+-- Vider la table avant d'insérer `illustration`
+--
+
+TRUNCATE TABLE `illustration`;
+--
+-- Contenu de la table `illustration`
 --
 
 INSERT INTO `illustration` (`id`, `path`) VALUES
@@ -262,7 +297,12 @@ CREATE TABLE `joueur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `joueur`
+-- Vider la table avant d'insérer `joueur`
+--
+
+TRUNCATE TABLE `joueur`;
+--
+-- Contenu de la table `joueur`
 --
 
 INSERT INTO `joueur` (`id`, `pseudo`, `prenom`, `nom`, `naissance`, `email`, `mot_de_passe`, `ratio_vd`, `adresse`, `code_postal`, `ville`, `telephone`, `en_ligne`) VALUES
@@ -285,6 +325,11 @@ CREATE TABLE `partie` (
   `plateau_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `partie`
+--
+
+TRUNCATE TABLE `partie`;
 -- --------------------------------------------------------
 
 --
@@ -299,7 +344,12 @@ CREATE TABLE `plateau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `plateau`
+-- Vider la table avant d'insérer `plateau`
+--
+
+TRUNCATE TABLE `plateau`;
+--
+-- Contenu de la table `plateau`
 --
 
 INSERT INTO `plateau` (`id`, `illustration_id`, `heros_collection1_id`, `heros_collection2_id`) VALUES
@@ -317,7 +367,12 @@ CREATE TABLE `statut` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `statut`
+-- Vider la table avant d'insérer `statut`
+--
+
+TRUNCATE TABLE `statut`;
+--
+-- Contenu de la table `statut`
 --
 
 INSERT INTO `statut` (`id`, `libelle`) VALUES
@@ -339,7 +394,12 @@ CREATE TABLE `type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `type`
+-- Vider la table avant d'insérer `type`
+--
+
+TRUNCATE TABLE `type`;
+--
+-- Contenu de la table `type`
 --
 
 INSERT INTO `type` (`id`, `libelle`) VALUES
@@ -348,7 +408,7 @@ INSERT INTO `type` (`id`, `libelle`) VALUES
 (3, 'Sort');
 
 --
--- Index pour les tables déchargées
+-- Index pour les tables exportées
 --
 
 --
@@ -448,7 +508,7 @@ ALTER TABLE `type`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
@@ -512,7 +572,7 @@ ALTER TABLE `statut`
 ALTER TABLE `type`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- Contraintes pour les tables déchargées
+-- Contraintes pour les tables exportées
 --
 
 --
@@ -576,7 +636,6 @@ ALTER TABLE `plateau`
   ADD CONSTRAINT `fk_plateau_heros_modele1` FOREIGN KEY (`heros_collection1_id`) REFERENCES `heros_collection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_plateau_heros_modele2` FOREIGN KEY (`heros_collection2_id`) REFERENCES `heros_collection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_plateau_illustration1` FOREIGN KEY (`illustration_id`) REFERENCES `illustration` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

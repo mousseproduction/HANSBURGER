@@ -3,16 +3,17 @@
 class HerosCollectionModel extends KernelModel {
 
     public function add( Heros $heros ) {
-        $herosDatas = $heros->haveAttributeTable();
+        $herosDatas = $heros->haveAttributeTable( [ 'nom', 'statut', 'pv', 'cagnotte', 'illustrationId' ] );
         $query =    "INSERT INTO `heros_collection` (`id`,`nom`, `statut`,  `pv`, `cagnotte`, `illustration_id`)
-        VALUES (NULL, ':nom', ':statut', '20', '0',':illustrationId');";
+        VALUES (NULL, :nom, :statut, '20', '0', :illustrationId);";
         return $this->executeQuery( $query, $herosDatas );
     }
 
     public function update( Heros $heros ) {
-        $herosDatas = $heros->haveAttributeTable();
+        $herosDatas = $heros->haveAttributeTable( [ 'id', 'nom', 'statut', 'pv', 'cagnotte', 'illustrationId' ] );
         $query =    "UPDATE `heros_collection`
-                    SET `nom` = ':nom', `statut` = ':statut', `pv` = ':pv', `cagnotte` = ':cagnotte', `illustration_id` = ':illustration_id' WHERE `heros_collection_id` = :id;";
+                    SET `nom` = :nom, `statut` = :statut, `pv` = :pv, `cagnotte` = :cagnotte, `illustration_id` = :illustration_id 
+                    WHERE `heros_collection_id` = :id;";
         return $this->executeQuery( $query, $herosDatas );
     }
 
@@ -23,7 +24,7 @@ class HerosCollectionModel extends KernelModel {
                     `heros_collection`.`pv`AS pv,
                     `heros_collection`.`cagnotte` AS cagnotte,
                     `illustration`.`id` AS illustrationId,
-                    `illustration`.`path` AS illustrationPath,
+                    `illustration`.`path` AS illustrationPath
                     FROM `heros_collection`
                     INNER JOIN `illustration` ON `illustration`.`id` = `heros_collection`.`illustration_id`
                     '. $condition . ';';
@@ -31,10 +32,9 @@ class HerosCollectionModel extends KernelModel {
         $datas = $this->executeQuery( $query );
         $objects = [];
         foreach( $datas as $key => $data ) {
-            $objects[ $data['id'] ] = new Heros( $data );
+            $objects[] = new Heros( $data );
         }
         return $objects;
-    }
     }
 
     public function delete( string $condition ) {

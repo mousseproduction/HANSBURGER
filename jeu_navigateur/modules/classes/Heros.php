@@ -1,11 +1,7 @@
-<!-- 
-    INVOQUER  === SORTIR CARTE DE SA MAIN !!!
- -->
-
 <?php
 class Heros {
 
-     use tGetAtrributeTable, tHydrate, tSuffer, tIsDead;
+     use tGetAttributeTable, tHydrate, tSuffer, tIsDead;
 
     //----------------------------------------------
     //attributs
@@ -394,7 +390,7 @@ class Heros {
      *
      * @return  self
      */ 
-    public function setCartes( array $cartes)
+    public function setCartes( array $cards)
     {
         foreach( $cards as $key => $card ) {
             $this->cartes[ $card->getStatut() ][ $card->getId() ] = $cartes;

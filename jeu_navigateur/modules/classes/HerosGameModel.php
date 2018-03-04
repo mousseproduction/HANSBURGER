@@ -2,17 +2,18 @@
 
 class HerosGameModel extends KernelModel {
 
-    public function add( Heros $heros_partie ) {
-        $herosDatas = $heros->haveAttributeTable();
+    public function add( Heros $heros ) {
+        $herosDatas = $heros->getAttributeTable( [ 'statut', 'pv', 'cagnotte', 'joueur', 'heros_collection' ] );
         $query =    "INSERT INTO `heros_partie` (`id`, `statut`,  `pv`, `cagnotte`, `joueur_id`, `heros_collection_id`)
-        VALUES (NULL, ':nom', ':statut', ':pv', ':cagnotte',':joueur_id', ':heros_collection_id');";
+        VALUES (NULL, :statut, :pv, :cagnotte, :joueur, :heros_collection);";
         return $this->executeQuery( $query, $herosDatas );
     }
 
-    public function update( Heros $heros_partie ) {
-        $herosDatas = $heros->haveAttributeTable();
+    public function update( Heros $heros ) {
+        $herosDatas = $heros->getAttributeTable( [ 'id', 'statut', 'pv', 'cagnotte', 'joueur', 'heros_collection' ] );
         $query =    "UPDATE `heros_partie`
-                    SET `nom` = ':nom', `statut` = ':statut', `pv` = ':pv', `cagnotte` = ':cagnotte', `joueur_id` = ':joueur_id, , `heros_collection_id` = ':heros_collection_id WHERE `heros_partie_id` = :id;";
+                    SET `nom` = :nom, `statut` = :statut, `pv` = :pv, `cagnotte` = :cagnotte, `joueur_id` = :joueur, , `heros_collection_id` = :heros_collection 
+                    WHERE `heros_partie_id` = :id;";
         return $this->executeQuery( $query, $herosDatas );
     }
 

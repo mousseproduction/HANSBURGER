@@ -12,12 +12,12 @@ abstract class KernelModel {
    //	METHODES
    //-----------------------------------------------------
    public function __construct() {
-           $this->$SPDO = SPDO::getInstance();
+           $this->SPDO = SPDO::getInstance();
    }
 
     //TODO : Ajouter gestion d'erreurs
    public function executeQuery( string $requete, array $userInput = [] ) {
-        if( ( $ressource = $this->$SPDO->getPDO() ) !== false ) {
+        if( ( $ressource = $this->SPDO->getPDO() ) !== false ) {
             if( ( $reponse = $ressource->prepare( $requete ) ) !== false ) {
                 if( ( $reponse->execute( $userInput ) ) !== false ) {
                     if( strtolower( substr( $requete, 0, 6) ) == 'select' ){
@@ -47,7 +47,7 @@ abstract class KernelModel {
      *
      * @return db.
      */
-    public function getDb() { return $this->$db; }
+    public function getSPDO() { return $this->$SPDO; }
 }
 
 

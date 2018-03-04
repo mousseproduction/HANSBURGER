@@ -1,6 +1,6 @@
 <?php
 
-trait getAtrributeTable
+trait tgetAttributeTable
 {
  /**
      * getAttributeTable - return the attributes listed in the parameter array 

@@ -274,9 +274,9 @@ class Game {
      /****************************
       * GET THE VALUE OF heros1
       ****************************/ 
-     public function getHeros1()
+     public function getHerosActif()
      {
-      return $this->heros1;
+      return $this->herosActif;
      }
 
      /*****************************
@@ -284,10 +284,10 @@ class Game {
       *
       * @return  self
       ****************************/ 
-     public function setHeros1($heros1)
+     public function setHerosActif( $herosActif )
      {
-         if (is_string($heros1)) {
-            $this->heros1 = $heros1;
+         if (is_string($herosActif)) {
+            $this->herosActif = $herosActif;
          }
         return $this;
      }
@@ -295,9 +295,9 @@ class Game {
      /*****************************
       * GET THE VALUE OF heros2
       ****************************/ 
-     public function getHeros2()
+     public function getHerosInactif()
      {
-      return $this->heros2;
+      return $this->HerosInactif;
      }
 
      /********************************
@@ -305,10 +305,10 @@ class Game {
       *
       * @return  self
       *******************************/ 
-     public function setHeros2($heros2)
+     public function setHerosInactif($HerosInactif)
      {
-      if (is_string($heros2)) {
-            $this->heros2 = $heros2;
+      if (is_string($HerosInactif)) {
+            $this->HerosInactif = $HerosInactif;
          }
         return $this;
      }

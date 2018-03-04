@@ -66,6 +66,26 @@ session_start();
 
 /**
 *----------------------------------------------------
+* DATABASE CONFIG
+*----------------------------------------------------
+*/
+if( !defined( 'DBHOST' ) )
+    define( 'DBHOST', 'localhost' ); 
+
+if( !defined( 'DBNAME' ) )
+    define( 'DBNAME', 'hansburger' ); 
+
+if( !defined( 'DBCHARSET' ) )
+    define( 'DBCHARSET', 'UTF8' ); 
+
+if( !defined( 'DBUSER' ) )
+    define( 'DBUSER', 'root' ); 
+
+if( !defined( 'DBPWD' ) )
+    define( 'DBPWD', '' ); 
+
+/**
+*----------------------------------------------------
 * AUTOLOADER
 *----------------------------------------------------
 */

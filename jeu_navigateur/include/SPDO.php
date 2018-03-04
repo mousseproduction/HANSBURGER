@@ -25,19 +25,14 @@ class SPDO {
      * MAGIC METHODS
      * --------------------------------------------------
     **/
+
     /**
      * __construct - Class constructor
-     * @param   string  $host
-     *          string  $dbname
-     *          string  $login
-     *          string  $pass
-     *          string  $charset
-     *          string  $collate
      * @return  
     **/
     private function __construct() {
         try {
-            $this->_db = new PDO( 'mysql:host=' . DBHOST . ';dbname=' . DBNAME . ';charset=' . DBCHARSET , DBUSER, DBPWD, array( PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION ) );
+            $this->_db = new PDO( 'mysql:host=' . DBHOST . ';dbname=' . DBNAME . ';charset=' . DBCHARSET, DBUSER, DBPWD );
         } catch( PDOException $e ) {
             throw $e;
         }

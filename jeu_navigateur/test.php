@@ -1,5 +1,5 @@
 <?php
-error_reporting( E_ERROR );
-echo 'coucou';
-$c = new GameController;
-var_dump( $c );
+include( 'include/ini.php' );
+$gameController = new GameController;
+$gameController->initAction( 1, 2 );
+var_dump( $gameController );
