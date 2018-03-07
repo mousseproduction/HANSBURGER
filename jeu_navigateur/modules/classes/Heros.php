@@ -14,6 +14,13 @@ class Heros {
      */
     private $id;
 
+        /**
+     * statut = statut du heros
+     *
+     * @var [int]
+     */
+    private $statut;
+
     /**
      * nom = nom du heros model
      *
@@ -236,7 +243,7 @@ class Heros {
      * @param id the value to set.
      */
     public function setId($id) {
-        if( is_int( $id ) && $id >= 0 ) {
+        if( ctype_digit( $id ) && $id >= 0 ) {
             $this->id = $id;
         }
     }
@@ -272,7 +279,7 @@ class Heros {
      * @param pv the value to set.
      */
     public function setPv($pv) {
-        if( is_int( $pv ) ) {
+        if( ctype_digit( $pv ) ) {
             $this->pv = $pv;
         }
     }
@@ -290,7 +297,7 @@ class Heros {
      * @param cagnotte the value to set.
      */
     public function setCagnotte($cagnotte) {
-        if( is_int( $cagnotte ) ) {
+        if( ctype_digit( $cagnotte ) ) {
             $this->cagnotte = $cagnotte;
         }
     }
@@ -362,17 +369,19 @@ class Heros {
      *
      * @return heros_collection.
      */
-    public function getHeros_collection() { return $this->heros_collection; }
+    public function getHeros_collection() 
+    { 
+        return $this->heros_collection; 
+    }
 
     /**
      * Set heros_collection.
      *
      * @param heros_collection the value to set.
      */
-    public function setHeros_collection($heros_collection) {
-        if( is_array( $heros_collection) && isset( $heros_collection['id'] ) && is_int( $heros_collection['id'] ) && isset( $heros_collection['nom'] ) ) {
+    public function setHeros_collection( $heros_collection ) 
+    {
             $this->heros_collection = $heros_collection;
-        }
     }
 
     
@@ -393,7 +402,31 @@ class Heros {
     public function setCartes( array $cards)
     {
         foreach( $cards as $key => $card ) {
-            $this->cartes[ $card->getStatut() ][ $card->getId() ] = $cartes;
+            $this->cartes[ $card->getStatutNom() ][ $card->getId() ] = $card;
         }
+    }
+
+    /**
+     * Get statut = statut du heros
+     *
+     * @return  [int]
+     */ 
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set statut = statut du heros
+     *
+     * @param  [int]  $statut  statut = statut du heros
+     *
+     * @return  self
+     */ 
+    public function setStatut( $statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
     }
 }

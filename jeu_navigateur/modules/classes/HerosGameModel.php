@@ -4,7 +4,7 @@ class HerosGameModel extends KernelModel {
 
     public function add( Heros $heros ) {
         $herosDatas = $heros->getAttributeTable( [ 'statut', 'pv', 'cagnotte', 'joueur', 'heros_collection' ] );
-        $query =    "INSERT INTO `heros_partie` (`id`, `statut`,  `pv`, `cagnotte`, `joueur_id`, `heros_collection_id`)
+        $query =    "INSERT INTO `heros_partie` (`id`, `statut`,  `pv`, `cagnotte`, `joueur_id`, `heros_modele_id`)
         VALUES (NULL, :statut, :pv, :cagnotte, :joueur, :heros_collection);";
         return $this->executeQuery( $query, $herosDatas );
     }

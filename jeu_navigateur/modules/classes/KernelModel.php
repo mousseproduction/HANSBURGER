@@ -26,14 +26,14 @@ abstract class KernelModel {
                             return $data;
                     }
                     if( strtolower( substr( $requete, 0, 6) ) == 'insert' ) {
-                        $resultat = $reponse->lastInsertId();
+                        $resultat = $ressource->lastInsertId();
                         $reponse->closeCursor(); 
                         return $resultat;    
                     } 
                     $resultat = $reponse->rowCount();
                     $reponse->closeCursor(); 
                     return $resultat;    
-                }
+                }else echo "dans ton cul";
             }
         }
     }

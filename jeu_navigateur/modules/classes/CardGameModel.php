@@ -1,16 +1,16 @@
 <?php
 class CardGameModel extends KernelModel {
     
-    public function insert( Carte $carte ) {
+    public function add( Card $carte ) {
         $carteDatas = $carte->getAttributeTable( [ 'pv', 'degat', 'prix', 'carteCollectionId', 'herosId', 'typeId', 'statutId'  ]);
-        $query =    "INSERT INTO `carte_collection` (`id`, `pv`, `degat`, `prix`, `carte_collection_id`, `heros_partie_id`, `type_id`, `statut_id`  ) 
-                    VALUES (NULL, :nom, :pv, :degat, :prix, :carteCollectionId, :herosId, :typeId, :statutId );";
+        $query =    "INSERT INTO `carte_partie` (`id`, `pv`, `degat`, `prix`, `carte_modele_id`, `heros_partie_id`, `statut_id`, `type_id`  ) 
+                    VALUES (NULL, :pv, :degat, :prix, :carteCollectionId, :herosId, :statutId , :typeId );";
         return $this->executeQuery( $query, $carteDatas );
     }
     
-    public function update( Carte $carte ) {
+    public function update( Card $carte ) {
         $carteDatas = $carte->getAttributeTable( [ 'pv', 'degat', 'prix', 'carteCollectionId', 'herosId', 'typeId', 'statutId' ] );
-        $query =    "UPDATE `carte_collection`".
+        $query =    "UPDATE `carte_partie`".
             "SET `pv` = :pv,
             `degat` = :degat,
             `prix` = :prix,

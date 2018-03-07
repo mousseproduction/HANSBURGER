@@ -1,7 +1,7 @@
 <?php
 class Card {
 
-    use tGetAtrributeTable, tHydrate;
+    use tGetAttributeTable, tHydrate;
     
   
     /**

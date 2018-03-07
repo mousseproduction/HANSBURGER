@@ -15,6 +15,9 @@ Class GameController {
     private $cardGameModel;
     private $game;
 
+    private $updateList;
+    private $clickableList;
+
     /**
      *-----------------------------------------------------
      *  methodes
@@ -62,7 +65,7 @@ Class GameController {
         $burger->setCartes( $this->initHerosCards( $burger ) );
 
         //init a new game
-        $game = $this->initGame();
+        $game = $this->initGame( $hans->getId(), $burger->getId() );
         $this->setGame( $game );
         if (rand(1,2)==1) 
         {
@@ -88,14 +91,11 @@ Class GameController {
      * @return Heros
     **/
     public function initHeros( $playerId, $herosCollectionName ) {
-        echo 'coucou';
         $heros = $this->getHerosCollectionModel()->selectWhere( 'WHERE `nom` = "'.$herosCollectionName.'"' )[0];
-        var_dump($heros);
-        echo 'coucou';
-        $heros->setJoueur( $PlagerId );
+        $heros->setJoueur( $playerId );
+        $heros->setHeros_collection( $heros->getId() );
         $herosId = $this->getHerosGameModel()->add( $heros );
         $heros->setId( $herosId );
-        var_dump($heros);
         return $heros;
     }
     
@@ -107,27 +107,84 @@ Class GameController {
     **/
     public function initHerosCards( $heros ) {
         $cards = $this->getCardCollectionModel()->selectWhere( 'WHERE `heros_collection_id` = "'.$heros->getHeros_Collection().'"' );
+
+        /* Clonage Management*/
+        
+        $cardClones=[];
+        foreach ($cards as $key => $card) {
+            if($card->getTypeId() == 1 || $card->getTypeId() == 2  ){
+                $cardClones[] = clone $card ;  
+            }
+        }
+        $cards = array_merge( $cards, $cardClones );
+        
+
+
         foreach( $cards as $key => $card ) {
-            $card->setStatutId( 1 );
-            $card->setStatutName( 'Deck' );
+            $card->setStatutId( '1' );
+            $card->setStatutNom( 'Deck' );
+            $card->setCarteCollectionId($card->getId());
+            $card->setHerosId( $heros->getId() );
             $cardId = $this->getCardGameModel()->add( $card );
             $card->setId( $cardId );
+            echo $cardId;
+            
         }
+        var_dump($cards);
         return $cards;
+        
     }
 
     /**
      * initGame - create the new game in db
      * @return Game $game
     **/
-    public function initGame() {
-        $game = new Game;
-        $game->hydrate( ['dateDebutPartie'=>date('d'), 'cpt'=>1, 'dateFinPartie'=>null] );
+    public function initGame( $heros1Id , $heros2Id  ) {
+        $game = new Game(['dateDebutPartie'=>date('Y-m-d H:i:s'), 'cpt'=>'1', 'partie_terminee'=>false  , 'heros1Id'=>$heros1Id ,'heros2Id'=>$heros2Id ]);
+        
         $gameId = $this->getGameModel()->add( $game );
-        $game->getId( $gameId );
+        $game->setId( $gameId );
         return $game;
     }
 
+    /**
+     * update - update (in the database) the elements listed in $this->toUpdateList
+     * 
+    **/
+    public function update() {
+        foreach( $this->updateList as $key => $object ) {
+            $class = get_class( $object );
+            if( $class == 'Creature' || $class == 'Spell' ) {
+                $cardGameModel->update( $object );
+            }
+            if( $class == 'Heros' ) {
+                $herosGameModel->update( $object );
+            }
+            if( $class == 'Game' ) {
+                $GameModel->update( $object );
+            }
+        }
+    }
+
+
+    /**
+     * addToUpdateList - ajoute l'objet à updateList
+    **/
+    public function addToUpdateList( $object ) {
+        $this->updateList[] = $object;
+    }
+    
+    
+
+    /**
+     * listerCliquable - list the clickable elements for the next view
+     * 
+     * @param string $mode - define which elements have to be listed
+     * 
+    **/
+    public function listerCliquable( string $mode ) {
+        
+    }
     /**
      *-----------------------------------------------------
      *  GETTERS AND SETTERS

@@ -6,16 +6,12 @@ class Game {
      private $id;
      private $dateDebutPartie;
      private $cpt;
-     private $dateFinPartie;
+     private $partie_terminee;
      private $heros1Id;
      private $heros2Id;
      private $herosActif;
      private $herosInactif;
      private $plateau;
-
-     private $updateList; //tableau des objets à mettre à jour en base de donnée
-     private $clickableList; //liste des objets qui doivent être cliquables
-
 
 
     function __construct( $data = [])
@@ -106,44 +102,7 @@ class Game {
     }
 
 
-    /**
-     * update - update (in the database) the elements listed in $this->toUpdateList
-     * 
-    **/
-    public function update() {
-        foreach( $this->updateList as $key => $object ) {
-            $class = get_class( $object );
-            if( $class == 'Creature' || $class == 'Spell' ) {
-                $cardGameModel->update( $object );
-            }
-            if( $class == 'Heros' ) {
-                $herosGameModel->update( $object );
-            }
-            if( $class == 'Game' ) {
-                $GameModel->update( $object );
-            }
-        }
-    }
-
-
-    /**
-     * addToUpdateList - ajoute l'objet à updateList
-    **/
-    public function addToUpdateList( $object ) {
-        $this->updateList[] = $object;
-    }
     
-    
-
-    /**
-     * listerCliquable - list the clickable elements for the next view
-     * 
-     * @param string $mode - define which elements have to be listed
-     * 
-    **/
-    public function listerCliquable( string $mode ) {
-        
-    }
 
     
     
@@ -198,7 +157,7 @@ class Game {
       **************************/ 
      public function setId($id)
      {
-        if( is_int( $id ) && $id >= 0 ) 
+        if( ctype_digit( $id ) && $id >= 0 ) 
         {
             $this->id = $id;
         }
@@ -220,10 +179,10 @@ class Game {
       ******************************/ 
      public function setDateDebutPartie($date)
      {
-         if( checkdate($month , $day , $year) !=false)
-         {
-            $this->date = $dateDebutPartie;
-         }
+        /*  if( checkdate($month , $day , $year) !=false)
+         {} */
+            $this->dateDebutPartie = $date;
+         
      return $this;
      }
 
@@ -242,31 +201,9 @@ class Game {
       ****************************/ 
      public function setCpt($cpt)
      {
-        if( is_int( $id ) && $id >= 0 ) 
+        if( ctype_digit( $cpt ) && $cpt >= 0 ) 
         {
-            $this->id = $id;
-        }
-      return $this;
-     }
-
-     /****************************
-      * GET THE VALUE OF dateFinPartie
-      *****************************/ 
-     public function getDateFinPartie()
-     {
-      return $this->dateFinPartie;
-     }
-
-     /**************************
-      * SET THE VALUE OF dateFinPartie
-      *
-      * @return  self
-      ************************/ 
-     public function setDateFinPartie($dateFinPartie)
-     {
-        if( checkdate($month , $day , $year) !=false)
-        {
-           $this->dateFinPartiefin = $dateFinPartie;
+            $this->cpt = $cpt;
         }
       return $this;
      }
@@ -286,9 +223,7 @@ class Game {
       ****************************/ 
      public function setHerosActif( $herosActif )
      {
-         if (is_string($herosActif)) {
             $this->herosActif = $herosActif;
-         }
         return $this;
      }
 
@@ -305,11 +240,9 @@ class Game {
       *
       * @return  self
       *******************************/ 
-     public function setHerosInactif($HerosInactif)
+     public function setHerosInactif($herosInactif)
      {
-      if (is_string($HerosInactif)) {
-            $this->HerosInactif = $HerosInactif;
-         }
+            $this->herosInactif = $herosInactif;
         return $this;
      }
 
@@ -328,9 +261,67 @@ class Game {
       *******************************/ 
      public function setPlateau($plateau)
      {
-         if(is_array($plateau)){
             $this->plateau = $plateau;
-         }
       return $this;
+     }
+
+     /**
+      * Get the value of partie_terminee
+      */ 
+     public function getPartie_terminee()
+     {
+          return $this->partie_terminee;
+     }
+
+     /**
+      * Set the value of partie_terminee
+      *
+      * @return  self
+      */ 
+     public function setPartie_terminee($partie_terminee)
+     {
+          $this->partie_terminee = $partie_terminee;
+
+          return $this;
+     }
+
+     /**
+      * Get the value of heros1Id
+      */ 
+     public function getHeros1Id()
+     {
+          return $this->heros1Id;
+     }
+
+     /**
+      * Set the value of heros1Id
+      *
+      * @return  self
+      */ 
+     public function setHeros1Id($heros1Id)
+     {
+          $this->heros1Id = $heros1Id;
+
+          return $this;
+     }
+
+     /**
+      * Get the value of heros2Id
+      */ 
+     public function getHeros2Id()
+     {
+          return $this->heros2Id;
+     }
+
+     /**
+      * Set the value of heros2Id
+      *
+      * @return  self
+      */ 
+     public function setHeros2Id($heros2Id)
+     {
+          $this->heros2Id = $heros2Id;
+
+          return $this;
      }
 }
