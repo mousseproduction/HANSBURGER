@@ -1,0 +1,311 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*
+font-family:'Arvo', serif;
+font-family:'Open Sans', sans-serif;
+*/
+
+html { font-size:62.5%; }
+/**
+ * --------------------------------------------------
+ * STYLE GENERAL
+ * --------------------------------------------------
+**/
+*,*::before,*::after {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+
+    -webkit-background-clip:padding-box;
+    -moz-background-clip:padding-box;
+    -ms-background-clip:padding-box;
+    -o-background-clip:padding-box;
+    background-clip:padding-box;
+}
+:hover,:focus,:active { outline:none; }
+/* --------------------------- */
+
+
+
+/**
+ * --------------------------------------------------
+ * BALISES
+ * --------------------------------------------------
+**/
+/* ------    générales    ------ */
+body {
+    background:#ffffff;
+    cursor:default;
+    font-family:'Open Sans', sans-serif;
+    font-size:1.1em;
+    margin:0;
+    display:flex;
+    flex-direction:row;
+    height:100vh;
+    justify-content:center;
+    align-items:stretch;
+    // width:80%;
+}
+// p { margin:0 0 30px 0;margin:0 0 3rem 0; }
+strong { font-weight:700; }
+em { font-style:italic; }
+figure {
+    line-height:1;
+    margin:0;
+    padding:0;
+    position:relative;
+}
+    figure > img {
+        height:auto !important;
+        max-width:100%;
+    }
+a { display:inline-block; }
+h1,h2,h3,h4,h5,h6 {
+    margin:0;
+    padding:0;
+    white-space:nowrap;
+}
+
+.carte {
+    height:80px;
+    margin:1px 5px;
+ }
+
+.hero {
+   height:160px;
+   margin:1px 5px;
+}
+
+.pictovie {
+  position:absolute ;top:170px; left:110px;
+}
+.pictodegat {
+    position:absolute ;top:170px; left:55px;
+  }
+  .pictocout {
+    position:absolute ;top:170px; left:10px;
+}
+
+.picto:hover {
+    transform:scale(2,2);
+}
+/* ------    aside    ------ */
+aside[role="asidegauche"] {
+    background-color:lightgrey;
+    margin:0;
+    z-index:999;
+}
+aside[role="asidedroite"] {
+    background-color:lightgrey;
+    margin:0;
+    z-index:999;
+}
+
+.deco{
+    border:2px solid black;
+    border-radius:10px;
+    height: 20%
+}
+
+.historique{
+    border:2px solid black;
+    border-radius:10px;
+    height: 80%;
+}
+/* ------    main    ------ */
+
+section[role="hero1"] {
+    background-color:darkgrey;
+    margin:0;
+    height:50%;
+   }
+
+.deckhero1{
+    border:2px solid #ffffff;
+    border-radius:10px;
+    height:50%;
+    text-align: justify;
+    margin: 0;
+}
+
+.mainhero1{
+    border:2px solid #ffffff;
+    border-radius:10px;
+    vertical-align: middle;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top:0;
+    padding-bottom:0;
+    position:relative;
+    height: 50%;
+    }
+
+.cartemain {
+    height:100%;
+    margin:1px 5px;
+ }
+.cartemain:nth-child(1) {
+   position: absolute;
+   z-index: 1;
+}
+
+.cartemain:nth-child(2) {
+    position: absolute; left:40px;
+    z-index: 2;
+ }
+ .cartemain:nth-child(3) {
+    position: absolute; left:70px;
+    z-index: 3;
+ }
+ .cartemain:nth-child(4) {
+    position: absolute; left:100px;
+    z-index: 4;
+ }
+  .cartemain:nth-child(5) {
+    position: absolute; left:130px;
+    z-index: 5;
+ }
+  .cartemain:nth-child(6) {
+    position: absolute; left:160px;
+    z-index: 6;
+ }
+  .cartemain:nth-child(7) {
+    position: absolute; left:190px;
+    z-index: 7;
+ }
+  .cartemain:nth-child(8) {
+    position: absolute; left:210px;
+    z-index: 8;
+ }
+  .cartemain:nth-child(9) {
+    position: absolute; left:240px;
+    z-index:9;
+ }
+  .cartemain:nth-child(10) {
+    position: absolute; left:270px;
+    z-index: 10;
+ }
+ .cartemain:hover {
+    transform:scale(2,2);
+    z-index: 999;
+}
+
+.hero1{
+    /* flex-grow:1;
+    display:flex;
+    justify-content:center;
+    align-items:center; */
+    /*// width:15%;*/
+    background-image: url(images/BURGER-Heros.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+
+}
+.piochehero1{
+    /* display:flex;
+    flex-grow:1;
+    justify-content:center;
+    align-items:center; */
+    height:50%;
+    width:15%;
+}
+.attentehero1{
+    border:2px solid #ffffff;
+    border-radius:10px;
+    height: 50%;
+    /* display:flex;
+    flex-grow:1;
+    justify-content:center;
+    align-items:center; */
+}
+
+.combathero1{
+    border:2px solid #ffffff;
+    border-radius:10px;
+    height: 50%;
+    /* display:flex;
+    flex-grow:1;
+    justify-content:center;
+    align-items:center; */
+}
+
+section[role="hero2"] {
+    background-color:grey;
+    margin:0;
+    z-index:999;
+    /* display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:stretch;
+    flex-grow:1; */
+    height:50%;
+}
+
+.deckhero2{
+    border:2px solid #ffffff;
+    border-radius:10px;
+    /* display:flex;
+    flex-grow:2;
+    flex-direction:row-reverse;
+    justify-content:space-between; */
+}
+
+.mainhero2{
+    border:2px solid #ffffff;
+    border-radius:10px;
+    /* display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    flex-grow:2;
+    flex-wrap:wrap; */
+    width:50%;
+    }
+
+.hero2{
+/*    // flex-grow:1;*/
+    /* display:flex;
+    justify-content:center;
+    align-items:center; */
+/*    // position:absolute;
+    // height:30%;
+    // width:15%;*/
+}
+.piochehero2{
+    /* display:flex;
+    // flex-grow:1;
+    justify-content:center;
+    align-items:center; */
+/*    // position:absolute;
+    // height:30%;
+    // width:15%;*/
+}
+.attentehero2{
+    border:2px solid #ffffff;
+    border-radius:10px;
+    /* display:flex;
+    flex-grow:1;
+    justify-content:center;
+    align-items:center; */
+}
+
+.combathero2{
+    border:2px solid #ffffff;
+    border-radius:10px;
+    /* display:flex;
+    flex-grow:1;
+    justify-content:center;
+    align-items:center; */
+}
+
+
+
+
+
+
+

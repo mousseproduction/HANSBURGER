@@ -1,5 +1,6 @@
 <?php
 include( 'include/ini.php' );
 $gameController = new GameController;
-$gameController->initAction( 1, 2 );
+$gameController->loadGame( 4 );
+include( 'web/board.php');
 

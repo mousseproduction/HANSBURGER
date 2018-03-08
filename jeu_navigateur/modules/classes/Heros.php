@@ -126,8 +126,8 @@ class Heros {
      */
     public function moveCard ( Card $card, $destination ){
         $destination = ucfirst( $destination );
-        $this->cartes[ $destination ][] = $card;//On la stocke dans la zone d'arrivée
-        unset($this->cartes[ $card->getStatutNom() ][ $carte->getId() ]);// On la supprime dans la zone de départ
+        $this->cartes[ $destination ][ $card->getId() ] = $card;//On la stocke dans la zone d'arrivée
+        unset($this->cartes[ $card->getStatutNom() ][ $card->getId() ]);// On la supprime dans la zone de départ
         $card->setStatutNom( $destination );//On change le statut de la carte choisie
         switch( $destination ) {
             case 'Main' :
@@ -143,7 +143,6 @@ class Heros {
                 $card->setStatutId( 5 );
                 break;
         }
-        $game->addToUpdateList( $card );
     } 
 
 
@@ -189,14 +188,14 @@ class Heros {
      * @param [int] $nbpioche
      * @return void
      */
-    public function draw ($nbpioche=1){//Nombre de carte à piocher ( 1 par défault)
-    $selection=array_rand($this->cartes['Deck'],$nbpioche);//Choisis au hasard une ou plusieurs cartes dans le deck identifiée avec leur index
+    public function draw($nbpioche=1){//Nombre de carte à piocher ( 1 par défault)
+    $selection=array_rand( $this->getCartes()['Deck'], $nbpioche);//Choisis au hasard une ou plusieurs cartes dans le deck identifiée avec leur index
         if( is_array( $selection ) ) {
-            foreach ($selection as $carte) {//Pour chaque carte selectionnée (index)
-                $this->moveCard($carte,'Main');//On déplace la carte du deck vers la main
+            foreach ( $selection as $cardId ) {//Pour chaque carte selectionnée (index)
+                $this->moveCard( $this->getCartes()['Deck'][$cardId], 'Main');//On déplace la carte du deck vers la main
                 }
         } else {
-                $this->moveCard ($selection, 'Main');
+                $this->moveCard( $this->getCartes()['Deck'][$cardId], 'Main');//On déplace la carte du deck vers la main
         }
     }
 

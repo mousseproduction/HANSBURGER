@@ -1,0 +1,25 @@
+nom,pv,degat,prix,type,@illustration,description,@bordure,@pictovie,@pictoprix,@pictodegat
+Supermad,9,9,9,Créature,@test/supermad.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+"DJ Da funky Code",2,3,2,Créature,@test/dj_da_funky_code.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+Simbale,1,2,1,Créature,@test/simbale.psd,"Il donne le LA !",aaa,,,,test/
+"Gong fu panda",4,2,4,Créature,@test/gong_fu_panda.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+"Hannibal lecteur",3,5,3,Créature,@test/hannibal_lecteur.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+Gladbatteur,6,8,7,Créature,@test/gladbatteur.psd,"Il bat les tambours de guerre.",aaa,,,,test/
+"Pinguin's united",3,1,1,Bouclier,@test/pinguin's_united.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+Spidermaid,6,3,3,Bouclier,@test/spidermaid.psd,"On se fait une toile ?",aaa,,,,test/
+Interstellarsen,0,4,3,Sort,@test/interstellarsen.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+"Jack pipow",0,6,5,Sort,@test/jack_pipow.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+Prinception,0,1,1,Sort,@test/prinception.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+"Maître Soda",9,9,9,Créature,@test/maître_soda.psd,"Le sucre redouter tu dois !",aaa,,,,test/
+"Don Pepperoni",6,8,7,Créature,@test/don_pepperoni.psd,"Ma si tou t'en prend à ma famille ! Tou va finir en rondelles !",aaa,,,,test/
+Ke-babacool,1,1,1,Créature,@test/ke-babacool.psd,"Je suis affectueux et étouffant.",aaa,,,,test/
+Skate-chup',3,2,2,Créature,@test/skate-chup'.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/
+Do-nut-eat,3,4,3,Créature,@test/do-nut-eat.psd,"Je suis délicieusement indigeste.",aaa,,,,test/
+"Miss Meuf in",4,2,4,Créature,@test/miss_meuf_in.psd,"Je suis à croquer, dur de résister...",aaa,,,,test/
+"Tahin Sushi ",5,6,5,Créature,@test/tahin_sushi .psd,"Je vais te tailler en sashimi",aaa,,,,test/
+"Menu XXL",3,1,1,Bouclier,@test/menu_xxl.psd,"Vous allez avoir beaucoup de mal à le finir !",aaa,,,,test/
+"File d'attente",6,3,3,Bouclier,@test/file_d'attente.psd,"Vous allez pas mal poireauter !",aaa,,,,test/
+"Enfants agités",0,2,1,Sort,@test/enfants_agités.psd,"Ils sont totalement insupportables !",aaa,,,,test/
+"Sol glissant",0,5,3,Sort,@test/sol_glissant.psd,"Pas évident de tenir bon !",aaa,,,,test/
+"Intoxication alimentaire",0,7,5,Sort,@test/intoxication_alimentaire.psd,"Vous êtes bon pour rester couché.",aaa,,,,test/
+Badman,5,7,5,Créature,@test/badman.psd,"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid.",aaa,,,,test/

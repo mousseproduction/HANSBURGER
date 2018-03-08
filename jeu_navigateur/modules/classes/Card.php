@@ -45,13 +45,7 @@ class Card {
      * @return string $cardHtml
      */
     public function display( string $mode = normale ) {
-        if( $mode == 'normale' ) {
-            $cardHtml = '';
-        }
-        if( $mode == 'clicable' ) {
-            $cardHtml = '';
-        }
-        return $cardHtml;
+        echo '<span>' . $this->getNom() . '</span>';
     }
 
 

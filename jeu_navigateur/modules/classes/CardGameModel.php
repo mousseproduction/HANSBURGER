@@ -3,7 +3,7 @@ class CardGameModel extends KernelModel {
     
     public function add( Card $carte ) {
         $carteDatas = $carte->getAttributeTable( [ 'pv', 'degat', 'prix', 'carteCollectionId', 'herosId', 'typeId', 'statutId'  ]);
-        $query =    "INSERT INTO `carte_partie` (`id`, `pv`, `degat`, `prix`, `carte_modele_id`, `heros_partie_id`, `statut_id`, `type_id`  ) 
+        $query =    "INSERT INTO `carte_partie` (`id`, `pv`, `degat`, `prix`, `carte_collection_id`, `heros_partie_id`, `statut_id`, `type_id`  ) 
                     VALUES (NULL, :pv, :degat, :prix, :carteCollectionId, :herosId, :statutId , :typeId );";
         return $this->executeQuery( $query, $carteDatas );
     }
@@ -39,7 +39,7 @@ class CardGameModel extends KernelModel {
                     `illustration`.`path` AS illustrationPath,
                     `carte_collection`.`description` AS description,
                     FROM `carte_partie`
-                    INNER JOIN `carte_collection` ON `carte_collection`.`id` = `carte_partie`.`carte_collectio_id`
+                    INNER JOIN `carte_collection` ON `carte_collection`.`id` = `carte_partie`.`carte_collection_id`
                     INNER JOIN `heros_partie` ON `carte_partie`.`heros_partie_id` = `heros_partie`.`id`
                     INNER JOIN `illustration` ON `illustration`.`id` = `carte_collection`.`illustration_id`
                     INNER JOIN `statut` ON `carte_partie`.`statut_id` = `statut`.`id`

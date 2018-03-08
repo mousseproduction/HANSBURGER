@@ -19,20 +19,25 @@ class HerosGameModel extends KernelModel {
 
     public function selectWhere( string $condition = '') {
         $query =    'SELECT  `heros_partie`.`id` AS id,
-                    `heros_partie`.`nom` AS nom,
+                    `heros_collection`.`nom` AS nom,
                     `heros_partie`.`statut` AS statut,
                     `heros_partie`.`pv`AS pv,
                     `heros_partie`.`cagnotte` AS cagnotte,
+                    `heros_partie`.`joueur_id` AS joueur,
+                    `heros_partie`.`heros_modele_id` AS heros_collection,
                     `illustration`.`id` AS illustrationId,
-                    `illustration`.`path` AS illustrationPath,
+                    `illustration`.`path` AS illustrationPath
                     FROM `heros_partie`
-                    INNER JOIN `heros_model` ON `heros_model`.`id` = `heros_partie`.`heros_collection_id`
+                    INNER JOIN `heros_collection` ON `heros_collection`.`id` = `heros_partie`.`heros_modele_id`
                     INNER JOIN `illustration` ON `illustration`.`id` = `heros_collection`.`illustration_id`
                     WHERE'. $condition . ';';
 
-        $hero = $this->executeQuery( $query );
-
-        return $hero[0];
+        $datas = $this->executeQuery( $query );
+        var_dump( $datas );
+        foreach( $datas as $key => $data ) {
+            $objects[] = new Heros( $data );
+        }
+        return $objects[0];
     }
 
     public function delete( string $condition ) {

@@ -179,11 +179,8 @@ class Game {
       ******************************/ 
      public function setDateDebutPartie($date)
      {
-        /*  if( checkdate($month , $day , $year) !=false)
-         {} */
-            $this->dateDebutPartie = $date;
-         
-     return $this;
+        $this->dateDebutPartie = $date;
+         return $this;
      }
 
      /*****************************
@@ -221,7 +218,7 @@ class Game {
       *
       * @return  self
       ****************************/ 
-     public function setHerosActif( $herosActif )
+     public function setHerosActif( Heros $herosActif )
      {
             $this->herosActif = $herosActif;
         return $this;
@@ -232,7 +229,7 @@ class Game {
       ****************************/ 
      public function getHerosInactif()
      {
-      return $this->HerosInactif;
+      return $this->herosInactif;
      }
 
      /********************************
@@ -240,7 +237,7 @@ class Game {
       *
       * @return  self
       *******************************/ 
-     public function setHerosInactif($herosInactif)
+     public function setHerosInactif( Heros $herosInactif)
      {
             $this->herosInactif = $herosInactif;
         return $this;
@@ -301,7 +298,6 @@ class Game {
      public function setHeros1Id($heros1Id)
      {
           $this->heros1Id = $heros1Id;
-
           return $this;
      }
 

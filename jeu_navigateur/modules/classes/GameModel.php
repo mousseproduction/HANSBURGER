@@ -18,24 +18,21 @@ class GameModel extends KernelModel
     }
     
     public function selectWhere( string $condition ) {
-        $query =    'SELECT  `partie`.`id_partie` AS id,
-                    `partie`.`date` AS date,
-                    `partie`.`cpt_tour`AS cpt,
-                    `partie`.`partie_terminee`AS finpartie,
-                    `partie`.`heros1_partie_id`AS heros1,
-                    `partie`.`heros2_partie_id`AS heros2,
-                    `partie`.`plateau_id`AS plateau,
-                    INNER JOIN `heros_partie` ON `partie`.`heros1_partie_id` = `heros_partie`.`id`
-                    INNER JOIN `heros_partie` ON `partie`.`heros2_partie_id` = `heros_partie`.`id`
-                    INNER JOIN `plateau` ON `partie`.`plateau_id` = `plateau`.`id`
+        $query =    'SELECT `partie`.`id` AS id,
+                            `partie`.`date_debut` AS dateDebutPartie,
+                            `partie`.`cpt_tour`AS cpt,
+                            `partie`.`partie_terminee`AS partieTerminee,
+                            `partie`.`heros1_partie_id`AS heros1Id,
+                            `partie`.`heros2_partie_id`AS heros2Id,
+                            `partie`.`plateau_id`AS plateau
+                     FROM `partie`
                     ' . $condition . ';';
 
-        $partieDatas = $this->executeQuery( $query );
-        foreach( $partieDatas as $key => $partieDatas ) {
-            $partie[ $partieDatas['id'] ] = new Partie( $partieDatas );
+        $datas = $this->executeQuery( $query );
+        foreach( $datas as $key => $data ) {
+            $parties[] = new Game( $data );
         }
-
-        return $partie;
+        return $parties[0];
     }
     
     public function delete( string $condition ) {

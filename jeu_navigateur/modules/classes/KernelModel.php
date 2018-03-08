@@ -15,7 +15,7 @@ abstract class KernelModel {
            $this->SPDO = SPDO::getInstance();
    }
 
-    //TODO : Ajouter gestion d'erreurs
+    //TODO : Ajouter gestion d'erreurs ( exeptions )
    public function executeQuery( string $requete, array $userInput = [] ) {
         if( ( $ressource = $this->SPDO->getPDO() ) !== false ) {
             if( ( $reponse = $ressource->prepare( $requete ) ) !== false ) {
@@ -33,7 +33,7 @@ abstract class KernelModel {
                     $resultat = $reponse->rowCount();
                     $reponse->closeCursor(); 
                     return $resultat;    
-                }else echo "dans ton cul";
+                }
             }
         }
     }
