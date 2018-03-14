@@ -51,19 +51,19 @@ class Game {
      * @param [int] $carteAttaquante
      * @return void
      */
-    public function attack($assailantIndex, $targetIndex  = null ) {//Numéro de carte choisie par le heros
+    public function attack(int $assailantIndex, $targetIndex  = null ) {//Numéro de carte choisie par le heros
         if( ( $assailantCard = $this->getHerosActif()->isCardInZone( $assailantIndex, 'Combat' ) )  !== false ) {
             if( $targetIndex == null ) {
-                $game->listClickable( 'targetable' );
+                //$game->listClickable( 'targetable' );
             } else {
                 if( ( $shieldIndexList = $this->getHerosInactif()->isThereShield() ) !== false ) {
-                    if( !is_in_array( $targetIndex, $shieldIndexList )) {
+                    if( !in_array( $targetIndex, $shieldIndexList )) {
                         $message = "C'est la première et la dernière fois..... La prochaine fois je sors le gant en latex";
                         return $message;
                     }
                 }
-                if( is_int( $targetIndex ) ) {
-                    if( ( $targetCard = $this->getHerosActif()->isCardInZone( $targetIndex, 'Combat' ) )  !== false ) {
+                if( is_numeric( $targetIndex ) ) {
+                    if( ( $targetCard = $this->getHerosInactif()->isCardInZone( $targetIndex, 'Combat' ) )  !== false ) {
                         $assailantCard->hit( $targetCard );
                     } else {
                         return $message = "C'est la première et la dernière fois..... La prochaine fois je sors le gant en latex";
@@ -72,9 +72,9 @@ class Game {
                     $assailantCard->hit( $this->getHerosInactif() );
                 }
                 $this->getHerosActif()->moveCard( $assailantCard, 'Attente' );
-                $game->listClickable( 'buyable' );
-                $game->listClickable( 'fightable' );
-            }
+                //$game->listClickable( 'buyable' );
+                //$game->listClickable( 'fightable' ); 
+                }
         }
     }
 
@@ -132,13 +132,11 @@ class Game {
      * 
     **/
     public function allocateCagnotte( Heros $heros) {
-        var_dump( $heros->getCagnotte() );
         $cagnotte = ceil( $this->getCpt() / 2 );
         if( $cagnotte > 10 ) {
             $cagnotte = 10;
         }
         $heros->setCagnotte( $cagnotte );
-        var_dump( $heros->getCagnotte() );
     }
     
 

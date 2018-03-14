@@ -196,6 +196,26 @@ class Heros {
         $this->setCagnotte( $this->getCagnotte() - $card->getPrix() );
     }
     
+    /**
+     * isThereShield - 
+     * 
+    **/
+    public function isThereShield(  ) {
+        if( isset( $this->getCartes()['Combat']) && !empty($this->getCartes()['Combat']) ) {
+            $shieldIndexList=[];
+            foreach( $this->getCartes()['Combat'] as $key => $card ) {
+                if( $card->getTypeNom == 'Bouclier' ) {
+                    $shieldIndexList[] = $card->getId();
+                } 
+                if( empty( $shieldIndexList ) ) {
+                    return false;
+                } else {
+                    return $shieldIndexList;
+                }
+            }
+        }
+    }
+    
          
 
  

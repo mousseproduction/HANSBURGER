@@ -46,5 +46,6 @@ $gameController->getGame()->pass();
 $gameController->getGame()->pass();
 $gameController->getGame()->pass();
 $gameController->getGame()->pass();
-var_dump( $gameController);
-$message =  $gameController->getGame()->invoke(120);
+$gameController->getGame()->attack( 84, 105 );
+
+include( 'modules/game/board.php');

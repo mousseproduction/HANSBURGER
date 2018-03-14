@@ -1,7 +1,7 @@
 <?php
 class Card {
 
-    use tGetAttributeTable, tHydrate;
+    use tGetAttributeTable, tHydrate, tSuffer;
     
   
     /**
@@ -45,7 +45,7 @@ class Card {
      * @return string $cardHtml
      */
     public function display( string $mode = normale ) {
-        echo '<p>' . $this->getNom() . '</p>';
+        echo '<p>' . $this->getNom() . ' //type:' . $this->getTypeNom() . ' //statut:' . $this->getStatutNom() . ' //id:' .$this->getId() . ' //pv:' . $this->getPv() . '</p>';
     }
 
 
@@ -54,9 +54,9 @@ class Card {
      *
      * @param $target
     **/
-    private function hit( $target ) {
+    public function hit( $target ) {
         $target->suffer( $this->getDegat() );
-        if( is_a( $target, 'Creature' ) ) {
+        if( is_a( $target, 'Card' ) ) {
             $this->suffer( $target->getDegat() );
         }
     }
