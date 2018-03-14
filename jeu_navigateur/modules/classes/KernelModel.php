@@ -33,9 +33,11 @@ abstract class KernelModel {
                     $resultat = $reponse->rowCount();
                     $reponse->closeCursor(); 
                     return $resultat;    
-                }
-            }
-        }
+                }echo 'dans ton cul';
+            }echo 'dans ton cul';
+
+        }echo 'dans ton cul';
+
     }
 
     //-----------------------------------------------------

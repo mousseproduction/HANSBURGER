@@ -29,18 +29,19 @@ class CardGameModel extends KernelModel {
                     `carte_partie`.`degat` AS degat,
                     `carte_partie`.`prix` AS prix,
                     `heros_partie`.`id` AS herosId,
-                    `heros_partie`.`nom` AS herosNom,
-                    `statut`.`ìd` AS statutId,
+                    `heros_collection`.`nom` AS herosNom,
+                    `statut`.`id` AS statutId,
                     `statut`.`libelle` AS statutNom,
                     `type`.`id` AS typeId,
                     `type`.`libelle` AS typeNom,
                     `carte_collection`.`id` AS carteCollectionId,
                     `illustration`.`id` AS illustrationId,
                     `illustration`.`path` AS illustrationPath,
-                    `carte_collection`.`description` AS description,
+                    `carte_collection`.`description` AS description
                     FROM `carte_partie`
                     INNER JOIN `carte_collection` ON `carte_collection`.`id` = `carte_partie`.`carte_collection_id`
                     INNER JOIN `heros_partie` ON `carte_partie`.`heros_partie_id` = `heros_partie`.`id`
+                    INNER JOIN `heros_collection` ON `heros_partie`.`heros_modele_id` = `heros_collection`.`id`
                     INNER JOIN `illustration` ON `illustration`.`id` = `carte_collection`.`illustration_id`
                     INNER JOIN `statut` ON `carte_partie`.`statut_id` = `statut`.`id`
                     INNER JOIN `type` ON `carte_partie`.`type_id` = `type`.`id`
@@ -49,7 +50,7 @@ class CardGameModel extends KernelModel {
         $datas = $this->executeQuery( $query );
         $objects = [];
         foreach( $datas as $key => $data ) {
-            $objects[ $data['id'] ] = new Carte( $data );
+            $objects[ $data['id'] ] = new Card( $data );
         }
         return $objects;
     }

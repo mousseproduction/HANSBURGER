@@ -30,10 +30,10 @@ class HerosGameModel extends KernelModel {
                     FROM `heros_partie`
                     INNER JOIN `heros_collection` ON `heros_collection`.`id` = `heros_partie`.`heros_modele_id`
                     INNER JOIN `illustration` ON `illustration`.`id` = `heros_collection`.`illustration_id`
-                    WHERE'. $condition . ';';
+                    '. $condition . ';';
 
         $datas = $this->executeQuery( $query );
-        var_dump( $datas );
+        $objects = [];
         foreach( $datas as $key => $data ) {
             $objects[] = new Heros( $data );
         }

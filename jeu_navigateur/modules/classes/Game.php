@@ -33,12 +33,12 @@ class Game {
                 if( method_exists( $card, 'onInvocation' ) ) {
                     $card->onInvocation();
                 }
-                $game->listClickable( 'buyable' );
-                $game->listClickable( 'fightable' );
+                //$game->listClickable( 'buyable' );
+                //$game->listClickable( 'fightable' );
             } else {
-                $game->listClickable( 'buyable' );
-                $game->listClickable( 'fightable' );
-                return $message = "C'est la première et la dernière fois..... La prochaine fois j'appelle la crampe";
+                //$game->listClickable( 'buyable' );
+                //$game->listClickable( 'fightable' );
+                return  "C'est la première et la dernière fois..... La prochaine fois j'appelle la crampe";
             }
         return false;
         }
@@ -83,10 +83,11 @@ class Game {
      * 
     **/
     public function pass() {
-        $this->setCpt( $this->getCpt() + 1 );
-        $this->getHerosActif()->endRound();
+        $cpt = $this->getCpt()+1;
+        $this->setCpt( $cpt );
+        $this->endRound( $this->getHerosActif() );
         $this->switchHeros();
-        $this->getHerosActif()->beginRound();
+        $this->beginRound( $this->getHerosActif() );
     }
     
 
@@ -95,13 +96,50 @@ class Game {
     **/
     public function switchHeros()
     {
-         $tmp = $this->herosActif;
+        $tmp = $this->herosActif;
         $this->herosActif = $this->herosInactif;
         $this->herosInactif = $tmp;
         
     }
 
 
+/**
+     * Déplace les cartes de la zone d'attente à la zone de combat
+     */
+    public function endRound( Heros $heros )
+        {
+            if( isset( $heros->getCartes()['attente'] ) ) {
+                foreach($heros->getCartes()['attente'] as $key => $card) 
+                {
+                    $heros->moveCard( $card, 'Combat' );
+                }   
+            }
+        }
+
+
+    /**
+     * beginRound - pioche une carte et attribue la cagnotte
+     * 
+    **/
+    public function beginRound( Heros $heros ) {
+        $heros->draw();
+        $this->allocateCagnotte( $heros );
+    }
+
+
+    /**
+     * allocateCagnotte - attribue la cagnotte
+     * 
+    **/
+    public function allocateCagnotte( Heros $heros) {
+        var_dump( $heros->getCagnotte() );
+        $cagnotte = ceil( $this->getCpt() / 2 );
+        if( $cagnotte > 10 ) {
+            $cagnotte = 10;
+        }
+        $heros->setCagnotte( $cagnotte );
+        var_dump( $heros->getCagnotte() );
+    }
     
 
     
@@ -196,13 +234,10 @@ class Game {
       *
       * @return  self
       ****************************/ 
-     public function setCpt($cpt)
+     public function setCpt( $cpt)
      {
-        if( ctype_digit( $cpt ) && $cpt >= 0 ) 
-        {
-            $this->cpt = $cpt;
-        }
-      return $this;
+          $this->cpt = $cpt;
+          return $this;
      }
 
      /****************************

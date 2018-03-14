@@ -45,7 +45,7 @@ class Card {
      * @return string $cardHtml
      */
     public function display( string $mode = normale ) {
-        echo '<span>' . $this->getNom() . '</span>';
+        echo '<p>' . $this->getNom() . '</p>';
     }
 
 

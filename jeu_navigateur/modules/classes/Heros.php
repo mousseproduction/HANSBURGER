@@ -150,36 +150,7 @@ class Heros {
     //-----------------------------------------------
 
 
-    /**
-     * Déplace les cartes de la zone d'attente à la zone de combat
-     */
-    public function endRound()
-        {
-            foreach($this->getCartes()['attente'] as $key => $card) 
-            {
-                $this->moveCard( $card, 'Combat' );
-            }   
-        }
-
-
-    /**
-     * beginRound - pioche une carte et attribue la cagnotte
-     * 
-    **/
-    public function beginRound() {
-        $this->draw();
-        $this->allocateCagnotte();
-    }
-    
-
-    /**
-     * allocateCagnotte - attribue la cagnotte
-     * 
-    **/
-    public function allocateCagnotte() {
-            $this->setCagnotte( number_format( $partie->getCpt() / 2 ) );
-    }
-    
+        
 
 
     /**
@@ -189,13 +160,15 @@ class Heros {
      * @return void
      */
     public function draw($nbpioche=1){//Nombre de carte à piocher ( 1 par défault)
-    $selection=array_rand( $this->getCartes()['Deck'], $nbpioche);//Choisis au hasard une ou plusieurs cartes dans le deck identifiée avec leur index
-        if( is_array( $selection ) ) {
-            foreach ( $selection as $cardId ) {//Pour chaque carte selectionnée (index)
-                $this->moveCard( $this->getCartes()['Deck'][$cardId], 'Main');//On déplace la carte du deck vers la main
-                }
-        } else {
-                $this->moveCard( $this->getCartes()['Deck'][$cardId], 'Main');//On déplace la carte du deck vers la main
+        if( isset( $this->getCartes()['Deck'] ) && !empty( $this->getCartes()['Deck'] ) ) {
+            $selection=array_rand( $this->getCartes()['Deck'], $nbpioche);//Choisis au hasard une ou plusieurs cartes dans le deck identifiée avec leur index
+            if( is_array( $selection ) ) {
+                foreach ( $selection as $cardId ) {//Pour chaque carte selectionnée (index)
+                    $this->moveCard( $this->getCartes()['Deck'][$cardId], 'Main');//On déplace la carte du deck vers la main
+                    }
+            } else {
+                    $this->moveCard( $this->getCartes()['Deck'][$selection], 'Main');//On déplace la carte du deck vers la main
+            }
         }
     }
 
@@ -296,9 +269,7 @@ class Heros {
      * @param cagnotte the value to set.
      */
     public function setCagnotte($cagnotte) {
-        if( ctype_digit( $cagnotte ) ) {
             $this->cagnotte = $cagnotte;
-        }
     }
 
     /**

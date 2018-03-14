@@ -14,6 +14,7 @@ Class GameController {
     private $cardCollectionModel;
     private $cardGameModel;
     private $game;
+    private $request;
 
     private $updateList;
     private $clickableList;
@@ -34,6 +35,7 @@ Class GameController {
         $this->setHerosCollectionModel( new HerosCollectionModel );
         $this->setCardCollectionModel( new CardCollectionModel );
         $this->setCardGameModel( new CardGameModel );
+        //instancier sRequest
     }
         
     //ACTION METHODES
@@ -87,6 +89,8 @@ Class GameController {
 
     }
 
+    
+
 
     //INITIALISATION METHODES
     //----------------------------------------------------
@@ -101,6 +105,7 @@ Class GameController {
         $heros = $this->getHerosCollectionModel()->selectWhere( 'WHERE `nom` = "'.$herosCollectionName.'"' )[0];
         $heros->setJoueur( $playerId );
         $heros->setHeros_collection( $heros->getId() );
+        $heros->setCagnotte(1);
         $herosId = $this->getHerosGameModel()->add( $heros );
         $heros->setId( $herosId );
         return $heros;
@@ -155,9 +160,8 @@ Class GameController {
     **/
     public function loadGame( $gameId ) {
         $this->setGame( $this->getGameModel()->selectWhere( 'WHERE `id` = ' . $gameId ) );
-        $this->getGame()->setHerosActif( $this->getHerosGameModel()->selectWhere( 'WHERE id = ' . $this->getGame()->getHeros1Id() ) );
-        $this->getGame()->setHerosInactif( $this->getHerosGameModel()->selectWhere( 'WHERE id = ' . $this->getGame()->getHeros2Id() ) );
-        var_dump( $this );
+        $this->getGame()->setHerosActif( $this->getHerosGameModel()->selectWhere( 'WHERE `heros_partie`.`id` = ' . $this->getGame()->getHeros1Id() ) );
+        $this->getGame()->setHerosInactif( $this->getHerosGameModel()->selectWhere( 'WHERE `heros_partie`.`id` = ' . $this->getGame()->getHeros2Id() ) );
         $this->getGame()->getHerosActif()->setCartes( $this->getCardGameModel()->selectWhere( 'WHERE `heros_partie_id` = ' . $this->getGame()->getHeros1Id() ) );
         $this->getGame()->getHerosInactif()->setCartes( $this->getCardGameModel()->selectWhere( 'WHERE `heros_partie_id` = ' . $this->getGame()->getHeros2Id() ) );
     }
