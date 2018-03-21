@@ -1,51 +1,6 @@
 <?php
 include( 'include/ini.php' );
 $gameController = new GameController;
-$gameController->loadGame(4);
-$gameController->getGame()->getHerosActif()->draw(4);
-$gameController->getGame()->getHerosInactif()->draw(4);
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->pass();
-$gameController->getGame()->attack( 84, 105 );
+//$gameController->invokeAction( 4, 84); ça marche!!!!!
+$gameController->passAction(4); //arranger game update
 
-include( 'modules/game/board.php');

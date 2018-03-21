@@ -15,12 +15,12 @@ if( isset( $_GET['m'] ) ) {
                 if( isset( $_GET['a'] ) ) {
                     $methodName = strtolower( $_GET['a'] ) . 'Action';
                     if( method_exists( $controller, $methodName ) ) {
-                        $controller->$methodName( $_POST, $_GET );
+                        $controller->$methodName();
                     } else {
                         header( 'Location: 404' );
                     }
                 } else {
-                    $controller->showAction();
+                    $controller->showAction(); //default action
                 }
             } else {
                 header( 'Location: 404' );
@@ -29,6 +29,7 @@ if( isset( $_GET['m'] ) ) {
             header( 'Location: 404' );
         }
     }
+        //default controller and method
 } else {
     require_once( 'modules/admin/CarteController.php' );
     $controller = new CarteController;

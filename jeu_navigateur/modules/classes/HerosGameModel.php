@@ -12,8 +12,8 @@ class HerosGameModel extends KernelModel {
     public function update( Heros $heros ) {
         $herosDatas = $heros->getAttributeTable( [ 'id', 'statut', 'pv', 'cagnotte', 'joueur', 'heros_collection' ] );
         $query =    "UPDATE `heros_partie`
-                    SET `nom` = :nom, `statut` = :statut, `pv` = :pv, `cagnotte` = :cagnotte, `joueur_id` = :joueur, , `heros_collection_id` = :heros_collection 
-                    WHERE `heros_partie_id` = :id;";
+                    SET `statut` = :statut, `pv` = :pv, `cagnotte` = :cagnotte, `joueur_id` = :joueur,  `heros_modele_id` = :heros_collection 
+                    WHERE `heros_partie`.`id` = :id;";
         return $this->executeQuery( $query, $herosDatas );
     }
 

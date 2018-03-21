@@ -34,9 +34,9 @@ abstract class KernelModel {
                     $reponse->closeCursor(); 
                     return $resultat;    
                 }echo 'dans ton cul';
-            }echo 'dans ton cul';
+            }echo 'dans ta chatte';
 
-        }echo 'dans ton cul';
+        }echo 'dooooooooooble pene';
 
     }
 

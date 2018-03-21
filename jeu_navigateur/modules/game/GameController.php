@@ -15,8 +15,6 @@ Class GameController {
     private $cardGameModel;
     private $game;
     private $request;
-
-    private $updateList;
     private $clickableList;
 
     /**
@@ -35,7 +33,7 @@ Class GameController {
         $this->setHerosCollectionModel( new HerosCollectionModel );
         $this->setCardCollectionModel( new CardCollectionModel );
         $this->setCardGameModel( new CardGameModel );
-        //instancier sRequest
+        $this->setRequest( sRequest::getInstance() );
     }
         
     //ACTION METHODES
@@ -88,6 +86,50 @@ Class GameController {
         include( 'board.php' );
 
     }
+
+
+    /**
+     *  invokeAction- undocumented function
+     * 
+    **/
+    public function invokeAction($gameId, $cardId) {
+        //$id = $this->request idDeLaCarteInvoquee
+        $this->loadGame( $gameId );
+        $updateList = $this->getGame()->invoke($cardId); //retourne false si pbm sinon retourne le tableau des objets modifiés
+        if( is_string($updateList) ) {
+            $message = $updateList;
+            
+        } else {
+            $this->update( $updateList );
+        }
+        include('modules/game/board.php');
+    }
+
+    /**
+     * passAction - undocumented function
+     * 
+    **/
+    public function passAction($gameId) {
+        //$id = $this->request idDeLaCarteInvoquee
+        $this->loadGame($gameId);
+        $updateList = $this->getGame()->pass();
+        $this->update( $updateList );
+        //retourner le necessaire pour la vue
+    }
+
+
+    /**
+     * attackAction - 
+     * 
+    **/
+    public function attackAction() {
+        $this->loadGame();
+        $updateList = $this->getGame()->attack();
+        $this->update( $updateList );
+    }
+    
+    
+    
 
     
 
@@ -171,17 +213,17 @@ Class GameController {
      * update - update (in the database) the elements listed in $this->toUpdateList
      * 
     **/
-    public function update() {
-        foreach( $this->updateList as $key => $object ) {
+    public function update( array $updateList ) {
+        foreach( $updateList as $key => $object ) {
             $class = get_class( $object );
-            if( $class == 'Creature' || $class == 'Spell' ) {
-                $cardGameModel->update( $object );
+            if( $class == 'Creature' || $class == 'Spell' || $class == 'Card' ) {
+                $this->getCardGameModel()->update( $object );
             }
             if( $class == 'Heros' ) {
-                $herosGameModel->update( $object );
+                $this->getHerosGameModel()->update( $object );
             }
             if( $class == 'Game' ) {
-                $GameModel->update( $object );
+                $this->getGameModel()->update( $object );
             }
         }
     }
@@ -211,24 +253,19 @@ Class GameController {
      *-----------------------------------------------------
     **/
     
-    
     /**
      * Get gameModel.
      *
      * @return gameModel.
      */
-    public function getGameModel()
-    {
-        return $this->gameModel;
-    }
+    public function getGameModel() { return $this->gameModel; }
     
     /**
      * Set gameModel.
      *
      * @param gameModel the value to set.
      */
-    public function setGameModel($gameModel)
-    {
+    public function setGameModel($gameModel) {
         $this->gameModel = $gameModel;
     }
     
@@ -237,18 +274,14 @@ Class GameController {
      *
      * @return herosGameModel.
      */
-    public function getHerosGameModel()
-    {
-        return $this->herosGameModel;
-    }
+    public function getHerosGameModel() { return $this->herosGameModel; }
     
     /**
      * Set herosGameModel.
      *
      * @param herosGameModel the value to set.
      */
-    public function setHerosGameModel($herosGameModel)
-    {
+    public function setHerosGameModel($herosGameModel) {
         $this->herosGameModel = $herosGameModel;
     }
     
@@ -257,18 +290,14 @@ Class GameController {
      *
      * @return herosCollectionModel.
      */
-    public function getHerosCollectionModel()
-    {
-        return $this->herosCollectionModel;
-    }
+    public function getHerosCollectionModel() { return $this->herosCollectionModel; }
     
     /**
      * Set herosCollectionModel.
      *
      * @param herosCollectionModel the value to set.
      */
-    public function setHerosCollectionModel($herosCollectionModel)
-    {
+    public function setHerosCollectionModel($herosCollectionModel) {
         $this->herosCollectionModel = $herosCollectionModel;
     }
     
@@ -277,18 +306,14 @@ Class GameController {
      *
      * @return cardCollectionModel.
      */
-    public function getCardCollectionModel()
-    {
-        return $this->cardCollectionModel;
-    }
+    public function getCardCollectionModel() { return $this->cardCollectionModel; }
     
     /**
      * Set cardCollectionModel.
      *
      * @param cardCollectionModel the value to set.
      */
-    public function setCardCollectionModel($cardCollectionModel)
-    {
+    public function setCardCollectionModel($cardCollectionModel) {
         $this->cardCollectionModel = $cardCollectionModel;
     }
     
@@ -297,18 +322,14 @@ Class GameController {
      *
      * @return cardGameModel.
      */
-    public function getCardGameModel()
-    {
-        return $this->cardGameModel;
-    }
+    public function getCardGameModel() { return $this->cardGameModel; }
     
     /**
      * Set cardGameModel.
      *
      * @param cardGameModel the value to set.
      */
-    public function setCardGameModel($cardGameModel)
-    {
+    public function setCardGameModel($cardGameModel) {
         $this->cardGameModel = $cardGameModel;
     }
     
@@ -317,18 +338,46 @@ Class GameController {
      *
      * @return game.
      */
-    public function getGame()
-    {
-        return $this->game;
-    }
+    public function getGame() { return $this->game; }
     
     /**
      * Set game.
      *
      * @param game the value to set.
      */
-    public function setGame($game)
-    {
+    public function setGame($game) {
         $this->game = $game;
+    }
+    
+    /**
+     * Get request.
+     *
+     * @return request.
+     */
+    public function getRequest() { return $this->request; }
+    
+    /**
+     * Set request.
+     *
+     * @param request the value to set.
+     */
+    public function setRequest($request) {
+        $this->request = $request;
+    }
+    
+    /**
+     * Get clickableList.
+     *
+     * @return clickableList.
+     */
+    public function getClickableList() { return $this->clickableList; }
+    
+    /**
+     * Set clickableList.
+     *
+     * @param clickableList the value to set.
+     */
+    public function setClickableList($clickableList) {
+        $this->clickableList = $clickableList;
     }
 }

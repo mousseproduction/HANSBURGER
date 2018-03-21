@@ -7,75 +7,15 @@ class Heros {
     //attributs
     //----------------------------------------------
     
-    /**
-     * id = id du heros
-     *
-     * @var [int]
-     */
     private $id;
-
-        /**
-     * statut = statut du heros
-     *
-     * @var [int]
-     */
     private $statut;
-
-    /**
-     * nom = nom du heros model
-     *
-     * @var [char]
-     */
     private $nom;
-
-    
-    /**
-     * pv = point de vie du héros
-     *
-     * @var [int]
-     */
     private $pv;
-
-    /**
-     * cagnotte disponible à chaque tour
-     *
-     * @var [type]
-     */
     private $cagnotte;
-
-    /**
-     * joueur = tableau composé de plusieurs clés : id,nom
-     *
-     * @var [array]
-     */
     private $joueur;
-
-    /**
-     * heros_collection = id
-     *
-     * @var [string]
-     */
     private $heros_collection;
-
-    /**
-     * illustration =  id
-     *
-     * @var [INT]
-     */
     private $illustrationId;
-        
-    /**
-     * illustration = path
-     *
-     * @var [string]
-     */
     private $illustrationPath;
-
-    /**
-     * cartes = tableau composé de plusieurs clés (deck,main,attente,combat, cimetière) stockant des objets "cartes"
-     *
-     * @var [array]
-     */
     private $cartes;
 
 
@@ -204,17 +144,31 @@ class Heros {
         if( isset( $this->getCartes()['Combat']) && !empty($this->getCartes()['Combat']) ) {
             $shieldIndexList=[];
             foreach( $this->getCartes()['Combat'] as $key => $card ) {
-                if( $card->getTypeNom == 'Bouclier' ) {
+                if( $card->getTypeNom() == 'Bouclier' ) {
                     $shieldIndexList[] = $card->getId();
                 } 
-                if( empty( $shieldIndexList ) ) {
-                    return false;
-                } else {
-                    return $shieldIndexList;
-                }
+            }
+            if( empty( $shieldIndexList ) ) {
+                return false;
+            } else {
+                return $shieldIndexList;
             }
         }
     }
+
+    /**
+     * isCemetryFull - test if the cemetry is Full
+     * 
+    **/
+    public function isCemetryFull() {
+        if( isset($this->getCartes()['Cimeti�re'] ) ) {
+            if( count( $this->getCartes()['Cimeti�re'] ) == 20 ) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
          
 
@@ -222,201 +176,164 @@ class Heros {
     //----------------------------------------------
     //getters et setters
     //----------------------------------------------
+    
     /**
      * Get id.
      *
      * @return id.
      */
     public function getId() { return $this->id; }
-
+    
     /**
      * Set id.
      *
      * @param id the value to set.
      */
     public function setId($id) {
-        if( ctype_digit( $id ) && $id >= 0 ) {
-            $this->id = $id;
-        }
+        $this->id = $id;
     }
-
+    
+    /**
+     * Get statut.
+     *
+     * @return statut.
+     */
+    public function getStatut() { return $this->statut; }
+    
+    /**
+     * Set statut.
+     *
+     * @param statut the value to set.
+     */
+    public function setStatut($statut) {
+        $this->statut = $statut;
+    }
+    
     /**
      * Get nom.
      *
      * @return nom.
      */
     public function getNom() { return $this->nom; }
-
+    
     /**
      * Set nom.
      *
      * @param nom the value to set.
      */
     public function setNom($nom) {
-        if( is_string( $nom  ) ) {
-            $this->nom = $nom;
-        }
+        $this->nom = $nom;
     }
-
+    
     /**
      * Get pv.
      *
      * @return pv.
      */
     public function getPv() { return $this->pv; }
-
+    
     /**
      * Set pv.
      *
      * @param pv the value to set.
      */
     public function setPv($pv) {
-        if( ctype_digit( $pv ) ) {
-            $this->pv = $pv;
-        }
+        $this->pv = $pv;
     }
-
+    
     /**
      * Get cagnotte.
      *
      * @return cagnotte.
      */
     public function getCagnotte() { return $this->cagnotte; }
-
+    
     /**
      * Set cagnotte.
      *
      * @param cagnotte the value to set.
      */
     public function setCagnotte($cagnotte) {
-            $this->cagnotte = $cagnotte;
+        $this->cagnotte = $cagnotte;
     }
-
+    
     /**
      * Get joueur.
      *
      * @return joueur.
      */
     public function getJoueur() { return $this->joueur; }
-
+    
     /**
      * Set joueur.
      *
      * @param joueur the value to set.
      */
     public function setJoueur($joueur) {
-                    $this->joueur = $joueur;
+        $this->joueur = $joueur;
     }
-        /**
-     * Get illustration = id
-     *
-     * @return  [INT]
-     */ 
-    public function getIllustrationId()
-    {
-        return $this->illustrationId;
-    }
-
+    
     /**
-     * Set illustration = id
-     *
-     * @param  [INT]  $illustrationId  illustration = id
-     *
-     * @return  self
-     */ 
-    public function setIllustrationId($illustrationId)
-    {
-        $this->illustrationId = $illustrationId;
-
-        return $this;
-    }
-
-    /**
-     * Get illustration = path
-     *
-     * @return  [string]
-     */ 
-    public function getIllustrationPath()
-    {
-        return $this->illustrationPath;
-    }
-
-    /**
-     * Set illustration = path
-     *
-     * @param  [string]  $illustrationPath  illustration = path
-     *
-     * @return  self
-     */ 
-    public function setIllustrationPath($illustrationPath)
-    {
-        $this->illustrationPath = $illustrationPath;
-
-        return $this;
-    }
-     /**
      * Get heros_collection.
      *
      * @return heros_collection.
      */
-    public function getHeros_collection() 
-    { 
-        return $this->heros_collection; 
-    }
-
+    public function getHeros_collection() { return $this->heros_collection; }
+    
     /**
      * Set heros_collection.
      *
      * @param heros_collection the value to set.
      */
-    public function setHeros_collection( $heros_collection ) 
-    {
-            $this->heros_collection = $heros_collection;
+    public function setHeros_collection($heros_collection) {
+        $this->heros_collection = $heros_collection;
     }
-
-    
     
     /**
-     * Get the value of cartes
-     */ 
-    public function getCartes()
-    {
-        return $this->cartes;
-    }
-
+     * Get illustrationId.
+     *
+     * @return illustrationId.
+     */
+    public function getIllustrationId() { return $this->illustrationId; }
+    
     /**
-     * Set the value of cartes
+     * Set illustrationId.
      *
-     * @return  self
-     */ 
-    public function setCartes( array $cards)
-    {
-        foreach( $cards as $key => $card ) {
-            $this->cartes[ $card->getStatutNom() ][ $card->getId() ] = $card;
-        }
+     * @param illustrationId the value to set.
+     */
+    public function setIllustrationId($illustrationId) {
+        $this->illustrationId = $illustrationId;
     }
-
+    
     /**
-     * Get statut = statut du heros
+     * Get illustrationPath.
      *
-     * @return  [int]
-     */ 
-    public function getStatut()
-    {
-        return $this->statut;
+     * @return illustrationPath.
+     */
+    public function getIllustrationPath() { return $this->illustrationPath; }
+    
+    /**
+     * Set illustrationPath.
+     *
+     * @param illustrationPath the value to set.
+     */
+    public function setIllustrationPath($illustrationPath) {
+        $this->illustrationPath = $illustrationPath;
     }
-
+    
     /**
-     * Set statut = statut du heros
+     * Get cartes.
      *
-     * @param  [int]  $statut  statut = statut du heros
+     * @return cartes.
+     */
+    public function getCartes() { return $this->cartes; }
+    
+    /**
+     * Set cartes.
      *
-     * @return  self
-     */ 
-    public function setStatut( $statut)
-    {
-        $this->statut = $statut;
-
-        return $this;
+     * @param cartes the value to set.
+     */
+    public function setCartes($cartes) {
+        $this->cartes = $cartes;
     }
 }
