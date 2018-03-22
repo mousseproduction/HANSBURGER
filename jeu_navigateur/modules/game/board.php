@@ -34,8 +34,8 @@ if( isset( $message) ) {
                                 <div class="deco">DECO</div>
                                 <div class="text-center">
                                     <?php
-                                    if( isset($gameController->getGame()->getHerosActif()->getCartes()['Main'] ) ) {
-                                        foreach( $gameController->getGame()->getHerosActif()->getCartes()['Main'] as $key => $card ) {
+                                    if( isset($this->getGame()->getHerosActif()->getCartes()['Main'] ) ) {
+                                        foreach( $this->getGame()->getHerosActif()->getCartes()['Main'] as $key => $card ) {
                                             $card->display();
                                         }
                                     }
@@ -43,8 +43,8 @@ if( isset( $message) ) {
                                 </div>
                             </div>
                             <div class="col-lg-3 hero1"> HEROS
-                            <h1 class="pictocout"><?php echo $gameController->getGame()->getHerosActif()->getCagnotte(); ?></h1>
-                                <h1 class="pictovie"><?php echo $gameController->getGame()->getHerosActif()->getPv(); ?></h1>
+                            <h1 class="pictocout"><?php echo $this->getGame()->getHerosActif()->getCagnotte(); ?></h1>
+                                <h1 class="pictovie"><?php echo $this->getGame()->getHerosActif()->getPv(); ?></h1>
                             </div>
                             <div class="col-lg-3 piochehero1">PIOCHE
                                 <div class="deco">DECO</div>
@@ -55,8 +55,8 @@ if( isset( $message) ) {
                             <div class="col-lg-6 attentehero1">
                                 <p>ATTENTE HERO1</p>
                                 <?php
-                                if( isset($gameController->getGame()->getHerosActif()->getCartes()['Attente']) ) {
-                                    foreach( $gameController->getGame()->getHerosActif()->getCartes()['Attente'] as $key => $card ) {
+                                if( isset($this->getGame()->getHerosActif()->getCartes()['Attente']) ) {
+                                    foreach( $this->getGame()->getHerosActif()->getCartes()['Attente'] as $key => $card ) {
                                         $card->display();
                                     }
                                 }
@@ -65,8 +65,8 @@ if( isset( $message) ) {
                             <div class="col-lg-6 combathero1">
                                 <p>COMBAT HERO1</p>
                                 <?php
-                                if( isset( $gameController->getGame()->getHerosActif()->getCartes()['Combat'] ) ) {
-                                    foreach( $gameController->getGame()->getHerosActif()->getCartes()['Combat'] as $key => $card ) {
+                                if( isset( $this->getGame()->getHerosActif()->getCartes()['Combat'] ) ) {
+                                    foreach( $this->getGame()->getHerosActif()->getCartes()['Combat'] as $key => $card ) {
                                         $card->display();
                                     }
                                 }
@@ -80,8 +80,8 @@ if( isset( $message) ) {
                             <div class="col-lg-6 combathero2">
                                 <p>COMBAT HERO2</p>
                                 <?php
-                                if( isset( $gameController->getGame()->getHerosInactif()->getCartes()['Combat'] ) ) {
-                                    foreach( $gameController->getGame()->getHerosInactif()->getCartes()['Combat'] as $key => $card ) {
+                                if( isset( $this->getGame()->getHerosInactif()->getCartes()['Combat'] ) ) {
+                                    foreach( $this->getGame()->getHerosInactif()->getCartes()['Combat'] as $key => $card ) {
                                         $card->display();
                                     }
                                 }
@@ -90,8 +90,8 @@ if( isset( $message) ) {
                             <div class="col-lg-6 attentehero2">
                                 <p>ATTENTE HERO2</p>
                                 <?php
-                                if( isset( $gameController->getGame()->getHerosInactif()->getCartes()['Attente'] ) ) {
-                                    foreach( $gameController->getGame()->getHerosInactif()->getCartes()['Attente'] as $key => $card ) {
+                                if( isset( $this->getGame()->getHerosInactif()->getCartes()['Attente'] ) ) {
+                                    foreach( $this->getGame()->getHerosInactif()->getCartes()['Attente'] as $key => $card ) {
                                         $card->display();
                                     }
                                 }
@@ -102,8 +102,8 @@ if( isset( $message) ) {
                             <div class="col-lg-7 mainhero2 align-middle">
                                     <div>
                                         <?php
-                                        if( isset( $gameController->getGame()->getHerosInactif()->getCartes()['Main'] ) ) {
-                                            foreach( $gameController->getGame()->getHerosInactif()->getCartes()['Main'] as $key => $card ) {
+                                        if( isset( $this->getGame()->getHerosInactif()->getCartes()['Main'] ) ) {
+                                            foreach( $this->getGame()->getHerosInactif()->getCartes()['Main'] as $key => $card ) {
                                                 $card->display();
                                             }
                                         }
@@ -111,8 +111,8 @@ if( isset( $message) ) {
                                     </div>
                             </div>
                             <div class="col-lg-3 hero2">HEROS
-                                <h1 class="pictocout"><?php echo $gameController->getGame()->getHerosInactif()->getCagnotte(); ?></h1>
-                                <h1 class="pictovie"><?php echo $gameController->getGame()->getHerosInactif()->getPv(); ?></h1>
+                                <h1 class="pictocout"><?php echo $this->getGame()->getHerosInactif()->getCagnotte(); ?></h1>
+                                <h1 class="pictovie"><?php echo $this->getGame()->getHerosInactif()->getPv(); ?></h1>
                             </div>
                             <div class="col-lg-3 piochehero1">PIOCHE
                                 <div class="deco">DECO</div>

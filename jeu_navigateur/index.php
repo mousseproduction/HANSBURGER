@@ -12,8 +12,8 @@ if( isset( $_GET['m'] ) ) {
             require_once( 'modules/' . $_GET[ 'm' ] . '/' . $controllerName . '.php' );
             if( class_exists( $controllerName ) ) {
                 $controller = new $controllerName;
-                if( isset( $_GET['a'] ) ) {
-                    $methodName = strtolower( $_GET['a'] ) . 'Action';
+                if(  $controller->getRequest()->get('a') ) {
+                    $methodName = strtolower( $controller->getRequest()->get('a') ) . 'Action';
                     if( method_exists( $controller, $methodName ) ) {
                         $controller->$methodName();
                     } else {

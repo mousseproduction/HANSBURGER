@@ -51,8 +51,7 @@ class Heros {
         if( isset( $this->getCartes()[ $zone ][ $cardId ] ) ) {
             return $this->getCartes()[ $zone ][ $cardId ];
         } else {
-            return false;
-        }
+            return false; }
     }
     
 
@@ -79,7 +78,7 @@ class Heros {
             case 'Combat' :
                 $card->setStatutId( 4 );
                 break;
-            case 'Cimetiere' :
+            case 'Cimeti�re' :
                 $card->setStatutId( 5 );
                 break;
         }
@@ -97,19 +96,28 @@ class Heros {
      * Le héros sélectionne au hasard une(ou plussieurs) carte(s) dans le deck
      *
      * @param [int] $nbpioche
-     * @return void
+     * @return void$flat = call_user_func_array('array_merge', $array);
      */
     public function draw($nbpioche=1){//Nombre de carte à piocher ( 1 par défault)
         if( isset( $this->getCartes()['Deck'] ) && !empty( $this->getCartes()['Deck'] ) ) {
             $selection=array_rand( $this->getCartes()['Deck'], $nbpioche);//Choisis au hasard une ou plusieurs cartes dans le deck identifiée avec leur index
+            $updateList = [];
             if( is_array( $selection ) ) {
                 foreach ( $selection as $cardId ) {//Pour chaque carte selectionnée (index)
-                    $this->moveCard( $this->getCartes()['Deck'][$cardId], 'Main');//On déplace la carte du deck vers la main
+                    if( $card = $this->isCardInZone( $cardId, 'Deck') ) {
+                        $this->moveCard( $card, 'Main');//On déplace la carte du deck vers la main
+                        $updateList[] = $card;
                     }
+                }
             } else {
-                    $this->moveCard( $this->getCartes()['Deck'][$selection], 'Main');//On déplace la carte du deck vers la main
+                    if( $card = $this->isCardInZone( $selection, 'Deck') ) {
+                        $this->moveCard( $card, 'Main');//On déplace la carte du deck vers la main
+                        $updateList[] = $card;
+                    }
             }
+            return $updateList;
         }
+        return false;
     }
 
 
@@ -129,7 +137,7 @@ class Heros {
 
 
     /**
-     * buy - achete la carte
+     * buy - achete la carte$flat = call_user_func_array('array_merge', $array);
      * 
     **/
     public function buy( Card $card ) {
@@ -154,6 +162,7 @@ class Heros {
                 return $shieldIndexList;
             }
         }
+        return false;
     }
 
     /**
@@ -333,7 +342,9 @@ class Heros {
      *
      * @param cartes the value to set.
      */
-    public function setCartes($cartes) {
-        $this->cartes = $cartes;
+    public function setCartes($cards) {
+        foreach( $cards as $key => $card ) {
+            $this->cartes[ $card->getStatutNom() ][ $card->getId() ] = $card;
+        }
     }
 }

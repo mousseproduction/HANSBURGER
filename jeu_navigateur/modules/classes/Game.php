@@ -55,14 +55,14 @@ class Game {
      * @param [int] $carteAttaquante
      * @return void
      */
-    public function attack(int $assailantIndex, $targetIndex  = null ) {//Numéro de carte choisie par le heros
+    public function attack( $assailantIndex, $targetIndex  = null ) {//Numéro de carte choisie par le heros
         if( ( $assailantCard = $this->getHerosActif()->isCardInZone( $assailantIndex, 'Combat' ) )  !== false ) {
             if( $targetIndex == null ) {
                 //$game->listClickable( 'targetable' );
             } else {
                 if( ( $shieldIndexList = $this->getHerosInactif()->isThereShield() ) !== false ) {
                     if( !in_array( $targetIndex, $shieldIndexList )) {
-                        $message = "C'est la première et la dernière fois..... La prochaine fois je sors le gant en latex";
+                        $message = "C'est la première et la dernière fois..... La prochaine fois je sors le gant en polypropyl�ne";
                         return $message;
                     }
                 }
@@ -72,11 +72,12 @@ class Game {
                         if( $assailantCard->isDead() ) {
                             $this->getHerosActif()->moveCard( $assailantCard, 'Cimeti�re' );
                             $this->isGameOver();
+                        } else {
+                            $this->getHerosActif()->moveCard( $assailantCard, 'Attente' );
                         }
                         if( $targetCard->isDead() ) {
                             $this->getHerosInactif()->moveCard( $targetCard, 'Cimeti�re' );
                             $this->isGameOver();
-                            $this->getHerosActif()->moveCard( $assailantCard, 'Attente' );
                         }
                         return [$assailantCard, $targetCard];
                     } else {
@@ -90,7 +91,7 @@ class Game {
                 }
             }
         }
-            return $message = "C'est la première et la dernière fois..... La prochaine fois je sors le gant en latex";
+            return $message = "C'est la première et la dernière fois..... La prochaine fois je sors le gant en caoutchouc";
     }
 
     /**
@@ -100,9 +101,9 @@ class Game {
     public function pass() {
         $cpt = $this->getCpt()+1;
         $this->setCpt( $cpt );
-        $updateList = $this->endRound( $this->getHerosActif() );
+        $updateList[] = $this->endRound( $this->getHerosActif() );
         $this->switchHeros();
-        $this->beginRound( $this->getHerosActif() );
+        $updateList[] = $this->beginRound( $this->getHerosActif() );
         $updateList[] = $this;
         $updateList[] = $this->getHerosActif();
         $updateList[] = $this->getHerosInactif();
@@ -118,7 +119,8 @@ class Game {
         $tmp = $this->herosActif;
         $this->herosActif = $this->herosInactif;
         $this->herosInactif = $tmp;
-        
+        $this->getHerosActif()->setStatut( 'Actif' );
+        $this->getHerosInactif()->setStatut( 'Inactif');
     }
 
 
@@ -127,15 +129,14 @@ class Game {
      */
     public function endRound( Heros $heros )
         {
-            if( isset( $heros->getCartes()['attente'] ) ) {
-                $listUpdate = $heros->getCartes()['attente'];
-                foreach($heros->getCartes()['attente'] as $key => $card) 
+            if( isset( $heros->getCartes()['Attente'] ) ) {
+                $listUpdate = $heros->getCartes()['Attente'];
+                foreach($heros->getCartes()['Attente'] as $key => $card) 
                 {
                     $heros->moveCard( $card, 'Combat' );
                 }   
                 return $listUpdate;
             }
-            return [];
         }
 
 
@@ -144,8 +145,11 @@ class Game {
      * 
     **/
     public function beginRound( Heros $heros ) {
-        $heros->draw();
+        
         $this->allocateCagnotte( $heros );
+        if( $updateList = $heros->draw() ) {
+            return $updateList;
+        }
     }
 
 
@@ -260,6 +264,7 @@ class Game {
      */
     public function setPartie_terminee($partie_terminee) {
         $this->partie_terminee = $partie_terminee;
+        return $this;
     }
     
     /**

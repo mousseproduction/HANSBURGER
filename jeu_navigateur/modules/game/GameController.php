@@ -78,13 +78,16 @@ Class GameController {
             $this->getGame()->setHerosInactif( $hans );
         }
 
-        var_dump( $this->getGame()->getHerosInactif() );
+        $this->getGame()->getHerosActif()->setStatut( 'Actif' );
+        $this->getGame()->getHerosInactif()->setStatut( 'Inactif' );
+        $updateList = ( [ $this->getGame()->getHerosActif(), $this->getGame()->getHerosInactif() ] );
 
-        $this->getGame()->getHerosActif()->draw(3);
-        $this->getGame()->getHerosInactif()->draw(3);
+
+        $updateList[] = $this->getGame()->getHerosActif()->draw(3);
+        $updateList[] = $this->getGame()->getHerosInactif()->draw(3);
+        $this->update( $updateList );
 
         include( 'board.php' );
-
     }
 
 
@@ -92,13 +95,14 @@ Class GameController {
      *  invokeAction- undocumented function
      * 
     **/
-    public function invokeAction($gameId, $cardId) {
-        //$id = $this->request idDeLaCarteInvoquee
+    public function invokeAction() {
+        $gameId = 16;
+        $cardId = $this->getRequest()->get('id');
+
         $this->loadGame( $gameId );
         $updateList = $this->getGame()->invoke($cardId); //retourne false si pbm sinon retourne le tableau des objets modifiés
         if( is_string($updateList) ) {
             $message = $updateList;
-            
         } else {
             $this->update( $updateList );
         }
@@ -109,11 +113,18 @@ Class GameController {
      * passAction - undocumented function
      * 
     **/
-    public function passAction($gameId) {
+    public function passAction() {
         //$id = $this->request idDeLaCarteInvoquee
+        $gameId = 16;
+
         $this->loadGame($gameId);
         $updateList = $this->getGame()->pass();
-        $this->update( $updateList );
+        if( is_string($updateList) ) {
+            $message = $updateList;
+        } else {
+            $this->update( $updateList );
+        }
+        include('modules/game/board.php');
         //retourner le necessaire pour la vue
     }
 
@@ -123,9 +134,19 @@ Class GameController {
      * 
     **/
     public function attackAction() {
-        $this->loadGame();
-        $updateList = $this->getGame()->attack();
-        $this->update( $updateList );
+        $gameId = 16;
+        $assaillantId = $this->getRequest()->get('assaillantId');
+        echo $assaillantId;
+        $targetId = $this->getRequest()->get('targetId');
+
+        $this->loadGame( $gameId );
+        $updateList = $this->getGame()->attack($assaillantId, $targetId);
+        if( is_string($updateList) ) {
+            $message = $updateList;
+        } else {
+            $this->update( $updateList );
+        }
+        include('modules/game/board.php');
     }
     
     
@@ -202,10 +223,17 @@ Class GameController {
     **/
     public function loadGame( $gameId ) {
         $this->setGame( $this->getGameModel()->selectWhere( 'WHERE `id` = ' . $gameId ) );
-        $this->getGame()->setHerosActif( $this->getHerosGameModel()->selectWhere( 'WHERE `heros_partie`.`id` = ' . $this->getGame()->getHeros1Id() ) );
-        $this->getGame()->setHerosInactif( $this->getHerosGameModel()->selectWhere( 'WHERE `heros_partie`.`id` = ' . $this->getGame()->getHeros2Id() ) );
-        $this->getGame()->getHerosActif()->setCartes( $this->getCardGameModel()->selectWhere( 'WHERE `heros_partie_id` = ' . $this->getGame()->getHeros1Id() ) );
-        $this->getGame()->getHerosInactif()->setCartes( $this->getCardGameModel()->selectWhere( 'WHERE `heros_partie_id` = ' . $this->getGame()->getHeros2Id() ) );
+        $heros1 = $this->getHerosGameModel()->selectWhere( 'WHERE `heros_partie`.`id` = ' . $this->getGame()->getHeros1Id() );
+        $heros2 = $this->getHerosGameModel()->selectWhere( 'WHERE `heros_partie`.`id` = ' . $this->getGame()->getHeros2Id() );
+        if( $heros1->getStatut() == 'Actif' ) {
+            $this->getGame()->setHerosActif( $heros1  );
+            $this->getGame()->setHerosInactif(  $heros2 );
+        } else{
+            $this->getGame()->setHerosActif( $heros2  );
+            $this->getGame()->setHerosInactif(  $heros1 );
+        }
+        $this->getGame()->getHerosActif()->setCartes( $this->getCardGameModel()->selectWhere( 'WHERE `heros_partie_id` = ' . $this->getGame()->getHerosActif()->getId() ) );
+        $this->getGame()->getHerosInactif()->setCartes( $this->getCardGameModel()->selectWhere( 'WHERE `heros_partie_id` = ' . $this->getGame()->getHerosInactif()->getId() ) );
     }
     
 
@@ -214,20 +242,27 @@ Class GameController {
      * 
     **/
     public function update( array $updateList ) {
-        foreach( $updateList as $key => $object ) {
-            $class = get_class( $object );
-            if( $class == 'Creature' || $class == 'Spell' || $class == 'Card' ) {
-                $this->getCardGameModel()->update( $object );
-            }
-            if( $class == 'Heros' ) {
-                $this->getHerosGameModel()->update( $object );
-            }
-            if( $class == 'Game' ) {
-                $this->getGameModel()->update( $object );
-            }
-        }
+        var_dump($updateList);
+        array_walk_recursive( $updateList, [$this, 'updateObject'] );
     }
 
+    /**
+     * updateObject - update in the database the object passed in parameter
+     * 
+    **/
+    public function updateObject( $object, $key  ) {
+        $class = get_class( $object );
+        if( $class == 'Creature' || $class == 'Spell' || $class == 'Card' ) {
+            $this->getCardGameModel()->update( $object );
+        }
+        if( $class == 'Heros' ) {
+            $this->getHerosGameModel()->update( $object );
+        }
+        if( $class == 'Game' ) {
+            $this->getGameModel()->update( $object );
+        }
+    }
+        
 
     /**
      * addToUpdateList - ajoute l'objet Ã  updateList

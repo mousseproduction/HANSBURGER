@@ -1,6 +1,9 @@
 <?php
 include( 'include/ini.php' );
 $gameController = new GameController;
-//$gameController->invokeAction( 4, 84); ça marche!!!!!
-$gameController->passAction(4); //arranger game update
+$gameController->passAction( 62 );
+//$gameController->invokeAction(16, 610); //arranger game update
+//$gameController->attackAction( 16, 610, 603 );
+//$gameController->initAction( 1, 2 );
+var_dump( $gameController);
 

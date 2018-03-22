@@ -45,7 +45,7 @@ class Card {
      * @return string $cardHtml
      */
     public function display( string $mode = normale ) {
-        echo '<p>' . $this->getNom() . ' //type:' . $this->getTypeNom() . ' //statut:' . $this->getStatutNom() . ' //id:' .$this->getId() . ' //pv:' . $this->getPv() . '</p>';
+        include( 'cardView.php');
     }
 
 
