@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Hôte : 127.0.0.1
--- Généré le :  jeu. 08 mars 2018 à 10:14
--- Version du serveur :  10.1.25-MariaDB
--- Version de PHP :  7.1.7
+-- Client :  localhost
+-- Généré le :  Jeu 22 Mars 2018 à 21:43
+-- Version du serveur :  5.7.21-0ubuntu0.16.04.1
+-- Version de PHP :  7.0.25-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -37,7 +35,7 @@ CREATE TABLE `action` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `action`
+-- Contenu de la table `action`
 --
 
 INSERT INTO `action` (`id`, `libelle`, `illustration_id`) VALUES
@@ -65,7 +63,7 @@ CREATE TABLE `carte_collection` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `carte_collection`
+-- Contenu de la table `carte_collection`
 --
 
 INSERT INTO `carte_collection` (`id`, `nom`, `pv`, `degat`, `prix`, `heros_collection_id`, `type_id`, `illustration_id`, `description`) VALUES
@@ -142,7 +140,7 @@ CREATE TABLE `heros_collection` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `heros_collection`
+-- Contenu de la table `heros_collection`
 --
 
 INSERT INTO `heros_collection` (`id`, `nom`, `statut`, `pv`, `cagnotte`, `illustration_id`) VALUES
@@ -176,7 +174,7 @@ CREATE TABLE `illustration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `illustration`
+-- Contenu de la table `illustration`
 --
 
 INSERT INTO `illustration` (`id`, `path`) VALUES
@@ -184,7 +182,31 @@ INSERT INTO `illustration` (`id`, `path`) VALUES
 (3, 'rrrrrrr'),
 (4, 'louteche'),
 (5, 'longin'),
-(6, 'batman');
+(6, 'batman'),
+(7, 'don_pepperoni.jpg'),
+(8, 'do-nut-eat.jpg'),
+(9, 'enfants_agites.jpg'),
+(10, 'file_d_attente.jpg'),
+(11, 'intoxication_alimentaire.jpg'),
+(12, 'kebabacool.jpg'),
+(13, 'maitre_soda.jpg'),
+(14, 'menu_xxl.jpg'),
+(15, 'miss_meuf_in.jpg'),
+(16, 'skate_chup.jpg'),
+(17, 'sol_glissant.jpg'),
+(18, 'tahin_sushi.jpg'),
+(19, 'badman.jpg'),
+(20, 'pj_da_funky_code.jpg'),
+(21, 'gladbatteur.jpg'),
+(22, 'gong_fu_panda.jpg'),
+(23, 'hannibal_lecteur.jpg'),
+(24, 'interstellarsen.jpg'),
+(25, 'jack_pipow.jpg'),
+(26, 'pinguins_united.jpg'),
+(27, 'prinception.jpg'),
+(28, 'simbale.jpg'),
+(29, 'spidermaid.jpg'),
+(30, 'supermap.jpg');
 
 -- --------------------------------------------------------
 
@@ -209,7 +231,7 @@ CREATE TABLE `joueur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `joueur`
+-- Contenu de la table `joueur`
 --
 
 INSERT INTO `joueur` (`id`, `pseudo`, `prenom`, `nom`, `naissance`, `email`, `mot_de_passe`, `ratio_vd`, `adresse`, `code_postal`, `ville`, `telephone`, `en_ligne`) VALUES
@@ -246,7 +268,7 @@ CREATE TABLE `plateau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `plateau`
+-- Contenu de la table `plateau`
 --
 
 INSERT INTO `plateau` (`id`, `illustration_id`, `heros_collection1_id`, `heros_collection2_id`) VALUES
@@ -264,7 +286,7 @@ CREATE TABLE `statut` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `statut`
+-- Contenu de la table `statut`
 --
 
 INSERT INTO `statut` (`id`, `libelle`) VALUES
@@ -286,7 +308,7 @@ CREATE TABLE `type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `type`
+-- Contenu de la table `type`
 --
 
 INSERT INTO `type` (`id`, `libelle`) VALUES
@@ -295,7 +317,7 @@ INSERT INTO `type` (`id`, `libelle`) VALUES
 (3, 'Sort');
 
 --
--- Index pour les tables déchargées
+-- Index pour les tables exportées
 --
 
 --
@@ -395,7 +417,7 @@ ALTER TABLE `type`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
@@ -412,7 +434,7 @@ ALTER TABLE `carte_collection`
 -- AUTO_INCREMENT pour la table `carte_partie`
 --
 ALTER TABLE `carte_partie`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=840;
 --
 -- AUTO_INCREMENT pour la table `evenement`
 --
@@ -427,12 +449,12 @@ ALTER TABLE `heros_collection`
 -- AUTO_INCREMENT pour la table `heros_partie`
 --
 ALTER TABLE `heros_partie`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT pour la table `illustration`
 --
 ALTER TABLE `illustration`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT pour la table `joueur`
 --
@@ -442,7 +464,7 @@ ALTER TABLE `joueur`
 -- AUTO_INCREMENT pour la table `partie`
 --
 ALTER TABLE `partie`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `plateau`
 --
@@ -459,7 +481,7 @@ ALTER TABLE `statut`
 ALTER TABLE `type`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- Contraintes pour les tables déchargées
+-- Contraintes pour les tables exportées
 --
 
 --
@@ -523,7 +545,6 @@ ALTER TABLE `plateau`
   ADD CONSTRAINT `fk_plateau_heros_modele1` FOREIGN KEY (`heros_collection1_id`) REFERENCES `heros_collection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_plateau_heros_modele2` FOREIGN KEY (`heros_collection2_id`) REFERENCES `heros_collection` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_plateau_illustration1` FOREIGN KEY (`illustration_id`) REFERENCES `illustration` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

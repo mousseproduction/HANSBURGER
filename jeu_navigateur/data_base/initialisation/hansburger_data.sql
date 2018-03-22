@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Hôte : 127.0.0.1
--- Généré le :  jeu. 08 mars 2018 à 10:16
--- Version du serveur :  10.1.25-MariaDB
--- Version de PHP :  7.1.7
+-- Client :  localhost
+-- Généré le :  Jeu 22 Mars 2018 à 21:43
+-- Version du serveur :  5.7.21-0ubuntu0.16.04.1
+-- Version de PHP :  7.0.25-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,11 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `hansburger`
 --
-CREATE DATABASE IF NOT EXISTS `hansburger` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `hansburger`;
 
 --
--- Déchargement des données de la table `action`
+-- Contenu de la table `action`
 --
 
 INSERT INTO `action` (`id`, `libelle`, `illustration_id`) VALUES
@@ -35,7 +31,7 @@ INSERT INTO `action` (`id`, `libelle`, `illustration_id`) VALUES
 (4, 'Passer', 1);
 
 --
--- Déchargement des données de la table `carte_collection`
+-- Contenu de la table `carte_collection`
 --
 
 INSERT INTO `carte_collection` (`id`, `nom`, `pv`, `degat`, `prix`, `heros_collection_id`, `type_id`, `illustration_id`, `description`) VALUES
@@ -65,7 +61,7 @@ INSERT INTO `carte_collection` (`id`, `nom`, `pv`, `degat`, `prix`, `heros_colle
 (24, 'Tahin Sushi', 5, 6, 5, 2, 1, 1, 'Je vais te tailler en sashimi.');
 
 --
--- Déchargement des données de la table `heros_collection`
+-- Contenu de la table `heros_collection`
 --
 
 INSERT INTO `heros_collection` (`id`, `nom`, `statut`, `pv`, `cagnotte`, `illustration_id`) VALUES
@@ -73,7 +69,7 @@ INSERT INTO `heros_collection` (`id`, `nom`, `statut`, `pv`, `cagnotte`, `illust
 (2, 'Fast Food', '', 20, 0, 1);
 
 --
--- Déchargement des données de la table `illustration`
+-- Contenu de la table `illustration`
 --
 
 INSERT INTO `illustration` (`id`, `path`) VALUES
@@ -81,10 +77,34 @@ INSERT INTO `illustration` (`id`, `path`) VALUES
 (3, 'rrrrrrr'),
 (4, 'louteche'),
 (5, 'longin'),
-(6, 'batman');
+(6, 'batman'),
+(7, 'don_pepperoni.jpg'),
+(8, 'do-nut-eat.jpg'),
+(9, 'enfants_agites.jpg'),
+(10, 'file_d_attente.jpg'),
+(11, 'intoxication_alimentaire.jpg'),
+(12, 'kebabacool.jpg'),
+(13, 'maitre_soda.jpg'),
+(14, 'menu_xxl.jpg'),
+(15, 'miss_meuf_in.jpg'),
+(16, 'skate_chup.jpg'),
+(17, 'sol_glissant.jpg'),
+(18, 'tahin_sushi.jpg'),
+(19, 'badman.jpg'),
+(20, 'pj_da_funky_code.jpg'),
+(21, 'gladbatteur.jpg'),
+(22, 'gong_fu_panda.jpg'),
+(23, 'hannibal_lecteur.jpg'),
+(24, 'interstellarsen.jpg'),
+(25, 'jack_pipow.jpg'),
+(26, 'pinguins_united.jpg'),
+(27, 'prinception.jpg'),
+(28, 'simbale.jpg'),
+(29, 'spidermaid.jpg'),
+(30, 'supermap.jpg');
 
 --
--- Déchargement des données de la table `joueur`
+-- Contenu de la table `joueur`
 --
 
 INSERT INTO `joueur` (`id`, `pseudo`, `prenom`, `nom`, `naissance`, `email`, `mot_de_passe`, `ratio_vd`, `adresse`, `code_postal`, `ville`, `telephone`, `en_ligne`) VALUES
@@ -92,14 +112,14 @@ INSERT INTO `joueur` (`id`, `pseudo`, `prenom`, `nom`, `naissance`, `email`, `mo
 (2, 'poilu', 'poilu', 'poilu', '2017-12-12', 'poilu', 'poilu', 1, NULL, NULL, NULL, NULL, NULL);
 
 --
--- Déchargement des données de la table `plateau`
+-- Contenu de la table `plateau`
 --
 
 INSERT INTO `plateau` (`id`, `illustration_id`, `heros_collection1_id`, `heros_collection2_id`) VALUES
 (1, 1, 2, 1);
 
 --
--- Déchargement des données de la table `statut`
+-- Contenu de la table `statut`
 --
 
 INSERT INTO `statut` (`id`, `libelle`) VALUES
@@ -110,14 +130,13 @@ INSERT INTO `statut` (`id`, `libelle`) VALUES
 (5, 'Cimetière');
 
 --
--- Déchargement des données de la table `type`
+-- Contenu de la table `type`
 --
 
 INSERT INTO `type` (`id`, `libelle`) VALUES
 (1, 'Créature'),
 (2, 'Bouclier'),
 (3, 'Sort');
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,0 +1,12 @@
+.ligne {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    border: solid grey 1px;
+    margin:15px;
+    padding:15px;
+}
+
+.warning {
+    color: red;
+}

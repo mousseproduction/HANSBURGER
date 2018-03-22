@@ -45,7 +45,7 @@ class Card {
      * @return string $cardHtml
      */
     public function display( string $mode = normale ) {
-        include( 'cardView.php');
+        include( 'modules/game/cardView.php');
     }
 
 

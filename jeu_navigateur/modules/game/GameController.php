@@ -33,7 +33,7 @@ Class GameController {
         $this->setHerosCollectionModel( new HerosCollectionModel );
         $this->setCardCollectionModel( new CardCollectionModel );
         $this->setCardGameModel( new CardGameModel );
-        $this->setRequest( sRequest::getInstance() );
+        $this->setRequest( SRequest::getInstance() );
     }
         
     //ACTION METHODES
@@ -87,7 +87,7 @@ Class GameController {
         $updateList[] = $this->getGame()->getHerosInactif()->draw(3);
         $this->update( $updateList );
 
-        include( 'board.php' );
+        include( 'modules/game/plateau_grid.php' );
     }
 
 
@@ -96,7 +96,7 @@ Class GameController {
      * 
     **/
     public function invokeAction() {
-        $gameId = 16;
+        $gameId = 7;
         $cardId = $this->getRequest()->get('id');
 
         $this->loadGame( $gameId );
@@ -106,7 +106,7 @@ Class GameController {
         } else {
             $this->update( $updateList );
         }
-        include('modules/game/board.php');
+        include('modules/game/plateau_grid.php');
     }
 
     /**
@@ -115,7 +115,7 @@ Class GameController {
     **/
     public function passAction() {
         //$id = $this->request idDeLaCarteInvoquee
-        $gameId = 16;
+        $gameId = 7;
 
         $this->loadGame($gameId);
         $updateList = $this->getGame()->pass();
@@ -124,7 +124,7 @@ Class GameController {
         } else {
             $this->update( $updateList );
         }
-        include('modules/game/board.php');
+        include('modules/game/plateau_grid.php');
         //retourner le necessaire pour la vue
     }
 
@@ -134,7 +134,7 @@ Class GameController {
      * 
     **/
     public function attackAction() {
-        $gameId = 16;
+        $gameId = 7;
         $assaillantId = $this->getRequest()->get('assaillantId');
         echo $assaillantId;
         $targetId = $this->getRequest()->get('targetId');
@@ -146,7 +146,7 @@ Class GameController {
         } else {
             $this->update( $updateList );
         }
-        include('modules/game/board.php');
+        include('modules/game/plateau_grid.php');
     }
     
     
@@ -210,8 +210,7 @@ Class GameController {
      * @return Game $game
     **/
     public function initGame( $heros1Id , $heros2Id  ) {
-        $game = new Game(['dateDebutPartie'=>date('Y-m-d H:i:s'), 'cpt'=>'1', 'partie_terminee'=>false  , 'heros1Id'=>$heros1Id ,'heros2Id'=>$heros2Id ]);
-        
+        $game = new Game(['dateDebutPartie'=>date('Y-m-d H:i:s'), 'cpt'=>'1', 'partie_terminee'=>'0', 'heros1Id'=>$heros1Id ,'heros2Id'=>$heros2Id ]);
         $gameId = $this->getGameModel()->add( $game );
         $game->setId( $gameId );
         return $game;
@@ -242,7 +241,6 @@ Class GameController {
      * 
     **/
     public function update( array $updateList ) {
-        var_dump($updateList);
         array_walk_recursive( $updateList, [$this, 'updateObject'] );
     }
 

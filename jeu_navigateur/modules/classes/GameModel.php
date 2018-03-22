@@ -5,8 +5,8 @@ class GameModel extends KernelModel
     public function add( Game $partie ) {
         $partieDatas = $partie->getAttributeTable( [  'dateDebutPartie', 'cpt', 'partie_terminee', 'heros1Id', 'heros2Id', 'plateau' ] );
         
-        $query =    "INSERT INTO `partie` (`id`, `date_debut`, `cpt_tour`, `partie_terminee`,`heros1_partie_id`, `heros2_partie_id`, `plateau_id`)". 
-                    "VALUES (NULL, :dateDebutPartie, :cpt, :partie_terminee, :heros1Id, :heros2Id, :plateau);";
+        $query =    "INSERT INTO `partie` (`id`, `date_debut`, `cpt_tour`, `partie_terminee`, `heros1_partie_id`, `heros2_partie_id`, `plateau_id`) 
+                    VALUES (NULL, :dateDebutPartie, :cpt, :partie_terminee, :heros1Id, :heros2Id, :plateau);";
         return $this->executeQuery( $query, $partieDatas );
     }
     
