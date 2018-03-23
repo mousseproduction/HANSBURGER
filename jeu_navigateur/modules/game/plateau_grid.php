@@ -31,16 +31,16 @@
             </div>
             <!-- row3+4+5 -->
             
-            <div class="<?php echo ($this->getgame()->getherosactif()->getnom()=='hans')? "hansherosactif":"burgerherosactif"; ?>">
-                <h1 class="pictovieherosactif"><?php echo $this->getgame()->getherosactif()->getpv()?></h1>
+            <div class="<?php echo ($this->getGame()->getHerosActif()->getNom()=='Hans Zimmer')? "hansHerosActif":"burgerHerosActif"; ?>">
+                <h1 class="pictoVieHerosActif"><?php echo $this->getGame()->getHerosActif()->getPv()?></h1>
             </div>
     <!-- column2 -->
             <!-- row1+2 -->
-            <div class="visuelherosinactif">
-                <h1 class="pictovieherosinactif">20</h1> -->
+            <div class="<?php echo ($this->getGame()->getHerosInactif()->getNom()=='Fast Food')? "burgerHerosInactif":"hansHerosInactif"; ?>">
+                <h1 class="pictovieherosinactif"><?php echo $this->getGame()->getHerosInactif()->getPv()?></h1> -->
             </div>
             <!-- row3 -->
-            <div class="deckherosinactif">
+            <div class="deckHerosInactif">
                 <?php
                 if( isset( $this->getGame()->getHerosInactif()->getCartes()['Attente'] ) ) {
                     foreach( $this->getGame()->getHerosInactif()->getCartes()['Attente'] as $key => $card ) {
@@ -92,8 +92,8 @@
             </div>
             <!-- Row4+5 -->
             <div class="cagnotte">
-                <div class="pictocagnotte">10</div>
-                <div class="pictonbtour">10</div>
+            <div class="pictocagnotte"><?php echo $this->getGame()->getHerosActif()->getCagnotte(); ?></div>
+            <div class="pictonbtour"><?php echo $this->getGame()->getCpt(); ?></div>
             </div>
         <!-- Column4 -->
             <!-- Row1+2+3 -->

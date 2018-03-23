@@ -34,7 +34,6 @@ class Game {
                 if( method_exists( $card, 'onInvocation' ) ) {
                     $card->onInvocation();
                 }
-                var_dump($card);
                 $result = [$card, $this->getHerosActif()];
                 return $result;
                 //$game->listClickable( 'buyable' );

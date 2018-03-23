@@ -96,7 +96,7 @@ Class GameController {
      * 
     **/
     public function invokeAction() {
-        $gameId = 7;
+        $gameId = 11;
         $cardId = $this->getRequest()->get('id');
 
         $this->loadGame( $gameId );
@@ -115,7 +115,7 @@ Class GameController {
     **/
     public function passAction() {
         //$id = $this->request idDeLaCarteInvoquee
-        $gameId = 7;
+        $gameId = 11;
 
         $this->loadGame($gameId);
         $updateList = $this->getGame()->pass();
@@ -134,7 +134,7 @@ Class GameController {
      * 
     **/
     public function attackAction() {
-        $gameId = 7;
+        $gameId = 11;
         $assaillantId = $this->getRequest()->get('assaillantId');
         echo $assaillantId;
         $targetId = $this->getRequest()->get('targetId');
